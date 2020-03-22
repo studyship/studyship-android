@@ -26,7 +26,11 @@ class CustomBottomNavigationView : BottomNavigationView {
     private var mNavigationBarWidth: Int = 0
     private var mNavigationBarHeight: Int = 0
 
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
         init()
     }
 
@@ -54,10 +58,19 @@ class CustomBottomNavigationView : BottomNavigationView {
         mNavigationBarWidth = width
         mNavigationBarHeight = height
 
-        mFirstCurveStartPoint.set(mNavigationBarWidth / 2 - CURVE_CIRCLE_RADIUS * 2 - CURVE_CIRCLE_RADIUS / 3, 0)
-        mFirstCurveEndPoint.set(mNavigationBarWidth / 2, CURVE_CIRCLE_RADIUS + CURVE_CIRCLE_RADIUS / 4)
+        mFirstCurveStartPoint.set(
+            mNavigationBarWidth / 2 - CURVE_CIRCLE_RADIUS * 2 - CURVE_CIRCLE_RADIUS / 3,
+            0
+        )
+        mFirstCurveEndPoint.set(
+            mNavigationBarWidth / 2,
+            CURVE_CIRCLE_RADIUS + CURVE_CIRCLE_RADIUS / 4
+        )
         mSecondCurveStartPoint = mFirstCurveEndPoint
-        mSecondCurveEndPoint.set(mNavigationBarWidth / 2 + CURVE_CIRCLE_RADIUS * 2 + CURVE_CIRCLE_RADIUS / 3, 0)
+        mSecondCurveEndPoint.set(
+            mNavigationBarWidth / 2 + CURVE_CIRCLE_RADIUS * 2 + CURVE_CIRCLE_RADIUS / 3,
+            0
+        )
 
         mFirstCurveControlPoint1.set(
             mFirstCurveStartPoint.x + CURVE_CIRCLE_RADIUS + CURVE_CIRCLE_RADIUS / 4,

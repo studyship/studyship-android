@@ -1,0 +1,13 @@
+package com.studyship.application.ui.splash
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import com.studyship.application.R
+
+class SplashActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_splash)
+    }
+}

@@ -8,8 +8,18 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/appbar_background">
-        <include
-            layout="@layout/appbar_header_layout" />
+        android:backgroundTint="@color/appbar_background"
+        android:fitsSystemWindows="true">
+
+        <include layout="@layout/appbar_header_layout" />
     </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <include layout="@layout/fragment_home_body" />
+    </androidx.core.widget.NestedScrollView>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

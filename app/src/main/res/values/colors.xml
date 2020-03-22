@@ -9,6 +9,9 @@
     <color name="non_selected_bottom_navigation_color">#30384C</color>
     <color name="bottom_navigation_background">#CCFFFFFF</color>
 
+    <!--    FrameLayout background  -->
+    <color name="background_start_color">#26000000</color>
+
     <!--    AppbarLayout color  -->
     <color name="appbar_background">#FFFFFF</color>
     <color name="appbar_textColor">#5185FC</color>
