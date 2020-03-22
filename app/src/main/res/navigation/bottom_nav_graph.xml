@@ -20,11 +20,6 @@
         android:label="MessageFragment"
         tools:layout="@layout/fragment_message_layout" />
     <fragment
-        android:id="@+id/my_study"
-        android:name="com.studyship.application.ui.MyStudyFragment"
-        android:label="MyStudyFragment"
-        tools:layout="@layout/fragment_mystudy_layout" />
-    <fragment
         android:id="@+id/profile"
         android:name="com.studyship.application.ui.MyProfileFragment"
         android:label="MyProfileFragment"

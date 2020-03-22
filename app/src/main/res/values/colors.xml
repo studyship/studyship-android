@@ -8,4 +8,10 @@
     <color name="selected_bottom_navigation_color">#4E7FFF</color>
     <color name="non_selected_bottom_navigation_color">#30384C</color>
     <color name="bottom_navigation_background">#CCFFFFFF</color>
+
+    <!--    AppbarLayout color  -->
+    <color name="appbar_background">#FFFFFF</color>
+    <color name="appbar_textColor">#5185FC</color>
+    <color name="edit_text_fillColor">#F4F4F4</color>
+    <color name="edit_text_hintColor">#474F85</color>
 </resources>

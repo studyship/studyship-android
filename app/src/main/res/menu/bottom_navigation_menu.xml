@@ -13,8 +13,8 @@
 
     <item
         android:id="@+id/my_study"
-        android:icon="@drawable/ic_assignment_black_24dp"
-        android:title="@string/my_study_string" />
+        android:title=""
+        android:enabled="false"/>
 
     <item
         android:id="@+id/message_room"
