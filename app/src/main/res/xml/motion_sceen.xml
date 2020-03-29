@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@+id/start"
+        motion:duration="1000"
+        motion:interpolator="anticipate" />
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/user_profile_img"
+            android:layout_width="39dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="@dimen/spacing_x_large"
+            android:layout_marginTop="@dimen/spacing_deluxe_large"
+            android:src="@drawable/ic_launcher_background"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@+id/user_name"
+            style="@style/APPBAR_TITLE"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_deluxe_large"
+            android:alpha="1.0"
+            android:text="윤태성"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toEndOf="@+id/user_profile_img"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/search_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_x_large"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:layout_marginEnd="@dimen/spacing_large"
+            android:background="@drawable/edittext_background"
+            android:padding="@dimen/spacing_mini"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/user_setting" />
+
+        <Constraint
+            android:id="@+id/category_recycler_view"
+            categoryList="@{homeFragmentViewModel.categoryList}"
+            android:layout_width="0dp"
+            android:alpha="1.0"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/search_layout"/>
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/user_profile_img"
+            android:layout_width="39dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="@dimen/spacing_x_large"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            android:src="@drawable/ic_launcher_background"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent" />
+
+        <Constraint
+            android:id="@+id/user_name"
+            style="@style/APPBAR_TITLE"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_deluxe_large"
+            android:alpha="0.0"
+            android:text="윤태성"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toEndOf="@+id/user_profile_img"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/search_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_x_large"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            android:layout_marginEnd="@dimen/spacing_large"
+            android:background="@drawable/edittext_background"
+            android:padding="@dimen/spacing_mini"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toEndOf="@+id/user_profile_img"
+            motion:layout_constraintBottom_toBottomOf="parent" />
+
+        <Constraint
+            android:id="@+id/category_recycler_view"
+            categoryList="@{homeFragmentViewModel.categoryList}"
+            android:layout_width="0dp"
+            android:alpha="0.0"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/search_layout"/>
+    </ConstraintSet>
+</MotionScene>

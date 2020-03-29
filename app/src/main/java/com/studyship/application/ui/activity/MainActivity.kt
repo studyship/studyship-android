@@ -1,15 +1,14 @@
-package com.studyship.application
+package com.studyship.application.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import com.studyship.application.ui.activity.AddStudyActivity
+import com.studyship.application.R
 import com.studyship.application.util.loadNavigation
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
-import java.util.*
 import kotlin.math.pow
 import kotlin.math.sqrt
 

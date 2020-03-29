@@ -10,7 +10,9 @@
 
     <com.studyship.application.ui.widget.layout.CustomCollapsibleToolbar xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
         android:layout_width="match_parent"
+        app:layoutDescription="@xml/motion_sceen"
         android:layout_height="match_parent"
         android:minHeight="@dimen/app_bar_min_height">
 
@@ -47,6 +49,7 @@
             app:layout_constraintTop_toBottomOf="@+id/user_name" />
 
         <ImageView
+            android:id="@+id/bookmark_img"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="@dimen/spacing_normal"

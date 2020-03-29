@@ -1,12 +1,31 @@
 package com.studyship.application.util
 
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
+
 import androidx.lifecycle.Observer
 
-class SingleLiveData<ITEM: Any> : LiveData<ITEM>() {
+class Event<out T : Any>(private val content: T) {
+    var pendingData = false
+        private set
 
-    override fun observe(owner: LifecycleOwner, observer: Observer<in ITEM>) {
-        super.observe(owner, observer)
+    fun getContentIfNotHandled(): T? {
+        return if (pendingData)
+            null
+        else {
+            pendingData = true
+            content
+        }
+    }
+
+    fun getContentValue(): T = content
+}
+
+class SingleLiveData<ITEM : Any>(private val onChangeListener: (ITEM) -> Unit) :
+    Observer<Event<ITEM>> {
+
+
+    override fun onChanged(event: Event<ITEM>?) {
+        event?.getContentIfNotHandled()?.let {
+            onChangeListener(it)
+        }
     }
 }

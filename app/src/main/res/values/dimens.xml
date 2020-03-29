@@ -8,7 +8,7 @@
     <dimen name="login_guide_line_padding">50dp</dimen>
 
     <!--    APP_BAR_MIN_HEIGHT-->
-    <dimen name="app_bar_min_height">70dp</dimen>
+    <dimen name="app_bar_min_height">100dp</dimen>
 
     <!--    SPACING_MINUS   -->
     <dimen name="collapsing_toolbar_margin_top_minus_spacing">-50dp</dimen>

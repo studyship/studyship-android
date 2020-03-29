@@ -1,6 +1,7 @@
 package com.studyship.application.binding
 
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.studyship.application.data.CategoryResponse
@@ -17,7 +18,6 @@ fun RecyclerView.bindingAdapterCategory(list: List<CategoryResponse>?) {
 
     this.run {
         adapter = categoryAdapter
-        layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        itemAnimator = null
+        layoutManager = GridLayoutManager(context, 2)
     }
 }

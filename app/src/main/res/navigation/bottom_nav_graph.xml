@@ -6,22 +6,22 @@
     app:startDestination="@id/home_study">
     <fragment
         android:id="@+id/home_study"
-        android:name="com.studyship.application.ui.HomeFragment"
+        android:name="com.studyship.application.ui.fragment.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home_layout" />
     <fragment
         android:id="@+id/category_study"
-        android:name="com.studyship.application.ui.CategoryFragment"
+        android:name="com.studyship.application.ui.fragment.CategoryFragment"
         android:label="CategoryFragment"
         tools:layout="@layout/fragment_category_layout" />
     <fragment
         android:id="@+id/message_room"
-        android:name="com.studyship.application.ui.MessageFragment"
+        android:name="com.studyship.application.ui.fragment.MessageFragment"
         android:label="MessageFragment"
         tools:layout="@layout/fragment_message_layout" />
     <fragment
         android:id="@+id/profile"
-        android:name="com.studyship.application.ui.MyProfileFragment"
+        android:name="com.studyship.application.ui.fragment.MyProfileFragment"
         android:label="MyProfileFragment"
         tools:layout="@layout/fragment_myprofile_layout" />
 </navigation>
