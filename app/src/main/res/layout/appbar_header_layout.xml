@@ -1,87 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.studyship.application.ui.widget.layout.CustomCollapsibleToolbar xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:minHeight="@dimen/app_bar_min_height"
-    android:layout_height="match_parent">
+<layout>
 
-    <ImageView
-        android:id="@+id/user_profile_img"
-        android:layout_width="39dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="@dimen/spacing_x_large"
-        android:layout_marginTop="@dimen/spacing_deluxe_large"
-        android:src="@drawable/ic_launcher_background"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-    <TextView
-        android:id="@+id/user_name"
-        style="@style/APPBAR_TITLE"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_small"
-        android:layout_marginTop="@dimen/spacing_deluxe_large"
-        android:text="윤태성"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/user_profile_img"
-        app:layout_constraintTop_toTopOf="parent" />
+        <variable
+            name="homeFragmentViewModel"
+            type="com.studyship.application.ui.viewmodel.HomeFragmentViewModel" />
+    </data>
 
-    <TextView
-        android:id="@+id/user_setting"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_small"
-        android:text="@string/profile_setting"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/user_profile_img"
-        app:layout_constraintTop_toBottomOf="@+id/user_name" />
-
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="@dimen/spacing_normal"
-        android:src="@drawable/ic_bookmark_border_black_24dp"
-        android:layout_marginEnd="@dimen/spacing_small"
-        app:layout_constraintEnd_toStartOf="@+id/notification_img"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/notification_img"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="@dimen/spacing_normal"
-        android:layout_marginEnd="@dimen/spacing_large"
-        android:src="@drawable/ic_notifications_none_black_24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
+    <com.studyship.application.ui.widget.layout.CustomCollapsibleToolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/spacing_large"
-        android:layout_marginStart="@dimen/spacing_x_large"
-        android:layout_marginTop="@dimen/spacing_normal"
-        android:background="@drawable/edittext_background"
-        android:layout_marginBottom="@dimen/spacing_normal"
-        android:padding="@dimen/spacing_mini"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_setting">
+        android:layout_height="match_parent"
+        android:minHeight="@dimen/app_bar_min_height">
+
+        <ImageView
+            android:id="@+id/user_profile_img"
+            android:layout_width="39dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="@dimen/spacing_x_large"
+            android:layout_marginTop="@dimen/spacing_deluxe_large"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/user_name"
+            style="@style/APPBAR_TITLE"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_deluxe_large"
+            android:text="윤태성"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/user_profile_img"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/user_setting"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:text="@string/profile_setting"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/user_profile_img"
+            app:layout_constraintTop_toBottomOf="@+id/user_name" />
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/edit_text_search_vector_img"/>
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:src="@drawable/ic_bookmark_border_black_24dp"
+            app:layout_constraintEnd_toStartOf="@+id/notification_img"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_gravity="center"
+        <ImageView
+            android:id="@+id/notification_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:layout_marginEnd="@dimen/spacing_large"
+            android:src="@drawable/ic_notifications_none_black_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/search_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_mini"
-            android:textColor="@color/edit_text_hintColor"
-            android:textSize="@dimen/text_large"
-            android:text="@string/edit_text_hint"/>
-    </LinearLayout>
-</com.studyship.application.ui.widget.layout.CustomCollapsibleToolbar>
+            android:layout_marginStart="@dimen/spacing_x_large"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:layout_marginEnd="@dimen/spacing_large"
+            android:background="@drawable/edittext_background"
+            android:padding="@dimen/spacing_mini"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_setting">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/edit_text_search_vector_img" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/spacing_mini"
+                android:text="@string/edit_text_hint"
+                android:textColor="@color/edit_text_hintColor"
+                android:textSize="@dimen/text_large" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/category_recycler_view"
+            categoryList="@{homeFragmentViewModel.categoryList}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_layout" />
+
+
+    </com.studyship.application.ui.widget.layout.CustomCollapsibleToolbar>
+</layout>

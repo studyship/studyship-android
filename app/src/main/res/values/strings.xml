@@ -12,4 +12,5 @@
     <!--    appbar string   -->
     <string name="edit_text_hint">스터디 검색</string>
     <string name="profile_setting">프로필관리 ></string>
+    <string name="category_item_text">카테고리</string>
 </resources>

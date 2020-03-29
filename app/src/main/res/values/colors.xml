@@ -4,6 +4,12 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
 
+    <color name="main_color_yellow">#FFC545</color>
+
+    <color name="main_black_logo_color">#575756</color>
+
+    <color name="main_color_blue">#60D3E0</color>
+
     <!--    Bottom navigation color     -->
     <color name="selected_bottom_navigation_color">#4E7FFF</color>
     <color name="non_selected_bottom_navigation_color">#30384C</color>

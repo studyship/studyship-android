@@ -2,14 +2,36 @@ package com.studyship.application
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.studyship.application.ui.activity.AddStudyActivity
 import com.studyship.application.util.loadNavigation
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
+import java.util.*
+import kotlin.math.pow
+import kotlin.math.sqrt
 
 class MainActivity : AppCompatActivity() {
+    init {
+
+        solution(8, 12)
+    }
+
+    fun solution(w: Int, h: Int): Long {
+        var answer: Long = 0
+
+        val wDouble = w.toDouble().pow(2.0)
+        val hDouble = h.toDouble().pow(2.0)
+        Log.d("ANSWER wDouble", wDouble.toString())
+        Log.d("ANSWER hDouble", hDouble.toString())
+        val radio = sqrt((wDouble + hDouble))
+        Log.d("ANSWER radio", radio.toString())
+        answer = radio.toLong()
+        Log.d("ANSWER", answer.toString())
+        return answer
+    }
 
     private var navHostFragment: NavHostFragment? = null
     override fun onCreate(savedInstanceState: Bundle?) {
