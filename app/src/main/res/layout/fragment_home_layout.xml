@@ -14,7 +14,7 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/appbar_background"
+            android:background="@drawable/appbar_background"
             android:fitsSystemWindows="true">
 
             <include layout="@layout/appbar_header_layout"

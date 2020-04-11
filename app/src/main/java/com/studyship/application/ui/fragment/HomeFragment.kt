@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.studyship.application.R
 import com.studyship.application.base.fragment.BaseFragment
 import com.studyship.application.databinding.FragmentHomeLayoutBinding
@@ -40,9 +41,10 @@ class HomeFragment : BaseFragment<FragmentHomeLayoutBinding>(R.layout.fragment_h
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        viewDataBinding.root.category_recycler_view.run {
-            adapter = homeCategoryRecyclerAdapter
-        }
+//        viewDataBinding.root.category_recycler_view.run {
+//            layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+//            adapter = homeCategoryRecyclerAdapter
+//        }
         super.onViewCreated(view, savedInstanceState)
     }
 }

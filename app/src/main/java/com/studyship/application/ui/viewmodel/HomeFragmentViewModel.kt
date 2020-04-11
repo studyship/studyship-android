@@ -28,6 +28,11 @@ class HomeFragmentViewModel : ViewModel() {
             },
             CategoryResponse("테스트") {
                 _categoryName.value = Event("테스트")
+            },
+            CategoryResponse("테스트") {
+                _categoryName.value = Event("테스트")
+            }, CategoryResponse("테스트") {
+                _categoryName.value = Event("테스트")
             }
         )
     }

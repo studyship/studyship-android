@@ -11,14 +11,18 @@
     <color name="main_color_blue">#60D3E0</color>
 
     <!--    Bottom navigation color     -->
-    <color name="selected_bottom_navigation_color">#4E7FFF</color>
-    <color name="non_selected_bottom_navigation_color">#30384C</color>
-    <color name="bottom_navigation_background">#CCFFFFFF</color>
+    <color name="selected_bottom_navigation_color">#3F3F3F</color>
+    <color name="non_selected_bottom_navigation_color">#969696</color>
+    <color name="bottom_navigation_background">#F7F7F7</color>
 
     <!--    FrameLayout background  -->
     <color name="background_start_color">#26000000</color>
 
     <!--    AppbarLayout color  -->
+    <color name="appbar_start_color">#FFC545</color>
+    <color name="appbar_center_color">#FFD445</color>
+    <color name="appbar_end_color">#60DEE0</color>
+    <color name="appbar_end_color_second">#60D3E0</color>
     <color name="appbar_background">#FFFFFF</color>
     <color name="appbar_textColor">#5185FC</color>
     <color name="edit_text_fillColor">#F4F4F4</color>

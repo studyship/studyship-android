@@ -42,9 +42,6 @@ class MainActivity : AppCompatActivity() {
         navHostFragment?.let {
             NavigationUI.setupWithNavController(bottom_sheet_menu, it.navController)
         }
-        fab.setOnClickListener {
-            startActivity<AddStudyActivity>()
-        }
     }
 
     override fun onBackPressed() {

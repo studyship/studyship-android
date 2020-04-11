@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:fitsSystemWindows="false"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
     tools:context=".ui.activity.MainActivity">
 
     <fragment
@@ -17,32 +17,20 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_gravity="bottom"
-        android:background="@drawable/bottom_navigation_background"
-        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
 
-        <com.studyship.application.ui.widget.CustomBottomNavigationView
+        <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_sheet_menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            app:backgroundTint="@color/bottom_navigation_background"
             app:itemIconTint="@color/selected_bottom_state_color"
             app:itemRippleColor="@android:color/transparent"
             app:itemTextColor="@color/selected_bottom_state_color"
-            app:labelVisibilityMode="labeled"
+            app:labelVisibilityMode="unlabeled"
             app:menu="@menu/bottom_navigation_menu" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:src="@drawable/ic_add_black_24dp"
-            android:elevation="@dimen/spacing_test_dimen"
-            android:translationZ="@dimen/spacing_test_dimen"
-            android:backgroundTint="@android:color/white"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
-            android:layout_marginBottom="45dp" />
     </FrameLayout>
 
 

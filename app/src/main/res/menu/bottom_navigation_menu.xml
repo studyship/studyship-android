@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/home_study"
-        android:icon="@drawable/ic_search_black_24dp"
+        android:icon="@drawable/ic_icon_bnb_search"
         android:title="@string/search_title" />
 
     <item
         android:id="@+id/category_study"
-        android:icon="@drawable/ic_view_module_black_24dp"
+        android:icon="@drawable/ic_icon_bnb_category"
         android:title="@string/study_category" />
 
     <item
         android:id="@+id/my_study"
-        android:title=""
-        android:enabled="false"/>
+        android:icon="@drawable/ic_icon_bnb_my_study"
+        android:title="@string/my_study_string"/>
 
     <item
         android:id="@+id/message_room"
-        android:icon="@drawable/ic_message_black_24dp"
+        android:icon="@drawable/ic_icon_bnb_chat"
         android:title="@string/message_room" />
 
     <item
         android:id="@+id/profile"
-        android:icon="@drawable/ic_more_horiz_black_24dp"
+        android:icon="@drawable/ic_icon_bnb_profile"
         android:title="@string/profile_string" />
 </menu>

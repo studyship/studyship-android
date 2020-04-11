@@ -8,7 +8,7 @@
     <dimen name="login_guide_line_padding">50dp</dimen>
 
     <!--    APP_BAR_MIN_HEIGHT-->
-    <dimen name="app_bar_min_height">100dp</dimen>
+    <dimen name="app_bar_min_height">80dp</dimen>
 
     <!--    SPACING_MINUS   -->
     <dimen name="collapsing_toolbar_margin_top_minus_spacing">-50dp</dimen>
@@ -44,6 +44,8 @@
     <dimen name="spacing_profile_img">85dp</dimen>
     <dimen name="spacing_detail_card_view">350dp</dimen>
     <dimen name="spacing_test_dimen">210dp</dimen>
+
+    <dimen name="logo_size_dimen">100dp</dimen>
 
     <dimen name="text_micro">10sp</dimen>
     <dimen name="text_mini">12sp</dimen>
