@@ -27,4 +27,10 @@
     <color name="appbar_textColor">#5185FC</color>
     <color name="edit_text_fillColor">#F4F4F4</color>
     <color name="edit_text_hintColor">#474F85</color>
+
+    <!--    HomeFragment Study CardView Color   -->
+    <color name="category_text_color">#575756</color>
+    <color name="category_location_color">#CCCCCC</color>
+    <color name="category_goal_color">#60D3E0</color>
+    <color name="category_info_color">#575756</color>
 </resources>
