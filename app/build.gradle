@@ -95,6 +95,9 @@ dependencies {
     implementation deps.androidx.navigation_fragment
     implementation deps.androidx.navigation_ui
     implementation deps.androidx.savedstate
+
+    //transformationlayout
+    implementation deps.library.transformationlayout
 }
 androidExtensions {
 

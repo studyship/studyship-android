@@ -1,20 +1,24 @@
 package com.studyship.application.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.studyship.application.R
+import com.studyship.application.base.activity.BaseActivity
 import com.studyship.application.util.loadNavigation
+import com.studyship.application.util.plusAssign
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.startActivity
 import kotlin.math.pow
 import kotlin.math.sqrt
 
-class MainActivity : AppCompatActivity() {
-    init {
+class MainActivity : BaseActivity() {
+    companion object {
+        private const val BACK_BUTTON_ITEM = 2000L
+    }
 
+    init {
         solution(8, 12)
     }
 
@@ -36,6 +40,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        compositeDisposable +=
+            backButtonBehaviorSubject.buffer(2, 1).map {
+                it[0] to it[1]
+            }.subscribe {
+                if (it.second - it.first < BACK_BUTTON_ITEM)
+                    finish()
+                else
+                    Toast.makeText(
+                        this,
+                        getString(R.string.back_button_click_message),
+                        Toast.LENGTH_LONG
+                    )
+                        .show()
+            }
 
         setContentView(R.layout.activity_main)
         navHostFragment = loadNavigation(R.id.nav_host_fragment)
@@ -45,6 +63,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
+        backButtonBehaviorSubject.onNext(System.currentTimeMillis())
     }
 }

@@ -9,8 +9,9 @@ import com.studyship.application.base.BaseRecyclerViewHolder
 import com.studyship.application.data.source.RecyclerItemSource
 import com.studyship.application.databinding.RecyclerCategoryItemBinding
 import com.studyship.application.ui.adapter.holder.CategoryRecyclerViewHolder
+import com.studyship.application.ui.adapter.holder.delegate.IRecyclerDelegate
 
-class CategoryRecyclerAdapter :
+class CategoryRecyclerAdapter(private val recyclerDelegate: IRecyclerDelegate) :
     BaseRecyclerViewAdapter<RecyclerItemSource.RecyclerItem, RecyclerCategoryItemBinding>() {
 
     companion object {
@@ -23,6 +24,7 @@ class CategoryRecyclerAdapter :
     ): BaseRecyclerViewHolder<*, RecyclerCategoryItemBinding> =
         when (viewType) {
             CATEGORY_VIEW_TYPE -> CategoryRecyclerViewHolder(
+                recyclerDelegate,
                 LayoutInflater.from(parent.context).inflate(
                     R.layout.recycler_category_item,
                     parent,

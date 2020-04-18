@@ -24,4 +24,9 @@
         android:name="com.studyship.application.ui.fragment.MyProfileFragment"
         android:label="MyProfileFragment"
         tools:layout="@layout/fragment_myprofile_layout" />
+    <fragment
+        android:id="@+id/my_study"
+        tools:layout="@layout/fragment_mystudy_layout"
+        android:name="com.studyship.application.ui.fragment.MyStudyFragment"
+        android:label="MyStudyFragment" />
 </navigation>
