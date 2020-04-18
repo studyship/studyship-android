@@ -36,4 +36,6 @@
 
     <!--    Apply Study Activity Style  -->
     <color name="apply_study_title_color">#575756</color>
+    <color name="apply_study_time_text_color">#CCCCCC</color>
+    <color name="apply_study_category_bg_color">#FFC545</color>
 </resources>
