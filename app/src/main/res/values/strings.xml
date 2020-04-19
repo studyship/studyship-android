@@ -16,4 +16,8 @@
 
     <!--    Back Button String  -->
     <string name="back_button_click_message">뒤로가기 버튼을 한번 더 누를시 종료됩니다.</string>
+
+    <!--    Apply Study String  -->
+    <string name="reply_response_percent">답변 응답률 %d%%</string>
+    <string name="go_to_study_feed_from_captain">스터디 이력 보러가기 ></string>
 </resources>
