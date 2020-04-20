@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.core.os.bundleOf
+import com.skydoves.transformationlayout.TransformationCompat
+import com.skydoves.transformationlayout.TransformationLayout
 
 fun <T> createIntent(
     context: Context,
@@ -14,8 +16,10 @@ fun <T> createIntent(
 
 inline fun <reified T : Activity> Context.comfortableStartActivity(
     vararg params: Pair<String, Any?>,
-    intentAction: Intent.() -> Unit = {}
-) {
+    intentAction: Intent.() -> Unit = {},
+    transformationLayout: TransformationLayout
+    ) {
     val intent = createIntent(this, T::class.java, params).apply(intentAction)
-    startActivity(intent)
+    TransformationCompat.startActivity(transformationLayout, intent)
+//    startActivity(intent)
 }

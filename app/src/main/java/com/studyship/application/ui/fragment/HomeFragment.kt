@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.skydoves.transformationlayout.TransformationLayout
 import com.studyship.application.R
 import com.studyship.application.base.fragment.BaseFragment
 import com.studyship.application.databinding.FragmentHomeLayoutBinding
@@ -16,9 +17,11 @@ import com.studyship.application.util.comfortableStartActivity
 import kotlinx.android.synthetic.main.appbar_header_layout.view.*
 import kotlinx.android.synthetic.main.fragment_home_body.*
 import kotlinx.android.synthetic.main.fragment_home_body.view.*
+import kotlinx.android.synthetic.main.fragment_home_layout.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeFragment : BaseFragment<FragmentHomeLayoutBinding>(R.layout.fragment_home_layout), IRecyclerDelegate {
+class HomeFragment : BaseFragment<FragmentHomeLayoutBinding>(R.layout.fragment_home_layout),
+    IRecyclerDelegate {
 
     override lateinit var viewDataBinding: FragmentHomeLayoutBinding
 
@@ -51,12 +54,17 @@ class HomeFragment : BaseFragment<FragmentHomeLayoutBinding>(R.layout.fragment_h
 //            adapter = homeCategoryRecyclerAdapter
 //        }
         viewDataBinding.root.cardview1.setOnClickListener {
-            context?.comfortableStartActivity<StudyApplyActivity>("key" to homeCategoryRecyclerAdapter.itemCount)
+            context?.comfortableStartActivity<StudyApplyActivity>(
+                "key" to homeCategoryRecyclerAdapter.itemCount,
+                transformationLayout = transformationLayout
+            )
         }
         super.onViewCreated(view, savedInstanceState)
     }
 
-    override fun onClickItem(position: Int) {
-        context?.comfortableStartActivity<StudyApplyActivity>("key" to homeCategoryRecyclerAdapter.itemCount)
+    override fun onClickItem(position: Int, translateLayout: TransformationLayout) {
+        context?.comfortableStartActivity<StudyApplyActivity>(
+            "key" to homeCategoryRecyclerAdapter.itemCount, transformationLayout = translateLayout
+        )
     }
 }
