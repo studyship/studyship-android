@@ -17,43 +17,177 @@
         android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardview1"
                 android:layout_width="0dp"
+                app:cardCornerRadius="@dimen/spacing_normal"
+                app:cardElevation="@dimen/spacing_normal"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_large"
-                android:onClick="@{() -> data.onClick}"
-                app:cardBackgroundColor="@color/main_color_yellow"
-                app:cardCornerRadius="@dimen/spacing_normal"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
+                    <TextView
+                        android:id="@+id/category_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_normal"
                         android:layout_marginTop="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_normal"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:text="피그마 왕초보 스터디"
+                        android:textColor="@color/category_text_color"
+                        android:textSize="@dimen/text_large"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        style="@style/CategoryText"
-                        android:layout_width="match_parent"
+                        android:id="@+id/category_start_time"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@{data.categoryName}"
-                        tools:text="@string/category_item_text" />
-                </LinearLayout>
+                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:layout_marginEnd="@dimen/spacing_large"
+                        android:text="15시간"
+                        app:layout_constraintEnd_toStartOf="@+id/category_bookmark"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/category_bookmark"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginEnd="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:src="@drawable/ic_icon_card_bookmark"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/category_location_text"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:text="#서초구"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/category_name" />
+
+                    <LinearLayout
+                        android:id="@+id/category_goal_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/spacing_normal"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/category_location_text">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/spacing_normal"
+                            android:text="목표"
+                            android:textColor="@color/category_goal_color"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="스터디 쉽 앱 클론" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/category_info_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/spacing_normal"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/category_goal_layout">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/spacing_normal"
+                            android:text="레벨"
+                            android:textColor="@color/category_info_color"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="스터디 쉽 앱 클론" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/category_location_img"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_normal"
+                        android:src="@drawable/ic_icon_card_location"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/category_info_layout" />
+
+                    <TextView
+                        android:id="@+id/category_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:text="서울시 송파구"
+                        app:layout_constraintStart_toEndOf="@+id/category_location_img"
+                        app:layout_constraintTop_toBottomOf="@+id/category_info_layout" />
+
+                    <ImageView
+                        android:id="@+id/category_time_img"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        app:layout_constraintStart_toEndOf="@+id/category_location"
+                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:layout_marginStart="@dimen/spacing_x_large"
+                        app:layout_constraintTop_toBottomOf="@+id/category_info_layout"
+                        android:src="@drawable/ic_icon_card_time" />
+
+                    <TextView
+                        android:id="@+id/category_time_text"
+                        android:layout_width="wrap_content"
+                        app:layout_constraintStart_toEndOf="@+id/category_time_img"
+                        app:layout_constraintTop_toBottomOf="@+id/category_info_layout"
+                        android:layout_marginStart="@dimen/spacing_small"
+                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:layout_height="wrap_content"
+                        android:text="토, 일"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="@dimen/spacing_normal"
+                        android:src="@drawable/ic_icon_card_reply"
+                        app:layout_constraintEnd_toStartOf="@+id/reply_chat_count_text"
+                        android:layout_marginTop="@dimen/spacing_normal"
+                        app:layout_constraintTop_toBottomOf="@+id/category_info_layout"/>
+
+                    <TextView
+                        android:id="@+id/reply_chat_count_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20"
+                        android:layout_marginEnd="@dimen/spacing_normal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/category_info_layout"
+                        android:layout_marginTop="@dimen/spacing_normal"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

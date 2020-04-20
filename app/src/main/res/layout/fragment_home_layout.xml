@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tool="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="homeFragmentViewModel"
             type="com.studyship.application.ui.viewmodel.HomeFragmentViewModel" />
     </data>
-    <com.skydoves.transformationlayout.TransformationLayout
-        android:id="@+id/transformationLayout"
-        app:transformation_duration="500"
-        app:transformation_pathMode="arc"
-        xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -24,18 +19,19 @@
             android:background="@drawable/appbar_background"
             android:fitsSystemWindows="true">
 
-            <include layout="@layout/appbar_header_layout"
-                app:homeFragmentViewModel="@{homeFragmentViewModel}"/>
+            <include
+                layout="@layout/appbar_header_layout"
+                app:homeFragmentViewModel="@{homeFragmentViewModel}" />
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.core.widget.NestedScrollView
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/category_recycler_view"
+            categoryList="@{homeFragmentViewModel.categoryList}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-
-            <include layout="@layout/fragment_home_body" />
-        </androidx.core.widget.NestedScrollView>
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            tool:listitem="@layout/recycler_category_item" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-    </com.skydoves.transformationlayout.TransformationLayout>
 </layout>

@@ -18,6 +18,6 @@ fun RecyclerView.bindingAdapterCategory(list: List<CategoryResponse>?) {
 
     this.run {
         adapter = categoryAdapter
-        layoutManager = GridLayoutManager(context, 2)
+        layoutManager = GridLayoutManager(context, 1)
     }
 }
