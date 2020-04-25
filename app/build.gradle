@@ -98,6 +98,9 @@ dependencies {
 
     //transformationlayout
     implementation deps.library.transformationlayout
+
+    //Spotlight
+    implementation deps.library.spotlight
 }
 androidExtensions {
 

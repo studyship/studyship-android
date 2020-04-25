@@ -10,7 +10,6 @@
 
     <com.skydoves.transformationlayout.TransformationLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         app:transformation_duration="500"
         android:id="@+id/item_poster_transformationLayout"

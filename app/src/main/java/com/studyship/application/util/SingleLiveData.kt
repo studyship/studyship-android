@@ -1,13 +1,14 @@
 package com.studyship.application.util
 
-
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 
-class Event<out T : Any>(private val content: T) {
-    var pendingData = false
-        private set
+class Event<out VALUE>(private val content: VALUE) {
+    private var pendingData = false
 
-    fun getContentIfNotHandled(): T? {
+    fun getContentIfNotHandled(): VALUE? {
         return if (pendingData)
             null
         else {
@@ -16,16 +17,39 @@ class Event<out T : Any>(private val content: T) {
         }
     }
 
-    fun getContentValue(): T = content
+    fun getContentValue(): VALUE = content
 }
 
-class SingleLiveData<ITEM : Any>(private val onChangeListener: (ITEM) -> Unit) :
+class SingleLiveData<ITEM>(private val onChangeListener: (ITEM) -> Unit) :
     Observer<Event<ITEM>> {
-
-
     override fun onChanged(event: Event<ITEM>?) {
         event?.getContentIfNotHandled()?.let {
             onChangeListener(it)
         }
     }
 }
+
+inline fun <T> SingleEvent<T>.singleObserve(
+    lifecycleOwner: LifecycleOwner,
+    crossinline observer: (T) -> Unit
+) {
+    observe(lifecycleOwner, SingleLiveData { observer(it) })
+}
+
+class SingleMutableEvent<VALUE> : MutableSingleEvent<VALUE>() {
+    var event: VALUE?
+        set(value) {
+            if (value != null) {
+                setValue(Event(value))
+            }
+        }
+        get() = value?.getContentValue()
+
+    fun postEvent(value: VALUE) {
+        if(value != null)
+            postValue(Event(value))
+    }
+}
+
+typealias MutableSingleEvent<T> = MutableLiveData<Event<T>>
+typealias SingleEvent<T> = LiveData<Event<T>>
