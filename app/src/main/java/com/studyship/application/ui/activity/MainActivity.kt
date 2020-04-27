@@ -8,39 +8,28 @@ import androidx.navigation.ui.NavigationUI
 import com.skydoves.transformationlayout.onTransformationStartContainer
 import com.studyship.application.R
 import com.studyship.application.base.activity.BaseActivity
+import com.studyship.application.ui.viewmodel.MainActivityViewModel
 import com.studyship.application.util.loadNavigation
 import com.studyship.application.util.plusAssign
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.pow
 import kotlin.math.sqrt
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity<MainActivityViewModel>() {
     companion object {
         private const val BACK_BUTTON_ITEM = 2000L
     }
 
-    init {
-        solution(8, 12)
-    }
-
-    fun solution(w: Int, h: Int): Long {
-        var answer: Long = 0
-
-        val wDouble = w.toDouble().pow(2.0)
-        val hDouble = h.toDouble().pow(2.0)
-        Log.d("ANSWER wDouble", wDouble.toString())
-        Log.d("ANSWER hDouble", hDouble.toString())
-        val radio = sqrt((wDouble + hDouble))
-        Log.d("ANSWER radio", radio.toString())
-        answer = radio.toLong()
-        Log.d("ANSWER", answer.toString())
-        return answer
-    }
+    override val viewModel: MainActivityViewModel by viewModel()
 
     private var navHostFragment: NavHostFragment? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         onTransformationStartContainer()
         super.onCreate(savedInstanceState)
+
+        viewModel.startTargetView()
 
         compositeDisposable +=
             backButtonBehaviorSubject.buffer(2, 1).map {
