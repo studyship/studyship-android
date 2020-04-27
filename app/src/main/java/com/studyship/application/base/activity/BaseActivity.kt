@@ -7,4 +7,9 @@ import io.reactivex.subjects.BehaviorSubject
 abstract class BaseActivity : AppCompatActivity() {
     protected val compositeDisposable = CompositeDisposable()
     protected val backButtonBehaviorSubject = BehaviorSubject.createDefault(0L)
+
+    override fun onDestroy() {
+        compositeDisposable.clear()
+        super.onDestroy()
+    }
 }
