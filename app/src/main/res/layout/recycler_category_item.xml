@@ -12,6 +12,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         app:transformation_duration="500"
+        app:transformation_fadeMode="cross"
         android:id="@+id/item_poster_transformationLayout"
         android:layout_height="wrap_content">
 

@@ -31,3 +31,4 @@ fun targetBuilder(layoutInflater: LayoutInflater, frameLayout: FrameLayout, idRe
         .setAnchor(idRes)
         .setOverlay(layoutInflater.inflate(R.layout.target_layout, frameLayout))
         .setShape(Circle(SHAPE_VALUE))
+        .build()

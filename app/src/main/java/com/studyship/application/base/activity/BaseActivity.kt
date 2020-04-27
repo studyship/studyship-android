@@ -1,5 +1,6 @@
 package com.studyship.application.base.activity
 
+import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable

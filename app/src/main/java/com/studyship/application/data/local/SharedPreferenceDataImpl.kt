@@ -11,7 +11,7 @@ class SharedPreferenceDataImpl(contextData: Context) : SharedPreferenceData {
 
     override fun getSpotLightSharedPreferData(): Boolean {
         return context.getSharedPreferences(this.javaClass.simpleName, SHARED_PREFERENCE_MODE)
-            .getBoolean(SHARED_PREFERENCE_KEY, true)
+            .getBoolean(SHARED_PREFERENCE_KEY, false)
     }
 
     override fun saveSpotLightSharedPreferData() {
