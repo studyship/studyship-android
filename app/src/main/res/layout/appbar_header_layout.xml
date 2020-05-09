@@ -36,6 +36,7 @@
                 android:layout_height="20dp"
                 android:layout_marginEnd="@dimen/spacing_large"
                 android:layout_centerVertical="true"
+                android:onClick="@{() -> homeFragmentViewModel.moveSignInActivity()}"
                 android:layout_toStartOf="@+id/notification_img"
                 android:src="@drawable/ic_appbar_search_btn" />
 

@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.studyship.application.data.CategoryResponse
 import com.studyship.application.util.Event
+import com.studyship.application.util.MutableSingleEvent
+import com.studyship.application.util.SingleEvent
 
 class HomeFragmentViewModel : ViewModel() {
     private val _categoryList = MutableLiveData<List<CategoryResponse>>()
@@ -14,6 +16,10 @@ class HomeFragmentViewModel : ViewModel() {
     private val _categoryName = MutableLiveData<Event<String>>()
     val categoryName: LiveData<Event<String>>
         get() = _categoryName
+
+    private val _moveSignInActivity = MutableSingleEvent(Event(false))
+    val moveSignInActivity: SingleEvent<Boolean>
+        get() = _moveSignInActivity
 
     init {
         _categoryList.value = listOf(
@@ -35,5 +41,9 @@ class HomeFragmentViewModel : ViewModel() {
                 _categoryName.value = Event("테스트")
             }
         )
+    }
+
+    fun moveSignInActivity() {
+        _moveSignInActivity.value = Event(true)
     }
 }

@@ -4,11 +4,11 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
 
+    <!--    Main Color  -->
     <color name="main_color_yellow">#FFC545</color>
-
     <color name="main_black_logo_color">#575756</color>
-
     <color name="main_color_blue">#60D3E0</color>
+    <color name="main_color_black">#000</color>
 
     <!--    Bottom navigation color     -->
     <color name="selected_bottom_navigation_color">#3F3F3F</color>
@@ -39,4 +39,12 @@
     <color name="apply_study_time_text_color">#CCCCCC</color>
     <color name="apply_study_category_bg_color">#FFC545</color>
     <color name="apply_study_response_percent_text_color">#60D3E0</color>
+
+    <!--    Custom EditText Color   -->
+    <color name="edit_text_default_color">#E6E6E6</color>
+    <color name="edit_text_focus_color">#60D3E0</color>
+
+
+    <!--    SignIn Activity Color   -->
+    <color name="app_bar_color">#333333</color>
 </resources>

@@ -54,4 +54,7 @@
     <dimen name="text_large">18sp</dimen>
     <dimen name="text_x_large">24sp</dimen>
     <dimen name="text_xx_large">32sp</dimen>
+
+    <!--    custom xml  -->
+    <dimen name="custom_edit_text_round">5dp</dimen>
 </resources>

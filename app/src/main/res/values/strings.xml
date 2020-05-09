@@ -2,6 +2,7 @@
     <string name="app_name">studyship-android</string>
 
 
+    <string name="app_bar_name">StudyShip</string>
     <!--    Bottom Navigation Title     -->
     <string name="search_title">홈</string>
     <string name="study_category">카테고리</string>
@@ -20,4 +21,10 @@
     <!--    Apply Study String  -->
     <string name="reply_response_percent">답변 응답률 %d%%</string>
     <string name="go_to_study_feed_from_captain">스터디 이력 보러가기 ></string>
+
+    <!--    Sign-in String  -->
+    <string name="sign_in_default_string">나랑 잘 맞는 스터디메이트,\n 스터디쉽에서 간편하게 구해보세요!</string>
+    <string name="sign_in_email">이메일로 로그인</string>
+    <string name="sign_in_email_hint">이메일</string>
+    <string name="sign_in_password_hint">비밀번호</string>
 </resources>

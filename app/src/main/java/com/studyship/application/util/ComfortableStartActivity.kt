@@ -22,3 +22,11 @@ inline fun <reified T : Activity> Context.comfortableStartActivity(
     val intent = createIntent(this, T::class.java, params).apply(intentAction)
     TransformationCompat.startActivity(transformationLayout, intent)
 }
+
+inline fun <reified T : Activity> Context.comfortableStartActivity(
+    vararg params: Pair<String, Any?>,
+    intentAction: Intent.() -> Unit = {}
+) {
+    val intent = createIntent(this, T::class.java, params).apply(intentAction)
+    startActivity(intent)
+}
