@@ -21,8 +21,8 @@ class SSEditText : AppCompatEditText {
     )
 
     init {
-        imeOptions = EditorInfo.IME_ACTION_NEXT
         background = context.getDrawable(R.drawable.custom_edit_text_bg)
+        maxLines = 1
     }
 
     override fun onFocusChanged(focused: Boolean, direction: Int, previouslyFocusedRect: Rect?) {

@@ -27,4 +27,9 @@
     <string name="sign_in_email">이메일로 로그인</string>
     <string name="sign_in_email_hint">이메일</string>
     <string name="sign_in_password_hint">비밀번호</string>
+    <string name="sign_button_text">로그인</string>
+    <string name="keep_login_text">로그인 상태 유지</string>
+    <string name="sns_login_divide">Or</string>
+    <string name="google_login">구글 계정으로 로그인</string>
+    <string name="kakao_login">카카오 계졍으로 로그인</string>
 </resources>

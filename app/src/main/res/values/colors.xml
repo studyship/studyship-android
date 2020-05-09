@@ -9,6 +9,7 @@
     <color name="main_black_logo_color">#575756</color>
     <color name="main_color_blue">#60D3E0</color>
     <color name="main_color_black">#000</color>
+    <color name="main_color_white">#FFF</color>
 
     <!--    Bottom navigation color     -->
     <color name="selected_bottom_navigation_color">#3F3F3F</color>
@@ -47,4 +48,10 @@
 
     <!--    SignIn Activity Color   -->
     <color name="app_bar_color">#333333</color>
+    <color name="login_button_color">#60D3E0</color>
+    <color name="login_button_text_color">#FFF</color>
+    <color name="check_box_true_color">#FFC545</color>
+    <color name="check_box_false_color">#B3B3B3</color>
+    <color name="check_box_default_color">#B3B3B3</color>
+    <color name="sns_login_button_bg_color">#E6E6E6</color>
 </resources>
