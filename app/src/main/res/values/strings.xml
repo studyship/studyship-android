@@ -32,4 +32,13 @@
     <string name="sns_login_divide">Or</string>
     <string name="google_login">구글 계정으로 로그인</string>
     <string name="kakao_login">카카오 계졍으로 로그인</string>
+
+    <string-array name="sign_up_array">
+        <item>⛵️ 지금 바로 회원가입</item>
+        <item>😢 비밀번호를 까먹었어요</item>
+    </string-array>
+
+    <string name="back_key_error_string">
+        뒤로가기 버튼을 다시 눌러주세요.
+    </string>
 </resources>

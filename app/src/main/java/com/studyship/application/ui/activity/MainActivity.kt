@@ -1,7 +1,6 @@
 package com.studyship.application.ui.activity
 
 import android.os.Bundle
-import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -9,7 +8,6 @@ import com.skydoves.transformationlayout.onTransformationStartContainer
 import com.studyship.application.R
 import com.studyship.application.base.activity.BaseActivity
 import com.studyship.application.ui.viewmodel.MainActivityViewModel
-import com.studyship.application.ui.widget.targetBuilder
 import com.studyship.application.util.loadNavigation
 import com.studyship.application.util.plusAssign
 import kotlinx.android.synthetic.main.activity_main.*
