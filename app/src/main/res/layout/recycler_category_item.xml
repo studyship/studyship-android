@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,8 +9,7 @@
             type="com.studyship.application.data.CategoryResponse" />
     </data>
 
-    <com.skydoves.transformationlayout.TransformationLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <com.skydoves.transformationlayout.TransformationLayout
         android:layout_width="match_parent"
         app:transformation_duration="500"
         app:transformation_fadeMode="cross"
@@ -69,6 +69,14 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
+                    <com.tsdev.feat.widget.CardCategoryList
+                        android:id="@+id/category_list"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_normal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/category_name" />
 
 <!--                    <TextView-->
 <!--                        android:id="@+id/category_location_text"-->
@@ -88,7 +96,7 @@
                         android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/category_name">
+                        app:layout_constraintTop_toBottomOf="@+id/category_list">
 
                         <TextView
                             android:layout_width="wrap_content"

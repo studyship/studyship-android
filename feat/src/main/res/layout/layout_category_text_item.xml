@@ -7,10 +7,11 @@
 
     <TextView
         android:id="@+id/tv_category"
+        style="@style/TextAppearance.AppCompat.Category.Normal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        style="@style/TextAppearance.AppCompat.Category.Normal"
+        android:gravity="center"
+        android:layout_marginStart="@dimen/category_item_start_margin"
         android:background="@drawable/item_category_border"
         tools:text="포트폴리오" />
 </LinearLayout>
