@@ -34,6 +34,7 @@
     <color name="category_location_color">#CCCCCC</color>
     <color name="category_goal_color">#60D3E0</color>
     <color name="category_info_color">#575756</color>
+    <color name="category_divider_color">#E6E6E6</color>
 
     <!--    Apply Study Activity Style  -->
     <color name="apply_study_title_color">#575756</color>
