@@ -21,8 +21,8 @@
 
     <!--    AppbarLayout color  -->
     <color name="appbar_start_color">#FFC545</color>
-    <color name="appbar_center_color">#FFD445</color>
-    <color name="appbar_end_color">#60DEE0</color>
+    <color name="appbar_center_color">#60DEE0</color>
+    <color name="appbar_end_color">#60D3E0</color>
     <color name="appbar_end_color_second">#60D3E0</color>
     <color name="appbar_background">#FFFFFF</color>
     <color name="appbar_textColor">#5185FC</color>
