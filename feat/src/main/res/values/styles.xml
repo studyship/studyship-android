@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearance.AppCompat.Category.Normal" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/category_item_color</item>
+        <item name="android:paddingStart">@dimen/category_item_padding</item>
+        <item name="android:paddingEnd">@dimen/category_item_padding</item>
+        <item name="android:paddingTop">@dimen/category_item_bottom_padding</item>
+        <item name="android:paddingBottom">@dimen/category_item_bottom_padding</item>
+    </style>
+</resources>
