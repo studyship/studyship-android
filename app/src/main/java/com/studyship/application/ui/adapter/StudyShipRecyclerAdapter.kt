@@ -9,24 +9,34 @@ import com.studyship.application.base.BaseRecyclerViewHolder
 import com.studyship.application.data.source.RecyclerItemSource
 import com.studyship.application.databinding.RecyclerCategoryItemBinding
 import com.studyship.application.ui.adapter.holder.CategoryRecyclerViewHolder
+import com.studyship.application.ui.adapter.holder.CategoryRecyclerViewHolderHeader
 import com.studyship.application.ui.adapter.holder.delegate.IRecyclerDelegate
 
 class CategoryRecyclerAdapter(private val recyclerDelegate: IRecyclerDelegate) :
-    BaseRecyclerViewAdapter<RecyclerItemSource.RecyclerItem, RecyclerCategoryItemBinding>() {
+    BaseRecyclerViewAdapter<RecyclerItemSource.RecyclerItem>() {
 
     companion object {
-        const val CATEGORY_VIEW_TYPE = 1000
+        const val CATEGORY_VIEW_TYPE = 2000
+
+        const val HEADER_VIEW_TYPE = 1000
     }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): BaseRecyclerViewHolder<*, RecyclerCategoryItemBinding> =
+    ): BaseRecyclerViewHolder<*, *> =
         when (viewType) {
             CATEGORY_VIEW_TYPE -> CategoryRecyclerViewHolder(
                 recyclerDelegate,
                 LayoutInflater.from(parent.context).inflate(
                     R.layout.recycler_category_item,
+                    parent,
+                    false
+                )
+            )
+            HEADER_VIEW_TYPE -> CategoryRecyclerViewHolderHeader(
+                LayoutInflater.from(parent.context).inflate(
+                    R.layout.recycler_category_header,
                     parent,
                     false
                 )
@@ -42,9 +52,17 @@ class CategoryRecyclerAdapter(private val recyclerDelegate: IRecyclerDelegate) :
     }
 
     override fun createBindingViewHolder(
-        holder: BaseRecyclerViewHolder<*, RecyclerCategoryItemBinding>,
+        holder: BaseRecyclerViewHolder<*, *>,
         position: Int
     ) {
+        when (holder) {
+            is CategoryRecyclerViewHolder -> {
+                holder.binding(recyclerList[position].item)
+            }
+            is CategoryRecyclerViewHolderHeader -> {
+                holder.setBindingSuggestName("홍길동")
+            }
+        }
         holder.run {
             binding(recyclerList[position].item)
         }

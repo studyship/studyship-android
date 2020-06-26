@@ -17,5 +17,6 @@ class CategoryRecyclerViewHolder(recyclerOnClick: IRecyclerDelegate, layout: Vie
                 containerView.item_poster_transformationLayout
             )
         }
+        containerView.category_list.setCategoryData(listOf("UXUI", "프론트앤드", "포트폴리오"))
     }
 }

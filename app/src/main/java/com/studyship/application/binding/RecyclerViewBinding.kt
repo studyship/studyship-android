@@ -7,14 +7,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.studyship.application.data.CategoryResponse
 import com.studyship.application.ui.adapter.CategoryRecyclerAdapter
 
-private const val CATEGORY_VIEW_TYPE = 1000
+private const val CATEGORY_VIEW_TYPE = 2000
+private const val CATEGORY_VIEW_HEADER = 1000
 
-@BindingAdapter("categoryList")
-fun RecyclerView.bindingAdapterCategory(list: List<CategoryResponse>?) {
+@BindingAdapter("categoryList", "app:setHeaderName")
+fun RecyclerView.bindingAdapterCategory(list: List<CategoryResponse>?, name: String?) {
     val categoryAdapter = (this.adapter as? CategoryRecyclerAdapter)
 
+    categoryAdapter?.addItem(CATEGORY_VIEW_HEADER, name)
     list?.takeIf { !it.isNullOrEmpty() }
-        .apply { categoryAdapter?.addItems(CATEGORY_VIEW_TYPE, list) }
+        .run { categoryAdapter?.addItems(CATEGORY_VIEW_TYPE, list) }
 
     this.run {
         adapter = categoryAdapter
