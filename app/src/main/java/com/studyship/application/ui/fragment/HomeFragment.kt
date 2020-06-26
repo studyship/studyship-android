@@ -11,6 +11,7 @@ import com.skydoves.transformationlayout.TransformationLayout
 import com.studyship.application.R
 import com.studyship.application.base.fragment.BaseFragment
 import com.studyship.application.databinding.FragmentHomeLayoutBinding
+import com.studyship.application.ui.activity.SearchActivity
 import com.studyship.application.ui.activity.SignInActivity
 import com.studyship.application.ui.activity.StudyApplyActivity
 import com.studyship.application.ui.adapter.CategoryRecyclerAdapter
@@ -58,6 +59,12 @@ class HomeFragment : BaseFragment<FragmentHomeLayoutBinding>(R.layout.fragment_h
         homeViewModel.moveSignInActivity.singleObserve(this) {
             if(it) {
                 context?.comfortableStartActivity<SignInActivity>()
+            }
+        }
+
+        homeViewModel.moveSearchActivity.singleObserve(this) {
+            if(it) {
+                context?.comfortableStartActivity<SearchActivity>()
             }
         }
     }

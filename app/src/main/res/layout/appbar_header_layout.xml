@@ -29,7 +29,7 @@
                 android:layout_marginBottom="@dimen/search_layout_bottom_spacing"
                 android:layout_toStartOf="@+id/notification_img"
                 android:background="@drawable/bg_main_app_bar"
-                android:onClick="@{() -> homeFragmentViewModel.moveSignInActivity()}"
+                android:onClick="@{() -> homeFragmentViewModel.moveSearchActivity()}"
                 android:orientation="horizontal"
                 android:padding="@dimen/spacing_small">
 
