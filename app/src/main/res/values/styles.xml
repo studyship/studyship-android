@@ -25,4 +25,12 @@
     <style name="CategoryText">
         <item name="android:textColor">#000000</item>
     </style>
+
+    <style name="HomeFragmentTitleStyle">
+        <item name="android:layout_marginStart">@dimen/name_string_margin_start</item>
+        <item name="android:layout_marginTop">@dimen/name_string_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/name_string_margin_bottom</item>
+        <item name="android:textColor">@color/home_fragment_title_color</item>
+        <item name="android:textSize">@dimen/text_large</item>
+    </style>
 </resources>

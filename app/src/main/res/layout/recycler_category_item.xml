@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="data"
             type="com.studyship.application.data.CategoryResponse" />
     </data>
 
-    <com.skydoves.transformationlayout.TransformationLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        app:transformation_duration="500"
-        app:transformation_fadeMode="cross"
+    <com.skydoves.transformationlayout.TransformationLayout
         android:id="@+id/item_poster_transformationLayout"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:transformation_duration="500"
+        app:transformation_fadeMode="cross">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -23,12 +23,17 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview1"
                 android:layout_width="0dp"
-                app:cardCornerRadius="@dimen/spacing_normal"
-                app:cardElevation="@dimen/spacing_normal"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_large"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/spacing_normal"
+                android:layout_marginBottom="@dimen/spacing_normal"
+                android:layout_marginStart="@dimen/spacing_x_large"
+                android:layout_marginEnd="@dimen/spacing_x_large"
+                android:translationY="@dimen/spacing_minus_normal"
+                app:cardCornerRadius="@dimen/spacing_normal"
+                app:cardElevation="@dimen/spacing_elevation"
+                app:cardPreventCornerOverlap="true"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -41,103 +46,63 @@
                         android:id="@+id/category_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:layout_marginStart="@dimen/spacing_x_large"
+                        android:layout_marginTop="@dimen/spacing_large"
                         android:text="피그마 왕초보 스터디"
-                        android:textColor="@color/category_text_color"
+                        android:textColor="@color/main_color_black"
                         android:textSize="@dimen/text_large"
+                        android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/category_start_time"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/spacing_normal"
-                        android:layout_marginEnd="@dimen/spacing_large"
-                        android:text="15시간"
-                        app:layout_constraintEnd_toStartOf="@+id/category_bookmark"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/category_bookmark"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_marginEnd="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_large"
+                        android:layout_marginEnd="@dimen/spacing_x_large"
                         android:src="@drawable/ic_icon_card_bookmark"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-<!--                    <TextView-->
-<!--                        android:id="@+id/category_location_text"-->
-<!--                        android:layout_width="0dp"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="@dimen/spacing_normal"-->
-<!--                        android:layout_marginTop="@dimen/spacing_normal"-->
-<!--                        android:text="#서초구"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toBottomOf="@+id/category_name" />-->
+                    <com.tsdev.feat.widget.CardCategoryList
+                        android:id="@+id/category_list"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_x_large"
+                        android:layout_marginTop="@dimen/spacing_normal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/category_name" />
 
                     <LinearLayout
                         android:id="@+id/category_goal_layout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/spacing_normal"
+                        android:layout_marginStart="@dimen/spacing_x_large"
+                        android:layout_marginTop="@dimen/spacing_normal"
                         android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/category_name">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/spacing_normal"
-                            android:text="목표"
-                            android:textColor="@color/category_goal_color"
-                            android:textStyle="bold" />
+                        app:layout_constraintTop_toBottomOf="@+id/category_list">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="스터디 쉽 앱 클론" />
-                    </LinearLayout>
+                            android:textStyle="bold"
+                            android:text="에어비앤비 앱 클론하실분 모집합니다!!" />
 
-                    <LinearLayout
-                        android:id="@+id/category_info_layout"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/spacing_normal"
-                        android:orientation="horizontal"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/category_goal_layout">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/spacing_normal"
-                            android:text="레벨"
-                            android:textColor="@color/category_info_color"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="스터디 쉽 앱 클론" />
                     </LinearLayout>
 
                     <ImageView
                         android:id="@+id/category_location_img"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:layout_marginStart="@dimen/spacing_normal"
+                        android:layout_marginStart="@dimen/spacing_x_large"
                         android:layout_marginTop="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_normal"
-                        android:src="@drawable/ic_icon_card_location"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:src="@drawable/ic_icon_card_time"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/category_info_layout" />
+                        app:layout_constraintTop_toBottomOf="@+id/category_goal_layout" />
 
                     <TextView
                         android:id="@+id/category_location"
@@ -145,51 +110,124 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/spacing_normal"
                         android:layout_marginTop="@dimen/spacing_normal"
-                        android:text="서울시 송파구"
+                        android:text="토, 일"
                         app:layout_constraintStart_toEndOf="@+id/category_location_img"
-                        app:layout_constraintTop_toBottomOf="@+id/category_info_layout" />
+                        app:layout_constraintTop_toBottomOf="@+id/category_goal_layout" />
 
                     <ImageView
                         android:id="@+id/category_time_img"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        app:layout_constraintStart_toEndOf="@+id/category_location"
-                        android:layout_marginTop="@dimen/spacing_normal"
                         android:layout_marginStart="@dimen/spacing_x_large"
-                        app:layout_constraintTop_toBottomOf="@+id/category_info_layout"
-                        android:src="@drawable/ic_icon_card_time" />
+                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:src="@drawable/ic_icon_card_location"
+                        app:layout_constraintStart_toEndOf="@+id/category_location"
+                        app:layout_constraintTop_toBottomOf="@+id/category_goal_layout" />
 
                     <TextView
                         android:id="@+id/category_time_text"
                         android:layout_width="wrap_content"
-                        app:layout_constraintStart_toEndOf="@+id/category_time_img"
-                        app:layout_constraintTop_toBottomOf="@+id/category_info_layout"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/spacing_small"
                         android:layout_marginTop="@dimen/spacing_normal"
-                        android:layout_height="wrap_content"
-                        android:text="토, 일"/>
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginEnd="@dimen/spacing_normal"
-                        android:src="@drawable/ic_icon_card_reply"
-                        app:layout_constraintEnd_toStartOf="@+id/reply_chat_count_text"
-                        android:layout_marginTop="@dimen/spacing_normal"
-                        app:layout_constraintTop_toBottomOf="@+id/category_info_layout"/>
+                        android:text="서울시 서초구 외"
+                        app:layout_constraintStart_toEndOf="@+id/category_time_img"
+                        app:layout_constraintTop_toBottomOf="@+id/category_goal_layout" />
 
                     <TextView
                         android:id="@+id/reply_chat_count_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="20"
-                        android:layout_marginEnd="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:layout_marginEnd="@dimen/spacing_x_large"
+                        android:text="15시간"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/category_info_layout"
-                        android:layout_marginTop="@dimen/spacing_normal"/>
+                        app:layout_constraintTop_toBottomOf="@+id/category_goal_layout" />
+
+                    <View
+                        android:id="@+id/divider"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/spacing_large"
+                        android:background="@drawable/bg_border_layout"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/category_time_text" />
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="31dp"
+                        android:layout_height="33dp"
+                        android:layout_marginStart="@dimen/spacing_x_large"
+                        android:layout_marginTop="@dimen/spacing_x_large"
+                        android:layout_marginBottom="@dimen/spacing_normal"
+                        android:src="@mipmap/ic_launcher"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_xx_large"
+                        android:text="선장"
+                        app:layout_constraintStart_toEndOf="@+id/imageView3"
+                        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_small"
+                        android:layout_marginTop="@dimen/spacing_xx_large"
+                        android:text="홍길동"
+                        android:textColor="@color/main_color_black"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/textView11"
+                        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="@dimen/spacing_x_large"
+                        android:layout_marginTop="@dimen/spacing_xx_large"
+                        android:src="@drawable/ic_people_outline_black_24dp"
+                        app:layout_constraintStart_toEndOf="@+id/textView12"
+                        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_xx_large"
+                        android:text="3/6 명"
+                        app:layout_constraintStart_toEndOf="@+id/imageView4"
+                        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="@dimen/spacing_xx_large"
+                        android:layout_marginEnd="@dimen/spacing_xxx_large"
+                        android:src="@drawable/chat_drawable"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_xx_large"
+                        android:text="9"
+                        app:layout_constraintStart_toEndOf="@+id/imageView5"
+                        app:layout_constraintTop_toBottomOf="@+id/divider" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.skydoves.transformationlayout.TransformationLayout>
 </layout>

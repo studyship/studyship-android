@@ -7,8 +7,8 @@ import com.studyship.application.base.cache.OnClickNotifiedListener
 import com.studyship.application.base.cache.OnClickNotifiedPositionListener
 import com.studyship.application.base.cache.OnClickNotifiedRangeListener
 
-abstract class BaseRecyclerViewAdapter<ITEM : Any?, DATA_BINDING : ViewDataBinding> :
-    RecyclerView.Adapter<BaseRecyclerViewHolder<*, DATA_BINDING>>(), IRecyclerAdapter {
+abstract class BaseRecyclerViewAdapter<ITEM : Any?> :
+    RecyclerView.Adapter<BaseRecyclerViewHolder<*, *>>(), IRecyclerAdapter {
 
     protected val recyclerList = mutableListOf<ITEM>()
 
@@ -26,12 +26,12 @@ abstract class BaseRecyclerViewAdapter<ITEM : Any?, DATA_BINDING : ViewDataBindi
             notifyItemRangeChanged(fromPosition, toPosition)
         }
 
-    override fun onBindViewHolder(holder: BaseRecyclerViewHolder<*, DATA_BINDING>, position: Int) {
+    override fun onBindViewHolder(holder: BaseRecyclerViewHolder<*, *>, position: Int) {
         createBindingViewHolder(holder, position)
     }
 
     abstract fun createBindingViewHolder(
-        holder: BaseRecyclerViewHolder<*, DATA_BINDING>,
+        holder: BaseRecyclerViewHolder<*, *>,
         position: Int
     )
 }

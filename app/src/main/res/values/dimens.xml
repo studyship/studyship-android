@@ -32,6 +32,7 @@
     <dimen name="spacing_micro">2dp</dimen>
     <dimen name="spacing_mini">4dp</dimen>
     <dimen name="spacing_small">8dp</dimen>
+    <dimen name="spacing_elevation">10dp</dimen>
     <dimen name="spacing_normal">12dp</dimen>
     <dimen name="spacing_large">16dp</dimen>
     <dimen name="spacing_x_large">24dp</dimen>
@@ -47,6 +48,13 @@
 
     <dimen name="logo_size_dimen">100dp</dimen>
 
+
+    <!--    HomeFragment Recycler Dimens    -->
+    <dimen name="name_string_margin_start">24dp</dimen>
+    <dimen name="name_string_margin_bottom">8dp</dimen>
+    <dimen name="name_string_margin_top">16dp</dimen>
+
+    <!--    Text Size   -->
     <dimen name="text_micro">10sp</dimen>
     <dimen name="text_mini">12sp</dimen>
     <dimen name="text_small">14sp</dimen>

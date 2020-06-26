@@ -41,4 +41,6 @@
     <string name="back_key_error_string">
         뒤로가기 버튼을 다시 눌러주세요.
     </string>
+
+    <string name="suggestion_comment">%1$s님을 위한 추천 스터디</string>
 </resources>

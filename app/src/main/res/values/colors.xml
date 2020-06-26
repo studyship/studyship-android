@@ -34,6 +34,7 @@
     <color name="category_location_color">#CCCCCC</color>
     <color name="category_goal_color">#60D3E0</color>
     <color name="category_info_color">#575756</color>
+    <color name="category_divider_color">#E6E6E6</color>
 
     <!--    Apply Study Activity Style  -->
     <color name="apply_study_title_color">#575756</color>
@@ -54,4 +55,7 @@
     <color name="check_box_false_color">#B3B3B3</color>
     <color name="check_box_default_color">#B3B3B3</color>
     <color name="sns_login_button_bg_color">#E6E6E6</color>
+
+    <!--    HomeFragment Title Color    -->
+    <color name="home_fragment_title_color">#333333</color>
 </resources>
