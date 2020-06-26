@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="data"
             type="com.studyship.application.data.CategoryResponse" />
@@ -25,9 +24,14 @@
                 android:id="@+id/cardview1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_normal"
+                android:layout_marginBottom="@dimen/spacing_normal"
+                android:layout_marginStart="@dimen/spacing_x_large"
+                android:layout_marginEnd="@dimen/spacing_x_large"
+                android:translationY="@dimen/spacing_minus_normal"
                 app:cardCornerRadius="@dimen/spacing_normal"
-                app:cardElevation="@dimen/spacing_normal"
+                app:cardElevation="@dimen/spacing_elevation"
+                app:cardPreventCornerOverlap="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -42,8 +46,8 @@
                         android:id="@+id/category_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:layout_marginStart="@dimen/spacing_x_large"
+                        android:layout_marginTop="@dimen/spacing_large"
                         android:text="피그마 왕초보 스터디"
                         android:textColor="@color/main_color_black"
                         android:textSize="@dimen/text_large"
@@ -55,8 +59,8 @@
                         android:id="@+id/category_bookmark"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_marginTop="@dimen/spacing_normal"
-                        android:layout_marginEnd="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_large"
+                        android:layout_marginEnd="@dimen/spacing_x_large"
                         android:src="@drawable/ic_icon_card_bookmark"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -65,7 +69,7 @@
                         android:id="@+id/category_list"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/spacing_normal"
+                        android:layout_marginStart="@dimen/spacing_x_large"
                         android:layout_marginTop="@dimen/spacing_normal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -75,7 +79,8 @@
                         android:id="@+id/category_goal_layout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/spacing_normal"
+                        android:layout_marginStart="@dimen/spacing_x_large"
+                        android:layout_marginTop="@dimen/spacing_normal"
                         android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +98,7 @@
                         android:id="@+id/category_location_img"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:layout_marginStart="@dimen/spacing_normal"
+                        android:layout_marginStart="@dimen/spacing_x_large"
                         android:layout_marginTop="@dimen/spacing_normal"
                         android:src="@drawable/ic_icon_card_time"
                         app:layout_constraintStart_toStartOf="parent"
@@ -134,7 +139,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/spacing_normal"
-                        android:layout_marginEnd="@dimen/spacing_normal"
+                        android:layout_marginEnd="@dimen/spacing_x_large"
                         android:text="15시간"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/category_goal_layout" />
@@ -151,10 +156,10 @@
 
                     <ImageView
                         android:id="@+id/imageView3"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginStart="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:layout_width="31dp"
+                        android:layout_height="33dp"
+                        android:layout_marginStart="@dimen/spacing_x_large"
+                        android:layout_marginTop="@dimen/spacing_x_large"
                         android:layout_marginBottom="@dimen/spacing_normal"
                         android:src="@mipmap/ic_launcher"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -166,7 +171,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_large"
+                        android:layout_marginTop="@dimen/spacing_xx_large"
                         android:text="선장"
                         app:layout_constraintStart_toEndOf="@+id/imageView3"
                         app:layout_constraintTop_toBottomOf="@+id/divider" />
@@ -176,7 +181,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/spacing_small"
-                        android:layout_marginTop="@dimen/spacing_large"
+                        android:layout_marginTop="@dimen/spacing_xx_large"
                         android:text="홍길동"
                         android:textColor="@color/main_color_black"
                         android:textStyle="bold"
@@ -185,10 +190,10 @@
 
                     <ImageView
                         android:id="@+id/imageView4"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_marginStart="@dimen/spacing_x_large"
-                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_xx_large"
                         android:src="@drawable/ic_people_outline_black_24dp"
                         app:layout_constraintStart_toEndOf="@+id/textView12"
                         app:layout_constraintTop_toBottomOf="@+id/divider" />
@@ -198,7 +203,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_large"
+                        android:layout_marginTop="@dimen/spacing_xx_large"
                         android:text="3/6 명"
                         app:layout_constraintStart_toEndOf="@+id/imageView4"
                         app:layout_constraintTop_toBottomOf="@+id/divider" />
@@ -207,8 +212,8 @@
                         android:id="@+id/imageView5"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:layout_marginTop="@dimen/spacing_normal"
-                        android:layout_marginEnd="@dimen/spacing_deluxe_large"
+                        android:layout_marginTop="@dimen/spacing_xx_large"
+                        android:layout_marginEnd="@dimen/spacing_xxx_large"
                         android:src="@drawable/chat_drawable"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/divider" />
@@ -216,8 +221,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/spacing_small"
-                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:layout_marginStart="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_xx_large"
                         android:text="9"
                         app:layout_constraintStart_toEndOf="@+id/imageView5"
                         app:layout_constraintTop_toBottomOf="@+id/divider" />

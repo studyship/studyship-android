@@ -9,6 +9,7 @@ import com.studyship.application.util.MutableSingleEvent
 import com.studyship.application.util.SingleEvent
 
 class HomeFragmentViewModel : ViewModel() {
+
     private val _categoryList = MutableLiveData<List<CategoryResponse>>()
     val categoryList: LiveData<List<CategoryResponse>>
         get() = _categoryList
@@ -20,6 +21,12 @@ class HomeFragmentViewModel : ViewModel() {
     private val _moveSignInActivity = MutableSingleEvent(Event(false))
     val moveSignInActivity: SingleEvent<Boolean>
         get() = _moveSignInActivity
+
+    private val _userName = MutableLiveData<String>()
+
+    val userName: LiveData<String>
+        get() = _userName
+
 
     init {
         _categoryList.value = listOf(
@@ -41,6 +48,7 @@ class HomeFragmentViewModel : ViewModel() {
                 _categoryName.value = Event("테스트")
             }
         )
+        _userName.value = "홍길동"
     }
 
     fun moveSignInActivity() {

@@ -17,4 +17,11 @@ abstract class BaseRecyclerViewHolder<ITEM : Any?, VIEW_BINDING : ViewDataBindin
             executePendingBindings()
         }
     }
+
+    fun setBindingSuggestName(item: String) {
+        recyclerBinding.run {
+            setVariable(BR.name, item)
+            executePendingBindings()
+        }
+    }
 }
