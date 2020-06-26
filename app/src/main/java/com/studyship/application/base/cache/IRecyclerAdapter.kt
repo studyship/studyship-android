@@ -14,6 +14,8 @@ interface IRecyclerController {
     fun addItems(viewType: Int, itemList: List<Any>?)
 
     fun destroyedEvent()
+
+    fun getItems(position: Int): Any?
 }
 
 typealias OnClickNotifiedListener = () -> Unit

@@ -21,4 +21,5 @@ class SearchActivityViewModel : ViewModel() {
             SuggestResponse("프론트앤드")
         )
     }
+
 }

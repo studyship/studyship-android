@@ -10,10 +10,12 @@ import com.studyship.application.ui.adapter.holder.SuggestRecyclerViewHolder
 
 class SuggestRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.RecyclerItem>() {
 
+    lateinit var onClickListener: (Int) -> Unit
+
     private val suggestList = mutableListOf<RecyclerItemSource.RecyclerItem>()
 
     override fun createBindingViewHolder(holder: BaseRecyclerViewHolder<*, *>, position: Int) {
-        when(holder) {
+        when (holder) {
             is SuggestRecyclerViewHolder -> {
                 holder.setBindingSuggestList(suggestList[position].item)
             }
@@ -31,7 +33,7 @@ class SuggestRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.Recycl
                         R.layout.recycler_suggest_item,
                         parent,
                         false
-                    )
+                    ), onClickListener
                 )
             }
             else -> throw IllegalAccessException()
@@ -52,6 +54,10 @@ class SuggestRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.Recycl
 
     override fun destroyedEvent() {
         suggestList.clear()
+    }
+
+    override fun getItems(position: Int): Any? {
+        return suggestList[position].item
     }
 
     override fun getItemViewType(position: Int): Int {

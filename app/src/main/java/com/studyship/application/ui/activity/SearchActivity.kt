@@ -15,6 +15,7 @@ import com.studyship.application.databinding.ActivitySearchBinding
 import com.studyship.application.ui.adapter.SuggestRecyclerAdapter
 import com.studyship.application.ui.viewmodel.SearchActivityViewModel
 import com.studyship.application.util.customOverridePendingTransition
+import com.tsdev.data.source.SuggestResponse
 import kotlinx.android.synthetic.main.activity_search.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -37,6 +38,10 @@ class SearchActivity : BaseActivity<SearchActivityViewModel>() {
             executePendingBindings()
         }
 
+        suggestAdapter.onClickListener = {
+            Log.e("TAG", (suggestAdapter.getItems(it) as SuggestResponse).suggestValue)
+            binding.inputUserText.setText((suggestAdapter.getItems(it) as SuggestResponse).suggestValue)
+        }
 
         binding.clearButton.setOnClickListener { binding.inputUserText.text.clear() }
 
@@ -49,24 +54,6 @@ class SearchActivity : BaseActivity<SearchActivityViewModel>() {
             }
         }
 
-
-        binding.inputUserText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s?.length != 0) {
-
-                } else {
-
-                }
-            }
-
-        })
 //        input_userText.addTextChangedListener(object : TextWatcher {
 //            override fun afterTextChanged(s: Editable?) {
 //                Log.e("TEXT", input_userText.text.toString())

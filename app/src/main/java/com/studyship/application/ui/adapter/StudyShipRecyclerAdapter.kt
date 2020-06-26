@@ -80,6 +80,10 @@ class CategoryRecyclerAdapter(private val recyclerDelegate: IRecyclerDelegate) :
         recyclerList.clear()
     }
 
+    override fun getItems(position: Int): Any? {
+        return recyclerList[position].item
+    }
+
     override fun getItemViewType(position: Int): Int =
         recyclerList[position].viewType
 }

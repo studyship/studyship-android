@@ -9,8 +9,6 @@ import com.studyship.application.base.cache.OnClickNotifiedRangeListener
 abstract class BaseRecyclerViewAdapter<ITEM : Any?> :
     RecyclerView.Adapter<BaseRecyclerViewHolder<*, *>>(), IRecyclerAdapter {
 
-
-
     override val notifiedChangeItem: OnClickNotifiedListener
         get() = {
             notifyDataSetChanged()

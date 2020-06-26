@@ -9,6 +9,9 @@
         <variable
             name="vm"
             type="com.studyship.application.ui.viewmodel.SearchActivityViewModel" />
+        <variable
+            name="adapter"
+            type="com.studyship.application.ui.adapter.SuggestRecyclerAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -60,7 +63,6 @@
         </FrameLayout>
 
         <TextView
-            app:isVisible="@{inputUserText.text.length()}"
             android:id="@+id/tv_suggest"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -69,17 +71,18 @@
             android:text="@string/suggest_study"
             android:textColor="@color/main_color_black"
             android:textStyle="bold"
+            app:isVisible="@{inputUserText.text.length()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/input_userText" />
 
         <androidx.recyclerview.widget.RecyclerView
-            app:isVisible="@{inputUserText.text.length()}"
             android:id="@+id/recycler_suggest"
             setSuggestList="@{vm.suggestList}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_large"
             android:layout_marginTop="@dimen/spacing_mini"
+            app:isVisible="@{inputUserText.text.length()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_suggest"
@@ -87,18 +90,28 @@
             tools:listitem="@layout/recycler_suggest_item" />
 
         <TextView
-            app:isVisible="@{inputUserText.text.length()}"
             android:id="@+id/tv_latest_search_history"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="최근 검색 기록"
+            android:layout_marginStart="@dimen/spacing_large"
             android:layout_marginTop="@dimen/spacing_xx_large"
+            android:text="최근 검색 기록"
             android:textColor="@color/main_color_black"
             android:textStyle="bold"
-            android:layout_marginStart="@dimen/spacing_large"
+            app:isVisible="@{inputUserText.text.length()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recycler_suggest" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_latest_history"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_large"
+            android:layout_marginTop="@dimen/spacing_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_latest_search_history" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
