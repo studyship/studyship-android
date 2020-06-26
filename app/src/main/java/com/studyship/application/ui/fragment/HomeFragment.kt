@@ -11,12 +11,14 @@ import com.skydoves.transformationlayout.TransformationLayout
 import com.studyship.application.R
 import com.studyship.application.base.fragment.BaseFragment
 import com.studyship.application.databinding.FragmentHomeLayoutBinding
+import com.studyship.application.ui.activity.SearchActivity
 import com.studyship.application.ui.activity.SignInActivity
 import com.studyship.application.ui.activity.StudyApplyActivity
 import com.studyship.application.ui.adapter.CategoryRecyclerAdapter
 import com.studyship.application.ui.adapter.holder.delegate.IRecyclerDelegate
 import com.studyship.application.ui.viewmodel.HomeFragmentViewModel
 import com.studyship.application.util.comfortableStartActivity
+import com.studyship.application.util.customOverridePendingTransition
 import com.studyship.application.util.singleObserve
 import kotlinx.android.synthetic.main.fragment_home_layout.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -56,8 +58,16 @@ class HomeFragment : BaseFragment<FragmentHomeLayoutBinding>(R.layout.fragment_h
         }
 
         homeViewModel.moveSignInActivity.singleObserve(this) {
-            if(it) {
+            if (it) {
                 context?.comfortableStartActivity<SignInActivity>()
+            }
+        }
+
+        homeViewModel.moveSearchActivity.singleObserve(this) {
+            if (it) {
+                context?.comfortableStartActivity<SearchActivity>(customOverridePending = {
+                    activity?.customOverridePendingTransition(R.anim.slide_in_right)
+                })
             }
         }
     }

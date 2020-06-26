@@ -7,6 +7,7 @@ import com.studyship.application.data.CategoryResponse
 import com.studyship.application.util.Event
 import com.studyship.application.util.MutableSingleEvent
 import com.studyship.application.util.SingleEvent
+import com.studyship.application.util.SingleMutableEvent
 
 class HomeFragmentViewModel : ViewModel() {
 
@@ -18,14 +19,21 @@ class HomeFragmentViewModel : ViewModel() {
     val categoryName: LiveData<Event<String>>
         get() = _categoryName
 
-    private val _moveSignInActivity = MutableSingleEvent(Event(false))
+    private val _moveSignInActivity = SingleMutableEvent<Boolean>()
     val moveSignInActivity: SingleEvent<Boolean>
         get() = _moveSignInActivity
+
+
+    private val _moveSearchActivity = SingleMutableEvent<Boolean>()
+
+    val moveSearchActivity: SingleEvent<Boolean>
+        get() = _moveSearchActivity
 
     private val _userName = MutableLiveData<String>()
 
     val userName: LiveData<String>
         get() = _userName
+
 
 
     init {
@@ -53,5 +61,9 @@ class HomeFragmentViewModel : ViewModel() {
 
     fun moveSignInActivity() {
         _moveSignInActivity.value = Event(true)
+    }
+
+    fun moveSearchActivity() {
+        _moveSearchActivity.value = Event(true)
     }
 }

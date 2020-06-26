@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,8 +10,7 @@
             type="com.studyship.application.ui.viewmodel.HomeFragmentViewModel" />
     </data>
 
-    <com.google.android.material.appbar.CollapsingToolbarLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <com.google.android.material.appbar.CollapsingToolbarLayout
         android:layout_width="match_parent"
         android:layout_height="90dp">
 
@@ -17,37 +18,44 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/user_profile_img"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/spacing_normal"
-                android:layout_marginBottom="@dimen/spacing_large"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/ss_logo_white_s_png"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginEnd="@dimen/spacing_large"
-                android:layout_centerVertical="true"
-                android:onClick="@{() -> homeFragmentViewModel.moveSignInActivity()}"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_minus_normal"
+                android:layout_marginEnd="@dimen/spacing_x_large"
+                android:layout_marginBottom="@dimen/search_layout_bottom_spacing"
                 android:layout_toStartOf="@+id/notification_img"
-                android:src="@drawable/ic_appbar_search_btn" />
+                android:background="@drawable/bg_main_app_bar"
+                android:onClick="@{() -> homeFragmentViewModel.moveSearchActivity()}"
+                android:orientation="horizontal"
+                android:padding="@dimen/spacing_small">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    android:layout_marginEnd="@dimen/spacing_large"
+                    android:src="@drawable/ic_appbar_search_btn" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="피그마 스터디"
+                    android:textSize="@dimen/text_large" />
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/notification_img"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="@dimen/spacing_normal"
-                android:layout_marginEnd="@dimen/spacing_large"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="@dimen/spacing_xx_large"
+                android:layout_marginBottom="@dimen/search_layout_bottom_spacing"
                 android:src="@drawable/ic_appbar_alarm_btn" />
         </RelativeLayout>
 
