@@ -21,6 +21,12 @@ class HomeFragmentViewModel : ViewModel() {
     val moveSignInActivity: SingleEvent<Boolean>
         get() = _moveSignInActivity
 
+    private val _moveSearchActivity = MutableSingleEvent(Event(false))
+
+    val moveSearchActivity: SingleEvent<Boolean>
+        get() = _moveSearchActivity
+
+
     init {
         _categoryList.value = listOf(
             CategoryResponse("개발") {
@@ -45,5 +51,9 @@ class HomeFragmentViewModel : ViewModel() {
 
     fun moveSignInActivity() {
         _moveSignInActivity.value = Event(true)
+    }
+
+    fun moveSearchActivity() {
+        _moveSearchActivity.value = Event(true)
     }
 }

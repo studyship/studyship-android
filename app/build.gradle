@@ -105,6 +105,8 @@ dependencies {
 
     //Spotlight
     implementation deps.library.spotlight
+
+    implementation project(":feat")
 }
 androidExtensions {
 

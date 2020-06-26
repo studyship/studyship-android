@@ -3,4 +3,5 @@
     <dimen name="category_item_border_radius">16dp</dimen>
     <dimen name="category_item_padding">12dp</dimen>
     <dimen name="category_item_bottom_padding">2dp</dimen>
+    <dimen name="main_search_layout_radius">8dp</dimen>
 </resources>
