@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/main_search_layout_radius" />
+            <solid android:color="@color/sns_login_button_bg_color" />
+        </shape>
+    </item>
+</selector>

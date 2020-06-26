@@ -4,11 +4,13 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.studyship.application.constant.ViewType.CATEGORY_VIEW_HEADER
+import com.studyship.application.constant.ViewType.CATEGORY_VIEW_TYPE
+import com.studyship.application.constant.ViewType.SUGGEST_VIEW_TYPE
 import com.studyship.application.data.CategoryResponse
 import com.studyship.application.ui.adapter.CategoryRecyclerAdapter
-
-private const val CATEGORY_VIEW_TYPE = 2000
-private const val CATEGORY_VIEW_HEADER = 1000
+import com.studyship.application.ui.adapter.SuggestRecyclerAdapter
+import com.tsdev.data.source.SuggestResponse
 
 @BindingAdapter("categoryList", "app:setHeaderName")
 fun RecyclerView.bindingAdapterCategory(list: List<CategoryResponse>?, name: String?) {
@@ -21,5 +23,20 @@ fun RecyclerView.bindingAdapterCategory(list: List<CategoryResponse>?, name: Str
     this.run {
         adapter = categoryAdapter
         layoutManager = GridLayoutManager(context, 1)
+    }
+}
+
+@BindingAdapter("setSuggestList")
+fun RecyclerView.bindingAdapterSuggest(items: List<SuggestResponse>?) {
+    val suggestAdapter = adapter as? SuggestRecyclerAdapter
+
+    items?.takeIf { !it.isNullOrEmpty() }
+        .run { suggestAdapter?.addItems(SUGGEST_VIEW_TYPE, items) }
+
+    this.run {
+        adapter = suggestAdapter
+        layoutManager = LinearLayoutManager(context).apply {
+            orientation = LinearLayoutManager.HORIZONTAL
+        }
     }
 }

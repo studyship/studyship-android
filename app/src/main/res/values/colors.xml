@@ -58,4 +58,8 @@
 
     <!--    HomeFragment Title Color    -->
     <color name="home_fragment_title_color">#333333</color>
+
+    <!--    Search Activity Title Color -->
+    <color name="search_activity_title_color">#F9F9F9</color>
+    <color name="suggest_item_color">#66B3B3B3</color>
 </resources>

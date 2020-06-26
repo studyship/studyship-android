@@ -1,6 +1,5 @@
 package com.studyship.application.base
 
-import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.studyship.application.base.cache.IRecyclerAdapter
 import com.studyship.application.base.cache.OnClickNotifiedListener
@@ -10,7 +9,7 @@ import com.studyship.application.base.cache.OnClickNotifiedRangeListener
 abstract class BaseRecyclerViewAdapter<ITEM : Any?> :
     RecyclerView.Adapter<BaseRecyclerViewHolder<*, *>>(), IRecyclerAdapter {
 
-    protected val recyclerList = mutableListOf<ITEM>()
+
 
     override val notifiedChangeItem: OnClickNotifiedListener
         get() = {
