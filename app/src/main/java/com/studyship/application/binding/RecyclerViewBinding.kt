@@ -7,14 +7,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.studyship.application.constant.ViewType.CATEGORY_VIEW_HEADER
 import com.studyship.application.constant.ViewType.CATEGORY_VIEW_TYPE
+import com.studyship.application.constant.ViewType.SEARCH_HISTORY_VIEW_TYPE
 import com.studyship.application.constant.ViewType.SUGGEST_VIEW_TYPE
 import com.studyship.application.data.CategoryResponse
+import com.studyship.application.data.source.RecyclerItemSource
 import com.studyship.application.ui.adapter.CategoryRecyclerAdapter
+import com.studyship.application.ui.adapter.SearchHistoryRecyclerAdapter
 import com.studyship.application.ui.adapter.SuggestRecyclerAdapter
 import com.tsdev.data.source.SuggestResponse
-import io.reactivex.Observable
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 
 @BindingAdapter("categoryList", "app:setHeaderName")
 fun RecyclerView.bindingAdapterCategory(list: List<CategoryResponse>?, name: String?) {
@@ -49,5 +49,14 @@ fun RecyclerView.bindingAdapterSuggest(items: List<SuggestResponse>?) {
 fun RecyclerView.setSaveHistoryBindingAdapter(
     searchKeyword: String?
 ) {
-    Log.e("TAG", searchKeyword ?: "N/A")
+    Log.e("ㅗㅑ", searchKeyword ?: "N/A")
+    val searchHistoryAdapter = adapter as? SearchHistoryRecyclerAdapter
+
+    searchHistoryAdapter?.addItem(SEARCH_HISTORY_VIEW_TYPE, searchKeyword)
+
+    searchHistoryAdapter?.notifiedChangeItem
+    this.run {
+        adapter = searchHistoryAdapter
+        layoutManager = GridLayoutManager(context, 1)
+    }
 }

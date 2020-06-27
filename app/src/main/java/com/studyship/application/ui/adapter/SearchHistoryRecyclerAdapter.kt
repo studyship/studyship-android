@@ -6,18 +6,16 @@ import com.studyship.application.R
 import com.studyship.application.base.BaseRecyclerViewAdapter
 import com.studyship.application.base.BaseRecyclerViewHolder
 import com.studyship.application.data.source.RecyclerItemSource
-import com.studyship.application.ui.adapter.holder.SuggestRecyclerViewHolder
+import com.studyship.application.ui.adapter.holder.SearchHistoryRecyclerViewHolder
 
-class SuggestRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.RecyclerItem>() {
+class SearchHistoryRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.RecyclerItem>() {
 
-    lateinit var onClickListener: (Int) -> Unit
-
-    private val suggestList = mutableListOf<RecyclerItemSource.RecyclerItem>()
+    private val searchHistoryItems = mutableListOf<RecyclerItemSource.RecyclerItem>()
 
     override fun createBindingViewHolder(holder: BaseRecyclerViewHolder<*, *>, position: Int) {
         when (holder) {
-            is SuggestRecyclerViewHolder -> {
-                holder.setBindingSuggestList(suggestList[position].item)
+            is SearchHistoryRecyclerViewHolder -> {
+                holder.setBindingSearchHistory(searchHistoryItems[position].item as String)
             }
         }
     }
@@ -27,48 +25,46 @@ class SuggestRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.Recycl
         viewType: Int
     ): BaseRecyclerViewHolder<*, *> =
         when (viewType) {
-            SUGGEST_VIEW_TYPE -> {
-                SuggestRecyclerViewHolder(
+            SEARCH_HISTORY_VIEW_TYPE -> {
+                SearchHistoryRecyclerViewHolder(
                     LayoutInflater.from(parent.context).inflate(
-                        R.layout.recycler_suggest_item,
+                        R.layout.recycler_search_history_item,
                         parent,
                         false
-                    ), onClickListener
+                    )
                 )
             }
             else -> throw IllegalAccessException()
         }
 
 
-    override fun getItemCount(): Int = suggestList.size
+    override fun getItemCount(): Int = searchHistoryItems.size
 
     override fun addItem(viewType: Int, item: Any?) {
-        suggestList.add(RecyclerItemSource.RecyclerItem(viewType, item))
+        searchHistoryItems.add(RecyclerItemSource.RecyclerItem(viewType, item))
     }
 
     override fun addItems(viewType: Int, itemList: List<Any>?) {
-        itemList?.forEach { item ->
-            addItem(viewType, item)
+        itemList?.forEach {
+            addItem(viewType, it)
         }
     }
 
     override fun destroyedEvent() {
-        suggestList.clear()
+        searchHistoryItems.clear()
     }
 
-    override fun getItems(position: Int): Any? {
-        return suggestList[position].item
-    }
+    override fun getItems(position: Int): Any? = searchHistoryItems[position]
 
     override fun destroyedPositionItem(position: Int) {
-        suggestList.removeAt(position)
+        searchHistoryItems.removeAt(position)
     }
 
     override fun getItemViewType(position: Int): Int {
-        return suggestList[position].viewType
+        return searchHistoryItems[position].viewType
     }
 
     companion object {
-        const val SUGGEST_VIEW_TYPE = 1000
+        const val SEARCH_HISTORY_VIEW_TYPE = 1000
     }
 }

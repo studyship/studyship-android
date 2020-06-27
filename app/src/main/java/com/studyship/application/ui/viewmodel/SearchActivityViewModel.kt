@@ -6,12 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.studyship.application.constant.DEBOUNCE_INTERVAL_TIME
 import com.tsdev.data.source.SuggestResponse
-import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
+import io.reactivex.subjects.PublishSubject
 import java.util.concurrent.TimeUnit
 
 
@@ -19,7 +18,7 @@ class SearchActivityViewModel : ViewModel() {
 
     val disposable by lazy { CompositeDisposable() }
 
-    private val searchKeywordBehaviorSubject = BehaviorSubject.create<String>()
+    private val searchKeywordBehaviorSubject = PublishSubject.create<String>()
 
     private val _suggestList = MutableLiveData<List<SuggestResponse>>()
 
@@ -62,7 +61,9 @@ class SearchActivityViewModel : ViewModel() {
         count: Int
     ) {
         Log.w("tag", "onTextChanged $s")
-        searchKeywordBehaviorSubject.onNext(s.toString())
+        if (s.isNotEmpty()) {
+            searchKeywordBehaviorSubject.onNext(s.toString())
+        }
     }
 
 //    fun onObservableKeyword(): Observable<String> = searchKeywordBehaviorSubject

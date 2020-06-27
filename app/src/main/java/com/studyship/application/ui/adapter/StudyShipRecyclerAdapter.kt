@@ -84,6 +84,10 @@ class CategoryRecyclerAdapter(private val recyclerDelegate: IRecyclerDelegate) :
         return recyclerList[position].item
     }
 
+    override fun destroyedPositionItem(position: Int) {
+        recyclerList.removeAt(position)
+    }
+
     override fun getItemViewType(position: Int): Int =
         recyclerList[position].viewType
 }

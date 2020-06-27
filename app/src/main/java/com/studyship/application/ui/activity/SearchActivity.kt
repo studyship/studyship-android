@@ -8,10 +8,12 @@ import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.studyship.application.R
 import com.studyship.application.base.activity.BaseActivity
 import com.studyship.application.databinding.ActivitySearchBinding
+import com.studyship.application.ui.adapter.SearchHistoryRecyclerAdapter
 import com.studyship.application.ui.adapter.SuggestRecyclerAdapter
 import com.studyship.application.ui.viewmodel.SearchActivityViewModel
 import com.studyship.application.util.customOverridePendingTransition
@@ -28,6 +30,10 @@ class SearchActivity : BaseActivity<SearchActivityViewModel>() {
 
     private val suggestAdapter: SuggestRecyclerAdapter by lazy {
         SuggestRecyclerAdapter()
+    }
+
+    private val searchHistoryAdapter: SearchHistoryRecyclerAdapter by lazy {
+        SearchHistoryRecyclerAdapter()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +58,11 @@ class SearchActivity : BaseActivity<SearchActivityViewModel>() {
             layoutManager = LinearLayoutManager(this.context).apply {
                 orientation = LinearLayoutManager.HORIZONTAL
             }
+        }
+
+        binding.recyclerLatestHistory.run {
+            adapter = searchHistoryAdapter
+            layoutManager = GridLayoutManager(this.context, 1)
         }
 
 //        input_userText.addTextChangedListener(object : TextWatcher {

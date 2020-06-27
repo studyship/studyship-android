@@ -31,4 +31,11 @@ abstract class BaseRecyclerViewHolder<ITEM : Any?, VIEW_BINDING : ViewDataBindin
             executePendingBindings()
         }
     }
+
+    fun setBindingSearchHistory(item: String) {
+        recyclerBinding.run {
+            setVariable(BR.searchKeyword, item)
+            executePendingBindings()
+        }
+    }
 }
