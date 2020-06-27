@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.activity.SearchActivity">
 
     <data>
@@ -9,9 +10,6 @@
         <variable
             name="vm"
             type="com.studyship.application.ui.viewmodel.SearchActivityViewModel" />
-        <variable
-            name="adapter"
-            type="com.studyship.application.ui.adapter.SuggestRecyclerAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,6 +34,7 @@
             android:layout_marginStart="@dimen/spacing_mini"
             android:layout_marginTop="@dimen/spacing_xx_large"
             android:layout_marginEnd="@dimen/spacing_large"
+            android:onTextChanged="@{vm::onTextChanged}"
             android:autofillHints="@string/app_bar_name"
             android:background="@drawable/bg_search_app_bar"
             android:focusable="true"
@@ -106,9 +105,12 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_latest_history"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginStart="@dimen/spacing_large"
             android:layout_marginTop="@dimen/spacing_normal"
+            bind:saveHistory="@{vm.searchKeyword}"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_latest_search_history" />

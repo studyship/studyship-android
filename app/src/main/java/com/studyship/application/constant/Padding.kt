@@ -11,3 +11,5 @@ object ViewType {
 
     const val SUGGEST_VIEW_TYPE = 1000
 }
+
+val DEBOUNCE_INTERVAL_TIME = 1500L

@@ -1,5 +1,6 @@
 package com.studyship.application.binding
 
+import android.util.Log
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,6 +12,9 @@ import com.studyship.application.data.CategoryResponse
 import com.studyship.application.ui.adapter.CategoryRecyclerAdapter
 import com.studyship.application.ui.adapter.SuggestRecyclerAdapter
 import com.tsdev.data.source.SuggestResponse
+import io.reactivex.Observable
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 
 @BindingAdapter("categoryList", "app:setHeaderName")
 fun RecyclerView.bindingAdapterCategory(list: List<CategoryResponse>?, name: String?) {
@@ -39,4 +43,11 @@ fun RecyclerView.bindingAdapterSuggest(items: List<SuggestResponse>?) {
             orientation = LinearLayoutManager.HORIZONTAL
         }
     }
+}
+
+@BindingAdapter("bind:saveHistory")
+fun RecyclerView.setSaveHistoryBindingAdapter(
+    searchKeyword: String?
+) {
+    Log.e("TAG", searchKeyword ?: "N/A")
 }
