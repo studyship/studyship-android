@@ -6,6 +6,8 @@ interface IRecyclerAdapter : IRecyclerController {
     val notifiedChangeItem: OnClickNotifiedListener
 
     val notifiedChangeRangeItemListener: OnClickNotifiedRangeListener
+
+    val notifiedRemoveItemPosition: OnClickNotifiedPositionListener
 }
 
 interface IRecyclerController {

@@ -23,6 +23,11 @@ abstract class BaseRecyclerViewAdapter<ITEM : Any?> :
             notifyItemRangeChanged(fromPosition, toPosition)
         }
 
+    override val notifiedRemoveItemPosition: OnClickNotifiedPositionListener
+        get() = {
+            notifyItemRemoved(it)
+        }
+
     override fun onBindViewHolder(holder: BaseRecyclerViewHolder<*, *>, position: Int) {
         createBindingViewHolder(holder, position)
     }

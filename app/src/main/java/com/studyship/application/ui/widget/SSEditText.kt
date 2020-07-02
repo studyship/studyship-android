@@ -7,7 +7,6 @@ import android.view.inputmethod.EditorInfo
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.view.marginEnd
 import com.studyship.application.R
-import com.studyship.application.constant.Padding
 
 class SSEditText : AppCompatEditText {
     constructor(context: Context) : super(context)

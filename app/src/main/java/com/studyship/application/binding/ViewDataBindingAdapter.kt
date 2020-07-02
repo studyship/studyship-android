@@ -5,9 +5,19 @@ import androidx.databinding.BindingAdapter
 
 @BindingAdapter("app:isVisible")
 fun View.setVisibleDataBindingAdapter(textLength: Int?) {
-    if (textLength == 0) {
-        visibility = View.VISIBLE
+    visibility = if (textLength == 0) {
+        View.VISIBLE
     } else {
-        visibility = View.GONE
+        View.GONE
+    }
+
+}
+
+@BindingAdapter("app:getInputText")
+fun View.setInVisibleBindingAdapter(userInputText: String?) {
+    visibility = if(userInputText.isNullOrEmpty()) {
+        View.GONE
+    } else {
+        View.VISIBLE
     }
 }

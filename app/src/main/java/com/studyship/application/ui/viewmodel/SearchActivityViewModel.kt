@@ -1,15 +1,15 @@
 package com.studyship.application.ui.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.studyship.application.constant.DEBOUNCE_INTERVAL_TIME
+import com.studyship.application.util.SingleEvent
+import com.studyship.application.util.SingleMutableEvent
 import com.tsdev.data.source.SuggestResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.PublishSubject
 import java.util.concurrent.TimeUnit
 
@@ -29,6 +29,10 @@ class SearchActivityViewModel : ViewModel() {
 
     val searchKeyword: LiveData<String>
         get() = _searchKeyword
+
+    private val _showBottomSheetDialog = SingleMutableEvent<Boolean>()
+    val showBottomSheetDialog: SingleEvent<Boolean>
+        get() = _showBottomSheetDialog
 
 
     init {
@@ -54,21 +58,18 @@ class SearchActivityViewModel : ViewModel() {
         )
     }
 
+    //databinding 때문에 지울수가 없음
     fun onTextChanged(
-        s: CharSequence,
-        start: Int,
-        before: Int,
-        count: Int
+        s: CharSequence
     ) {
-        Log.w("tag", "onTextChanged $s")
         if (s.isNotEmpty()) {
             searchKeywordBehaviorSubject.onNext(s.toString())
         }
     }
 
-//    fun onObservableKeyword(): Observable<String> = searchKeywordBehaviorSubject
-//        .subscribeOn(Schedulers.io())
-//        .observeOn(AndroidSchedulers.mainThread())
+    fun showBottomSheet() {
+        _showBottomSheetDialog.event = true
+    }
 
     override fun onCleared() {
         disposable.clear()

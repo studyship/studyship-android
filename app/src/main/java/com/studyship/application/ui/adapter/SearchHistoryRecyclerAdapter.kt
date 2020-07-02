@@ -7,10 +7,13 @@ import com.studyship.application.base.BaseRecyclerViewAdapter
 import com.studyship.application.base.BaseRecyclerViewHolder
 import com.studyship.application.data.source.RecyclerItemSource
 import com.studyship.application.ui.adapter.holder.SearchHistoryRecyclerViewHolder
+import com.studyship.application.ui.adapter.holder.SetOnClickRemoveListener
 
 class SearchHistoryRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.RecyclerItem>() {
 
     private val searchHistoryItems = mutableListOf<RecyclerItemSource.RecyclerItem>()
+
+    lateinit var setOnClickRemoveListener: SetOnClickRemoveListener
 
     override fun createBindingViewHolder(holder: BaseRecyclerViewHolder<*, *>, position: Int) {
         when (holder) {
@@ -31,7 +34,8 @@ class SearchHistoryRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.
                         R.layout.recycler_search_history_item,
                         parent,
                         false
-                    )
+                    ),
+                    setOnClickRemoveListener
                 )
             }
             else -> throw IllegalAccessException()
@@ -58,6 +62,7 @@ class SearchHistoryRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.
 
     override fun destroyedPositionItem(position: Int) {
         searchHistoryItems.removeAt(position)
+        notifiedRemoveItemPosition(position)
     }
 
     override fun getItemViewType(position: Int): Int {
