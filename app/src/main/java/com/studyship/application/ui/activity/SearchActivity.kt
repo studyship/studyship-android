@@ -34,7 +34,7 @@ class SearchActivity : BaseActivity<SearchActivityViewModel>() {
     override val viewModel: SearchActivityViewModel by viewModel()
 
     private val bottomSheet by inject<CustomBottomSheetDialog> {
-        parametersOf(viewModel)
+        parametersOf(viewModel, supportFragmentManager)
     }
 
     private val suggestAdapter: SuggestRecyclerAdapter by lazy {
