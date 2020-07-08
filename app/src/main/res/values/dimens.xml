@@ -68,4 +68,5 @@
 
     <!--    Search Linear Layout Margin   -->
     <dimen name="search_layout_bottom_spacing">38dp</dimen>
+    <dimen name="search_title_top_spacing">38dp</dimen>
 </resources>

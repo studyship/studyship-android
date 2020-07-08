@@ -6,6 +6,8 @@ interface IRecyclerAdapter : IRecyclerController {
     val notifiedChangeItem: OnClickNotifiedListener
 
     val notifiedChangeRangeItemListener: OnClickNotifiedRangeListener
+
+    val notifiedRemoveItemPosition: OnClickNotifiedPositionListener
 }
 
 interface IRecyclerController {
@@ -14,6 +16,10 @@ interface IRecyclerController {
     fun addItems(viewType: Int, itemList: List<Any>?)
 
     fun destroyedEvent()
+
+    fun getItems(position: Int): Any?
+
+    fun destroyedPositionItem(position: Int)
 }
 
 typealias OnClickNotifiedListener = () -> Unit

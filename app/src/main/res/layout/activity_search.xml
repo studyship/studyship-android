@@ -1,13 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".ui.activity.SearchActivity">
 
-    <TextView
+    <data>
+
+        <variable
+            name="vm"
+            type="com.studyship.application.ui.viewmodel.SearchActivityViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hihihihihihi" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/back_button"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/search_title_top_spacing"
+                android:src="@drawable/ic_arrow_back_yellow_24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <EditText
+                android:id="@+id/input_userText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_mini"
+                android:layout_marginTop="@dimen/spacing_xx_large"
+                android:layout_marginEnd="@dimen/spacing_large"
+                android:afterTextChanged="@{vm::onTextChanged}"
+                android:autofillHints="@string/app_bar_name"
+                android:background="@drawable/bg_search_app_bar"
+                android:focusable="true"
+                android:hint="피그마 스터디"
+                android:inputType="text"
+                android:padding="@dimen/spacing_small"
+                android:textSize="@dimen/text_large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/back_button"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <FrameLayout
+                android:id="@+id/clear_button"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintBottom_toBottomOf="@+id/input_userText"
+                app:layout_constraintEnd_toEndOf="@+id/input_userText"
+                app:layout_constraintTop_toTopOf="@+id/input_userText">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_cancel_black_24dp" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_suggest"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_xx_large"
+                android:text="@string/suggest_study"
+                android:textColor="@color/main_color_black"
+                android:textStyle="bold"
+                app:isVisible="@{inputUserText.text.length()}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_userText" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_suggest"
+                setSuggestList="@{vm.suggestList}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_mini"
+                app:isVisible="@{inputUserText.text.length()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_suggest"
+                tools:itemCount="3"
+                tools:listitem="@layout/recycler_suggest_item" />
+
+            <TextView
+                android:id="@+id/tv_latest_search_history"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_xx_large"
+                android:text="최근 검색 기록"
+                android:textColor="@color/main_color_black"
+                android:textStyle="bold"
+                app:isVisible="@{inputUserText.text.length()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recycler_suggest" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_latest_history"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/spacing_large"
+                app:isVisible="@{inputUserText.text.length()}"
+                android:layout_marginTop="@dimen/spacing_normal"
+                android:layout_marginBottom="@dimen/spacing_normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_latest_search_history"
+                bind:saveHistory="@{vm.searchKeyword}" />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_xx_large"
+                android:onClick="@{() -> vm.showBottomSheet()}"
+                android:text="@string/search_category_filter_string"
+                app:getInputText="@{inputUserText.text.toString()}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_userText" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

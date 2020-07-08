@@ -110,6 +110,7 @@ dependencies {
 
     //multi-module
     implementation project(":feat")
+    implementation project(":data")
 }
 androidExtensions {
 

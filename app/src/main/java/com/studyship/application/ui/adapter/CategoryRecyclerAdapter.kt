@@ -15,6 +15,8 @@ import com.studyship.application.ui.adapter.holder.delegate.IRecyclerDelegate
 class CategoryRecyclerAdapter(private val recyclerDelegate: IRecyclerDelegate) :
     BaseRecyclerViewAdapter<RecyclerItemSource.RecyclerItem>() {
 
+    private val recyclerList = mutableListOf<RecyclerItemSource.RecyclerItem>()
+
     companion object {
         const val CATEGORY_VIEW_TYPE = 2000
 
@@ -76,6 +78,14 @@ class CategoryRecyclerAdapter(private val recyclerDelegate: IRecyclerDelegate) :
 
     override fun destroyedEvent() {
         recyclerList.clear()
+    }
+
+    override fun getItems(position: Int): Any? {
+        return recyclerList[position].item
+    }
+
+    override fun destroyedPositionItem(position: Int) {
+        recyclerList.removeAt(position)
     }
 
     override fun getItemViewType(position: Int): Int =

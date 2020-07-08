@@ -4,6 +4,7 @@ import com.studyship.application.data.local.SharedPreferenceData
 import com.studyship.application.data.local.SharedPreferenceDataImpl
 import com.studyship.application.ui.viewmodel.HomeFragmentViewModel
 import com.studyship.application.ui.viewmodel.MainActivityViewModel
+import com.studyship.application.ui.viewmodel.SearchActivityViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -14,4 +15,6 @@ val viewModelModule = module {
     viewModel { HomeFragmentViewModel() }
 
     viewModel { MainActivityViewModel(get()) }
+
+    viewModel { SearchActivityViewModel() }
 }
