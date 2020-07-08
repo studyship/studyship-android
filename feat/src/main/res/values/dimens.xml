@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--    Radius  -->
+    <dimen name="main_search_layout_radius">8dp</dimen>
     <dimen name="category_item_border_radius">16dp</dimen>
+
+    <!--    Category Padding    -->
     <dimen name="category_item_padding">12dp</dimen>
     <dimen name="category_item_bottom_padding">2dp</dimen>
-
-    <dimen name="main_search_layout_radius">8dp</dimen>
-
     <dimen name="category_item_start_margin">6dp</dimen>
 
+
+    <!--    Text Size   -->
+    <dimen name="text_micro">10sp</dimen>
+    <dimen name="text_mini">12sp</dimen>
+    <dimen name="text_small">14sp</dimen>
+    <dimen name="text_normal">16sp</dimen>
+    <dimen name="text_large">18sp</dimen>
+    <dimen name="text_x_large">24sp</dimen>
+    <dimen name="text_xx_large">32sp</dimen>
 </resources>

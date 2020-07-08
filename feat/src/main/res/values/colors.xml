@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="category_item_color">#60D3E0</color>
+
+    <color name="selected_text_color">#333333</color>
+    <color name="default_text_color">#B3B3B3</color>
 </resources>

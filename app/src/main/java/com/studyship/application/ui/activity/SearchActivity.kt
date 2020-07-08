@@ -20,7 +20,7 @@ import com.studyship.application.ui.viewmodel.SearchActivityViewModel
 import com.studyship.application.ui.widget.CustomBottomSheetDialog
 import com.studyship.application.util.customOverridePendingTransition
 import com.tsdev.data.source.SuggestResponse
-import kotlinx.android.synthetic.main.activity_search.*
+import kotlinx.android.synthetic.main.layout_bottom_sheet.view.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -29,7 +29,6 @@ import org.koin.core.parameter.parametersOf
 class SearchActivity : BaseActivity<SearchActivityViewModel>() {
 
     private val binding by setDataBinding<ActivitySearchBinding>(R.layout.activity_search)
-
 
     override val viewModel: SearchActivityViewModel by viewModel()
 
@@ -63,7 +62,13 @@ class SearchActivity : BaseActivity<SearchActivityViewModel>() {
 
         viewModel.showBottomSheetDialog.observe(this) {
             if (it.getContentValue()) {
-                bottomSheet.showDialog()
+                bottomSheet.showDialogWithData(
+                    listOf(
+                        "카테고리",
+                        "지역",
+                        "검색 필터"
+                    )
+                )
             }
         }
 

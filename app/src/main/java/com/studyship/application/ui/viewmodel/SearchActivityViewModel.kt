@@ -34,6 +34,13 @@ class SearchActivityViewModel : ViewModel() {
     val showBottomSheetDialog: SingleEvent<Boolean>
         get() = _showBottomSheetDialog
 
+    private val _categoryList = MutableLiveData<List<String>>()
+
+    val categoryList: LiveData<List<String>>
+    get() = _categoryList
+
+
+
 
     init {
         _suggestList.value = listOf(
@@ -56,6 +63,8 @@ class SearchActivityViewModel : ViewModel() {
                     _searchKeyword.value = it
                 }
         )
+
+        _categoryList.value = listOf("카테고리", "지역", "검색필터")
     }
 
     //databinding 때문에 지울수가 없음

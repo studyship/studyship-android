@@ -6,14 +6,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
+import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.studyship.application.R
+import com.studyship.application.databinding.LayoutBottomSheetBinding
+import com.studyship.application.databinding.LayoutBottomSheetBindingImpl
 import com.studyship.application.ui.viewmodel.SearchActivityViewModel
 
 class CustomBottomSheetDialog(
-    viewModel: SearchActivityViewModel,
+    private val viewModel: SearchActivityViewModel,
     private val supportFragmentManager: FragmentManager
 ) : BottomSheetDialogFragment() {
 
@@ -22,16 +26,24 @@ class CustomBottomSheetDialog(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.layout_bottom_sheet, container, false)
+        return DataBindingUtil.inflate<LayoutBottomSheetBinding>(
+            inflater,
+            R.layout.layout_bottom_sheet,
+            container,
+            false
+        ).also {
+            it.vm = viewModel
+            it.executePendingBindings()
+        }.root
     }
+
 
     override fun getTheme(): Int = R.style.BottomSheetDialogTheme
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
         BottomSheetDialog(requireContext(), theme)
 
-    fun showDialog() {
+    fun showDialogWithData(names: List<String>) {
         show(supportFragmentManager, this.tag)
-        Log.i("TAG", "Click!!")
     }
 }

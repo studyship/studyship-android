@@ -34,6 +34,7 @@
         <item name="android:textSize">@dimen/text_large</item>
     </style>
 
+    <!--    바텀 시트 다이얼로그 둥글게     -->
     <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/bg_bottom_sheet_dialog</item>
     </style>
