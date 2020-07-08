@@ -1,13 +1,6 @@
 package com.studyship.application.ui.activity
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
-import android.view.KeyEvent
-import android.view.inputmethod.EditorInfo
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,7 +13,6 @@ import com.studyship.application.ui.viewmodel.SearchActivityViewModel
 import com.studyship.application.ui.widget.CustomBottomSheetDialog
 import com.studyship.application.util.customOverridePendingTransition
 import com.tsdev.data.source.SuggestResponse
-import kotlinx.android.synthetic.main.layout_bottom_sheet.view.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
