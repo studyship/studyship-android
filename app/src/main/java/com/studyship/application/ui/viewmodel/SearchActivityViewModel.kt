@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit
 
 class SearchActivityViewModel : ViewModel() {
 
-    val disposable by lazy { CompositeDisposable() }
+    private val disposable by lazy { CompositeDisposable() }
 
     private val searchKeywordBehaviorSubject = PublishSubject.create<String>()
 
@@ -37,9 +37,12 @@ class SearchActivityViewModel : ViewModel() {
     private val _categoryList = MutableLiveData<List<String>>()
 
     val categoryList: LiveData<List<String>>
-    get() = _categoryList
+        get() = _categoryList
 
+    private val _categoryString = MutableLiveData<String>()
 
+    val categoryString: LiveData<String>
+        get() = _categoryString
 
 
     init {
@@ -65,6 +68,10 @@ class SearchActivityViewModel : ViewModel() {
         )
 
         _categoryList.value = listOf("카테고리", "지역", "검색필터")
+    }
+
+    fun setCategoryString(category: String) {
+        _categoryString.value = category
     }
 
     //databinding 때문에 지울수가 없음

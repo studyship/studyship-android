@@ -10,7 +10,7 @@ import android.widget.LinearLayout
 import com.tsdev.feat.R
 import kotlinx.android.synthetic.main.layout_category_button.view.*
 
-typealias OnCategoryClickListener = (View, String) -> Unit
+typealias OnCategoryClickListener = (Int, String) -> Unit
 
 class HorizontalCategoryListView @JvmOverloads constructor(
     context: Context,
@@ -21,7 +21,7 @@ class HorizontalCategoryListView @JvmOverloads constructor(
     lateinit var setCategoryOnClickListener: OnCategoryClickListener
     lateinit var selectedView: View
 
-    private val cacheCategoryButtons = mutableListOf<View>()
+    internal val cacheCategoryButtons = mutableListOf<View>()
 
     private val defaultParentView: LinearLayout = LinearLayout(context, attrs).apply {
         orientation = LinearLayout.HORIZONTAL
@@ -29,16 +29,16 @@ class HorizontalCategoryListView @JvmOverloads constructor(
     }
 
     fun setCategory(names: List<String>) {
-        val customButtonView = names.map { name ->
+        val customButtonView = names.mapIndexed { index, name ->
             val categoryButton =
                 LayoutInflater.from(context).inflate(R.layout.layout_category_button, this, false)
             categoryButton.setOnClickListener {
                 if (::selectedView.isInitialized) {
                     selectedView.isSelected = false
                 }
-                selectedView = it
                 it.isSelected = true
-                setCategoryOnClickListener(it, name)
+                selectedView = it
+//                setCategoryOnClickListener(index, name)
             }
             categoryButton.run {
                 tv_category_name.text = name

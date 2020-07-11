@@ -15,11 +15,13 @@ import com.studyship.application.R
 import com.studyship.application.databinding.LayoutBottomSheetBinding
 import com.studyship.application.databinding.LayoutBottomSheetBindingImpl
 import com.studyship.application.ui.viewmodel.SearchActivityViewModel
+import kotlinx.android.synthetic.main.layout_bottom_sheet.*
 
 class CustomBottomSheetDialog(
     private val viewModel: SearchActivityViewModel,
     private val supportFragmentManager: FragmentManager
 ) : BottomSheetDialogFragment() {
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
