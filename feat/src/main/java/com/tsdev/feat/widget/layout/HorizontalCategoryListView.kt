@@ -26,7 +26,7 @@ class HorizontalCategoryListView @JvmOverloads constructor(
 
     private val cacheCategoryButtons = mutableListOf<View>()
 
-    private val defaultParentView: LinearLayout = LinearLayout(context, attrs).apply {
+    private val defaultParentView: LinearLayout = LinearLayout(context).apply {
         orientation = LinearLayout.HORIZONTAL
         gravity = Gravity.START
     }
@@ -41,7 +41,7 @@ class HorizontalCategoryListView @JvmOverloads constructor(
                 }
                 selectedView = it
                 it.isSelected = true
-//                setCategoryOnClickListener(index)
+                setCategoryOnClickListener(index)
             }
             categoryButton.run {
                 tv_category_name.text = name
