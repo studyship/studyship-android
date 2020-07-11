@@ -37,9 +37,12 @@ class SearchActivityViewModel : ViewModel() {
     private val _categoryList = MutableLiveData<List<String>>()
 
     val categoryList: LiveData<List<String>>
-    get() = _categoryList
+        get() = _categoryList
 
+    private val _selectedCategory = MutableLiveData<String>()
 
+    val selectedCategory: LiveData<String>
+        get() = _selectedCategory
 
 
     init {
@@ -83,5 +86,13 @@ class SearchActivityViewModel : ViewModel() {
     override fun onCleared() {
         disposable.clear()
         super.onCleared()
+    }
+
+//    fun setSelectedCategory(position: Int) {
+//
+//    }
+
+    val customCategory: (Int) -> Unit = {
+        _selectedCategory.value = _categoryList.value?.get(it)
     }
 }

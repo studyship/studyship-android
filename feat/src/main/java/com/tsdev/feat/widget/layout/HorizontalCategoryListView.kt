@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.tsdev.feat.R
 import kotlinx.android.synthetic.main.layout_category_button.view.*
 
-typealias OnCategoryClickListener = (View, String) -> Unit
+typealias OnCategoryClickListener = (Int) -> Unit
 
 class HorizontalCategoryListView @JvmOverloads constructor(
     context: Context,
@@ -19,6 +21,7 @@ class HorizontalCategoryListView @JvmOverloads constructor(
 ) : HorizontalScrollView(context, attrs, defAttrs) {
 
     lateinit var setCategoryOnClickListener: OnCategoryClickListener
+
     lateinit var selectedView: View
 
     private val cacheCategoryButtons = mutableListOf<View>()
@@ -29,7 +32,7 @@ class HorizontalCategoryListView @JvmOverloads constructor(
     }
 
     fun setCategory(names: List<String>) {
-        val customButtonView = names.map { name ->
+        val customButtonView = names.mapIndexed { index, name ->
             val categoryButton =
                 LayoutInflater.from(context).inflate(R.layout.layout_category_button, this, false)
             categoryButton.setOnClickListener {
@@ -38,7 +41,7 @@ class HorizontalCategoryListView @JvmOverloads constructor(
                 }
                 selectedView = it
                 it.isSelected = true
-                setCategoryOnClickListener(it, name)
+//                setCategoryOnClickListener(index)
             }
             categoryButton.run {
                 tv_category_name.text = name

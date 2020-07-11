@@ -7,6 +7,7 @@
         <variable
             name="vm"
             type="com.studyship.application.ui.viewmodel.SearchActivityViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,8 +18,9 @@
         app:layout_behavior="@string/bottom_sheet_behavior">
 
         <com.tsdev.feat.widget.layout.HorizontalCategoryListView
-            setListData="@{vm.categoryList}"
             android:id="@+id/category_layout"
+            callbackClickListener="@{vm.customCategory}"
+            setListData="@{vm.categoryList}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"

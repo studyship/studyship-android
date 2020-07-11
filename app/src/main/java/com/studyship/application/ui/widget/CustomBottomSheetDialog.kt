@@ -2,18 +2,15 @@ package com.studyship.application.ui.widget
 
 import android.app.Dialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
-import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.studyship.application.R
 import com.studyship.application.databinding.LayoutBottomSheetBinding
-import com.studyship.application.databinding.LayoutBottomSheetBindingImpl
 import com.studyship.application.ui.viewmodel.SearchActivityViewModel
 
 class CustomBottomSheetDialog(
