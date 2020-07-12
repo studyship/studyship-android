@@ -43,7 +43,7 @@
             android:id="@+id/expanded_menu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:visibility="@{data.isExpanded ? View.VISIBLE : View.INVISIBLE}"
+            android:visibility="@{data.isExpanded ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
