@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.studyship.application.R
 import com.studyship.application.base.activity.BaseActivity
 import com.studyship.application.databinding.ActivitySearchBinding
+import com.studyship.application.ui.adapter.BottomSheetRecyclerAdapter
 import com.studyship.application.ui.adapter.SearchHistoryRecyclerAdapter
 import com.studyship.application.ui.adapter.SuggestRecyclerAdapter
 import com.studyship.application.ui.viewmodel.SearchActivityViewModel
@@ -25,7 +26,11 @@ class SearchActivity : BaseActivity<SearchActivityViewModel>() {
     override val viewModel: SearchActivityViewModel by viewModel()
 
     private val bottomSheet by inject<CustomBottomSheetDialog> {
-        parametersOf(viewModel, supportFragmentManager)
+        parametersOf(viewModel, supportFragmentManager, bottomSheetRecyclerAdapter)
+    }
+
+    private val bottomSheetRecyclerAdapter by lazy {
+        BottomSheetRecyclerAdapter()
     }
 
     private val suggestAdapter: SuggestRecyclerAdapter by lazy {
@@ -64,6 +69,14 @@ class SearchActivity : BaseActivity<SearchActivityViewModel>() {
             }
         }
 
+        viewModel.selectedCategory.observe(this) {
+            when (it) {
+//                CATEGO
+//                LOCATION -> bottomSheet.setReplaceFragmentLayout()
+//                FILTER -> bottomSheet.setReplaceFragmentLayout()
+            }
+        }
+
         binding.clearButton.setOnClickListener { binding.inputUserText.text.clear() }
 
         binding.backButton.setOnClickListener { finish() }
@@ -84,5 +97,11 @@ class SearchActivity : BaseActivity<SearchActivityViewModel>() {
     override fun finish() {
         super.finish()
         this.customOverridePendingTransition(enterAnim = R.anim.slide_in_left)
+    }
+
+    companion object {
+        private const val CATEGORY = "카테고리"
+        private const val LOCATION = "지역"
+        private const val FILTER = "검색필터"
     }
 }
