@@ -30,6 +30,7 @@
             <TextView
                 android:id="@+id/tv_location"
                 android:layout_width="0dp"
+                android:textColor="@drawable/bg_category_selector"
                 android:layout_height="wrap_content"
                 android:text="@{data.location}"
                 android:textSize="@dimen/text_large"

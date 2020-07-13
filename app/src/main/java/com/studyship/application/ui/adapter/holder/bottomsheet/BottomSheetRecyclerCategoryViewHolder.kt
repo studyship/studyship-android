@@ -11,12 +11,12 @@ import kotlinx.android.synthetic.main.recycler_location_item.view.*
 
 class BottomSheetRecyclerCategoryViewHolder(
     itemView: View,
-    setOnClickExpandedListener: (Int) -> Unit
+    setOnClickExpandedListener: (Int, View) -> Unit
 ) : BaseRecyclerViewHolder<LocationResource, RecyclerLocationItemBinding>(itemView) {
 
     init {
-        containerView.imageView7.setOnClickListener {
-            setOnClickExpandedListener(adapterPosition)
+        containerView.category_item.setOnClickListener {
+            setOnClickExpandedListener(adapterPosition, containerView.tv_location)
         }
     }
 

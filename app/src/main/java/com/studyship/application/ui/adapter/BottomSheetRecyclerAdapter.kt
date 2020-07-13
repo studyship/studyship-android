@@ -1,6 +1,8 @@
 package com.studyship.application.ui.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.studyship.application.R
 import com.studyship.application.base.BaseRecyclerViewAdapter
@@ -14,9 +16,13 @@ class BottomSheetRecyclerAdapter : BaseRecyclerViewAdapter<BottomSheetSource.Bot
 
     private val bottomSheetItem = mutableListOf<BottomSheetSource.BottomSheetItem>()
 
-    private val expandedClickListener: (Int) -> Unit = { position ->
+    private val expandedClickListener: (Int, View) -> Unit = { position, view ->
         (bottomSheetItem[position].data as? LocationResource)?.isExpanded =
             (bottomSheetItem[position].data as? LocationResource)?.isExpanded != true
+
+        Log.e("CLICKED" ,(bottomSheetItem[position].data as? LocationResource)?.isExpanded.toString())
+        view.isSelected = (bottomSheetItem[position].data as? LocationResource)?.isExpanded != true
+
         notifyItemChanged(position)
     }
 
