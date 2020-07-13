@@ -6,9 +6,15 @@
     android:orientation="vertical">
 
     <TextView
+        android:layout_marginStart="@dimen/category_item_padding"
+        android:layout_marginTop="@dimen/category_item_padding"
         android:id="@+id/tv_bottom_sheet"
-        android:background="@drawable/bg_bottom_sheet_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/bg_bottom_sheet_text"
+        android:paddingStart="@dimen/category_item_padding"
+        android:paddingTop="@dimen/category_item_bottom_padding"
+        android:paddingEnd="@dimen/category_item_padding"
+        android:paddingBottom="@dimen/category_item_bottom_padding"
         tools:text="test" />
 </LinearLayout>

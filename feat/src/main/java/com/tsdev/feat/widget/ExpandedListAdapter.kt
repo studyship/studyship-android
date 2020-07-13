@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayout
 import com.google.android.flexbox.JustifyContent
 import com.tsdev.data.source.Category
@@ -18,6 +19,7 @@ class ExpandedListAdapter @JvmOverloads constructor(
     init {
         flexDirection = FlexDirection.ROW
         justifyContent = JustifyContent.FLEX_START
+        flexWrap = FlexWrap.WRAP
     }
 
     fun setFlexItemLayout(items: List<Category>) {

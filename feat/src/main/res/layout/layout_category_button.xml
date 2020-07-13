@@ -6,6 +6,10 @@
     android:orientation="vertical">
 
     <TextView
+        android:paddingEnd="@dimen/category_item_padding"
+        android:paddingStart="@dimen/category_item_padding"
+        android:paddingTop="@dimen/category_item_bottom_padding"
+        android:paddingBottom="@dimen/category_item_bottom_padding"
         android:id="@+id/tv_category_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
