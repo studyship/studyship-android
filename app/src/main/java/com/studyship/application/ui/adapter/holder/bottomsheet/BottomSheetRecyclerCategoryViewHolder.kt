@@ -16,7 +16,7 @@ class BottomSheetRecyclerCategoryViewHolder(
 
     init {
         containerView.category_item.setOnClickListener {
-            setOnClickExpandedListener(adapterPosition, containerView.tv_location)
+            setOnClickExpandedListener(adapterPosition, it)
         }
     }
 

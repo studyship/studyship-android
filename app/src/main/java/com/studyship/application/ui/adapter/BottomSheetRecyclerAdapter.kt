@@ -21,9 +21,9 @@ class BottomSheetRecyclerAdapter : BaseRecyclerViewAdapter<BottomSheetSource.Bot
             (bottomSheetItem[position].data as? LocationResource)?.isExpanded != true
 
         Log.e("CLICKED" ,(bottomSheetItem[position].data as? LocationResource)?.isExpanded.toString())
-        view.isSelected = (bottomSheetItem[position].data as? LocationResource)?.isExpanded != true
+        view.isSelected = (bottomSheetItem[position].data as? LocationResource)?.isExpanded == true
 
-        notifyItemChanged(position)
+        notifyDataSetChanged()
     }
 
     override fun createBindingViewHolder(holder: BaseRecyclerViewHolder<*, *>, position: Int) {

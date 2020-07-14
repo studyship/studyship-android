@@ -86,7 +86,11 @@ class SearchActivityViewModel : ViewModel() {
                     Category("강북"),
                     Category("서초"),
                     Category("교대"),
-                    Category("보라매")
+                    Category("해운대구"),
+                    Category("보라매"),
+                    Category("강서"),
+                    Category("가나다아아라난"),
+                    Category("강서")
                 )
             ), LocationResource(
                 location = "부산",
