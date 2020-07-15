@@ -16,13 +16,21 @@ class BottomSheetRecyclerAdapter : BaseRecyclerViewAdapter<BottomSheetSource.Bot
 
     private val bottomSheetItem = mutableListOf<BottomSheetSource.BottomSheetItem>()
 
+    lateinit var hideKeyBoard: () -> Unit
+
     private val expandedClickListener: (Int, View) -> Unit = { position, view ->
         (bottomSheetItem[position].data as? LocationResource)?.isExpanded =
             (bottomSheetItem[position].data as? LocationResource)?.isExpanded != true
 
-        Log.e("CLICKED" ,(bottomSheetItem[position].data as? LocationResource)?.isExpanded.toString())
+        Log.e(
+            "CLICKED",
+            (bottomSheetItem[position].data as? LocationResource)?.isExpanded.toString()
+        )
         view.isSelected = (bottomSheetItem[position].data as? LocationResource)?.isExpanded == true
 
+        if (::hideKeyBoard.isInitialized) {
+            hideKeyBoard()
+        }
         notifyDataSetChanged()
     }
 

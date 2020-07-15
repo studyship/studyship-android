@@ -1,6 +1,8 @@
 package com.studyship.application.ui.activity
 
+import android.app.Activity
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -91,6 +93,13 @@ class SearchActivity : BaseActivity<SearchActivityViewModel>() {
         binding.recyclerLatestHistory.run {
             adapter = searchHistoryAdapter
             layoutManager = GridLayoutManager(this.context, 1)
+        }
+
+        bottomSheetRecyclerAdapter.hideKeyBoard = {
+            (getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(
+                binding.inputUserText.windowToken,
+                0
+            )
         }
     }
 
