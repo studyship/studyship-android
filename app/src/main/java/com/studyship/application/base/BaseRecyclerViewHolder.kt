@@ -5,6 +5,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.studyship.application.BR
 import com.studyship.application.base.cache.AndroidRecyclerViewHolder
+import com.tsdev.data.source.Category
 
 abstract class BaseRecyclerViewHolder<ITEM : Any?, VIEW_BINDING : ViewDataBinding>(layout: View) :
     AndroidRecyclerViewHolder(layout) {

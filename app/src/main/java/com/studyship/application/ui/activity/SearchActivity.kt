@@ -1,12 +1,15 @@
 package com.studyship.application.ui.activity
 
+import android.app.Activity
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.studyship.application.R
 import com.studyship.application.base.activity.BaseActivity
 import com.studyship.application.databinding.ActivitySearchBinding
+import com.studyship.application.ui.adapter.BottomSheetRecyclerAdapter
 import com.studyship.application.ui.adapter.SearchHistoryRecyclerAdapter
 import com.studyship.application.ui.adapter.SuggestRecyclerAdapter
 import com.studyship.application.ui.viewmodel.SearchActivityViewModel
@@ -25,7 +28,11 @@ class SearchActivity : BaseActivity<SearchActivityViewModel>() {
     override val viewModel: SearchActivityViewModel by viewModel()
 
     private val bottomSheet by inject<CustomBottomSheetDialog> {
-        parametersOf(viewModel, supportFragmentManager)
+        parametersOf(viewModel, supportFragmentManager, bottomSheetRecyclerAdapter)
+    }
+
+    private val bottomSheetRecyclerAdapter by lazy {
+        BottomSheetRecyclerAdapter()
     }
 
     private val suggestAdapter: SuggestRecyclerAdapter by lazy {
@@ -64,6 +71,14 @@ class SearchActivity : BaseActivity<SearchActivityViewModel>() {
             }
         }
 
+        viewModel.selectedCategory.observe(this) {
+            when (it) {
+//                CATEGO
+//                LOCATION -> bottomSheet.setReplaceFragmentLayout()
+//                FILTER -> bottomSheet.setReplaceFragmentLayout()
+            }
+        }
+
         binding.clearButton.setOnClickListener { binding.inputUserText.text.clear() }
 
         binding.backButton.setOnClickListener { finish() }
@@ -79,10 +94,23 @@ class SearchActivity : BaseActivity<SearchActivityViewModel>() {
             adapter = searchHistoryAdapter
             layoutManager = GridLayoutManager(this.context, 1)
         }
+
+        bottomSheetRecyclerAdapter.hideKeyBoard = {
+            (getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(
+                binding.inputUserText.windowToken,
+                0
+            )
+        }
     }
 
     override fun finish() {
         super.finish()
         this.customOverridePendingTransition(enterAnim = R.anim.slide_in_left)
+    }
+
+    companion object {
+        private const val CATEGORY = "카테고리"
+        private const val LOCATION = "지역"
+        private const val FILTER = "검색필터"
     }
 }

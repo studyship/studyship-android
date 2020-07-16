@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_clicked_category">%1$s \t x</string>
+    <string name="user_non_clicked_category">%1$s \t +</string>
+</resources>
