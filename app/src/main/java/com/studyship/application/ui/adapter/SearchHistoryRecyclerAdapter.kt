@@ -6,10 +6,13 @@ import com.studyship.application.R
 import com.studyship.application.base.BaseRecyclerViewAdapter
 import com.studyship.application.base.BaseRecyclerViewHolder
 import com.studyship.application.data.source.RecyclerItemSource
+import com.studyship.application.setting.StringSharedPreference
 import com.studyship.application.ui.adapter.holder.SearchHistoryRecyclerViewHolder
 import com.studyship.application.ui.adapter.holder.SetOnClickRemoveListener
 
-class SearchHistoryRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.RecyclerItem>() {
+class SearchHistoryRecyclerAdapter(
+    private val searchHistoryPreference: StringSharedPreference
+) : BaseRecyclerViewAdapter<RecyclerItemSource.RecyclerItem>() {
 
     private val searchHistoryItems = mutableListOf<RecyclerItemSource.RecyclerItem>()
 
@@ -67,6 +70,10 @@ class SearchHistoryRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.
 
     override fun getItemViewType(position: Int): Int {
         return searchHistoryItems[position].viewType
+    }
+
+    fun saveUserHistory(keyword: String) {
+        searchHistoryPreference.saveSearchHistory(keyword)
     }
 
     companion object {

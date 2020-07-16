@@ -6,15 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.LifecycleOwner
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.studyship.application.R
 import com.studyship.application.databinding.LayoutBottomSheetBinding
 import com.studyship.application.ui.adapter.BottomSheetRecyclerAdapter
-import com.studyship.application.ui.viewmodel.SearchActivityViewModel
 import com.tsdev.presentation.SearchKeywordViewModel
 
 class CustomBottomSheetDialog(
@@ -48,7 +45,7 @@ class CustomBottomSheetDialog(
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
         BottomSheetDialog(requireContext(), theme)
 
-    fun showDialogWithData(names: List<String>) {
+    fun showDialogWithData() {
         show(supportFragmentManager, this.tag)
     }
 

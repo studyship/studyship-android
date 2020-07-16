@@ -18,7 +18,7 @@ import com.tsdev.data.source.SuggestResponse
 import com.tsdev.domain.repository.DomainSuggestResponse
 import com.tsdev.domain.repository.model.DomainCategoryResponse
 
-@BindingAdapter("categoryList", "app:setHeaderName")
+@BindingAdapter("categoryList", "setHeaderName")
 fun RecyclerView.bindingAdapterCategory(list: List<DomainCategoryResponse>?, name: String?) {
     val categoryAdapter = (this.adapter as? CategoryRecyclerAdapter)
 
@@ -47,14 +47,22 @@ fun RecyclerView.bindingAdapterSuggest(items: List<DomainSuggestResponse>?) {
     }
 }
 
-@BindingAdapter("bind:saveHistory")
+@BindingAdapter("saveHistory", "savePreference")
 fun RecyclerView.setSaveHistoryBindingAdapter(
-    searchKeyword: String?
+    searchKeyword: String?,
+    savePreference: (String?) -> Unit
+//    loadPreference: () -> List<String>
 ) {
-    Log.e("ㅗㅑ", searchKeyword ?: "N/A")
     val searchHistoryAdapter = adapter as? SearchHistoryRecyclerAdapter
 
+//    if (loadPreference().isNotEmpty()) {
+//        loadPreference().forEach { keyword ->
+//            searchHistoryAdapter?.addItem(SEARCH_HISTORY_VIEW_TYPE, keyword)
+//        }
+//    } else {
     searchHistoryAdapter?.addItem(SEARCH_HISTORY_VIEW_TYPE, searchKeyword)
+    savePreference(searchKeyword)
+//    }
 
     searchHistoryAdapter?.notifiedChangeItem
     this.run {

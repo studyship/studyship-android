@@ -3,7 +3,7 @@ package com.studyship.application.binding
 import android.view.View
 import androidx.databinding.BindingAdapter
 
-@BindingAdapter("app:isVisible")
+@BindingAdapter("isVisible")
 fun View.setVisibleDataBindingAdapter(textLength: Int?) {
     visibility = if (textLength == 0) {
         View.VISIBLE
@@ -13,11 +13,16 @@ fun View.setVisibleDataBindingAdapter(textLength: Int?) {
 
 }
 
-@BindingAdapter("app:getInputText")
+@BindingAdapter("getInputText")
 fun View.setInVisibleBindingAdapter(userInputText: String?) {
-    visibility = if(userInputText.isNullOrEmpty()) {
+    visibility = if (userInputText.isNullOrEmpty()) {
         View.GONE
     } else {
         View.VISIBLE
     }
+}
+
+@BindingAdapter("finishAdapter")
+fun View.setFinishBindingAdapter(finish: View.OnClickListener) {
+    finish.onClick(this)
 }

@@ -25,6 +25,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="@dimen/spacing_large"
+                android:onClick="@{vm.customFinishProviderImpl.onClick}"
                 android:layout_marginTop="@dimen/search_title_top_spacing"
                 android:src="@drawable/ic_arrow_back_yellow_24dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -62,6 +63,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
+                    android:onClick="@{() -> inputUserText.getText().clear()}"
                     android:src="@drawable/ic_cancel_black_24dp" />
             </FrameLayout>
 
@@ -118,7 +120,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_latest_search_history"
-                bind:saveHistory="@{vm.searchKeyword}" />
+                bind:saveHistory="@{vm.searchKeyword}"
+                bind:savePreference="@{vm.saveSearchKeyword}" />
 
 
             <TextView
