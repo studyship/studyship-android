@@ -16,16 +16,17 @@ import com.studyship.application.ui.viewmodel.SearchActivityViewModel
 import com.studyship.application.ui.widget.CustomBottomSheetDialog
 import com.studyship.application.util.customOverridePendingTransition
 import com.tsdev.data.source.SuggestResponse
+import com.tsdev.presentation.SearchKeywordViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 
-class SearchActivity : BaseActivity<SearchActivityViewModel>() {
+class SearchActivity : BaseActivity<SearchKeywordViewModel>() {
 
     private val binding by setDataBinding<ActivitySearchBinding>(R.layout.activity_search)
 
-    override val viewModel: SearchActivityViewModel by viewModel()
+    override val viewModel: SearchKeywordViewModel by viewModel()
 
     private val bottomSheet by inject<CustomBottomSheetDialog> {
         parametersOf(viewModel, supportFragmentManager, bottomSheetRecyclerAdapter)

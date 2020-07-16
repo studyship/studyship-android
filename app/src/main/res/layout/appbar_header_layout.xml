@@ -7,7 +7,7 @@
 
         <variable
             name="homeFragmentViewModel"
-            type="com.studyship.application.ui.viewmodel.HomeFragmentViewModel" />
+            type="com.tsdev.presentation.HomeFragmentViewModel" />
     </data>
 
     <com.google.android.material.appbar.CollapsingToolbarLayout

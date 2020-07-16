@@ -111,6 +111,8 @@ dependencies {
     //multi-module
     implementation project(":feat")
     implementation project(":data")
+    implementation project(":presentation")
+    implementation project(':domain')
 }
 androidExtensions {
 

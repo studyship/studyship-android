@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.studyship.application.ui.adapter.BottomSheetRecyclerAdapter
 import com.tsdev.data.source.Category
 import com.tsdev.data.source.LocationResource
+import com.tsdev.domain.repository.model.DomainLocationResource
 import com.tsdev.feat.widget.ExpandedListAdapter
 import com.tsdev.feat.widget.layout.HorizontalCategoryListView
 
@@ -36,7 +37,7 @@ fun HorizontalCategoryListView.setBindingAdapter(
 }
 
 @BindingAdapter("expandedList", "customViewType")
-fun RecyclerView.setBindingExpandedList(items: List<LocationResource>?, viewType: Int?) {
+fun RecyclerView.setBindingExpandedList(items: List<DomainLocationResource>?, viewType: Int?) {
 
     val bottomAdapter = adapter as? BottomSheetRecyclerAdapter
 

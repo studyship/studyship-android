@@ -3,7 +3,7 @@ package com.studyship.application.ui.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.studyship.application.constant.DEBOUNCE_INTERVAL_TIME
+//import com.studyship.application.constant.DEBOUNCE_INTERVAL_TIME
 import com.studyship.application.util.SingleEvent
 import com.studyship.application.util.SingleMutableEvent
 import com.tsdev.data.source.Category
@@ -61,18 +61,18 @@ class SearchActivityViewModel : ViewModel() {
             SuggestResponse("프론트앤드")
         )
 
-        disposable.add(
-            searchKeywordBehaviorSubject
-                .debounce(DEBOUNCE_INTERVAL_TIME, TimeUnit.MILLISECONDS)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .onErrorReturn {
-                    "ERROR!"
-                }
-                .subscribe {
-                    _searchKeyword.value = it
-                }
-        )
+//        disposable.add(
+//            searchKeywordBehaviorSubject
+//                .debounce(DEBOUNCE_INTERVAL_TIME, TimeUnit.MILLISECONDS)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .onErrorReturn {
+//                    "ERROR!"
+//                }
+//                .subscribe {
+//                    _searchKeyword.value = it
+//                }
+//        )
 
         _categoryList.value = listOf("카테고리", "지역", "검색필터")
 

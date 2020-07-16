@@ -15,9 +15,10 @@ import com.studyship.application.R
 import com.studyship.application.databinding.LayoutBottomSheetBinding
 import com.studyship.application.ui.adapter.BottomSheetRecyclerAdapter
 import com.studyship.application.ui.viewmodel.SearchActivityViewModel
+import com.tsdev.presentation.SearchKeywordViewModel
 
 class CustomBottomSheetDialog(
-    private val viewModel: SearchActivityViewModel,
+    private val viewModel: SearchKeywordViewModel,
     private val supportFragmentManager: FragmentManager,
     private val bottomSheetRecyclerAdapter: BottomSheetRecyclerAdapter
 ) : BottomSheetDialogFragment() {

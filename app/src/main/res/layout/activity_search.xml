@@ -9,7 +9,7 @@
 
         <variable
             name="vm"
-            type="com.studyship.application.ui.viewmodel.SearchActivityViewModel" />
+            type="com.tsdev.presentation.SearchKeywordViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

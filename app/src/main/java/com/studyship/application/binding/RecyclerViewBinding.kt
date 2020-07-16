@@ -15,9 +15,11 @@ import com.studyship.application.ui.adapter.CategoryRecyclerAdapter
 import com.studyship.application.ui.adapter.SearchHistoryRecyclerAdapter
 import com.studyship.application.ui.adapter.SuggestRecyclerAdapter
 import com.tsdev.data.source.SuggestResponse
+import com.tsdev.domain.repository.DomainSuggestResponse
+import com.tsdev.domain.repository.model.DomainCategoryResponse
 
 @BindingAdapter("categoryList", "app:setHeaderName")
-fun RecyclerView.bindingAdapterCategory(list: List<CategoryResponse>?, name: String?) {
+fun RecyclerView.bindingAdapterCategory(list: List<DomainCategoryResponse>?, name: String?) {
     val categoryAdapter = (this.adapter as? CategoryRecyclerAdapter)
 
     categoryAdapter?.addItem(CATEGORY_VIEW_HEADER, name)
@@ -31,7 +33,7 @@ fun RecyclerView.bindingAdapterCategory(list: List<CategoryResponse>?, name: Str
 }
 
 @BindingAdapter("setSuggestList")
-fun RecyclerView.bindingAdapterSuggest(items: List<SuggestResponse>?) {
+fun RecyclerView.bindingAdapterSuggest(items: List<DomainSuggestResponse>?) {
     val suggestAdapter = adapter as? SuggestRecyclerAdapter
 
     items?.takeIf { !it.isNullOrEmpty() }

@@ -5,7 +5,7 @@ import android.widget.TextView
 import com.studyship.application.base.BaseRecyclerViewHolder
 import com.studyship.application.databinding.RecyclerLocationItemBinding
 import com.tsdev.data.source.Category
-import com.tsdev.data.source.LocationResource
+import com.tsdev.domain.repository.model.DomainLocationResource
 import kotlinx.android.synthetic.main.recycler_location_item.*
 import kotlinx.android.synthetic.main.recycler_location_item.view.*
 
@@ -14,7 +14,7 @@ class BottomSheetRecyclerCategoryViewHolder(
     setOnClickExpandedListener: (Int, View) -> Unit,
     setOnClickCategoryClickListener: (Category, Int) -> Unit,
     setDefaultSelectedListener: (TextView, Category, Int) -> Unit
-) : BaseRecyclerViewHolder<LocationResource, RecyclerLocationItemBinding>(itemView) {
+) : BaseRecyclerViewHolder<DomainLocationResource, RecyclerLocationItemBinding>(itemView) {
 
     init {
         containerView.category_item.setOnClickListener {
