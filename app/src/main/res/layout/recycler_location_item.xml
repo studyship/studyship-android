@@ -30,24 +30,39 @@
             <TextView
                 android:id="@+id/tv_location"
                 android:layout_width="0dp"
-                android:textColor="@drawable/bg_category_selector"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_normal"
                 android:text="@{data.location}"
+                android:textColor="@drawable/bg_category_selector"
                 android:textSize="@dimen/text_large"
-                app:layout_constraintEnd_toStartOf="@+id/imageView7"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="테스트" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:textSize="@dimen/text_large"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_normal"
+                android:textColor="@color/main_color_blue"
+                android:text="@{data.userClickedList.size > 0 ? String.format(@string/user_clicked_item_size, data.userClickedList.size) : @string/user_not_click_anything}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/tv_location"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="N개" />
 
             <ImageView
                 android:id="@+id/imageView7"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/spacing_large"
                 android:src="@{data.isExpanded ? @drawable/ic_expand_less_black_24dp : @drawable/ic_expand_more_black_24dp}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/tv_location"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

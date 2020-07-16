@@ -45,6 +45,10 @@
     <string name="suggestion_comment">%1$s님을 위한 추천 스터디</string>
 
     <string name="suggest_study">추천 검색어</string>
-    
+
     <string name="search_category_filter_string">카테고리</string>
+
+    <!--    BottomSheet String  -->
+    <string name="user_not_click_anything"> </string>
+    <string name="user_clicked_item_size">%1$d</string>
 </resources>

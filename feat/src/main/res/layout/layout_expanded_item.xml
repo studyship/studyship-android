@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_bottom_sheet_text"
+        android:textColor="@drawable/bg_category_text_color"
         android:paddingStart="@dimen/category_item_padding"
         android:paddingTop="@dimen/category_item_bottom_padding"
         android:paddingEnd="@dimen/category_item_padding"

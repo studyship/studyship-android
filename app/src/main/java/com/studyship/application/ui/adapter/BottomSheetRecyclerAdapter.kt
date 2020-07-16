@@ -4,11 +4,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.studyship.application.R
 import com.studyship.application.base.BaseRecyclerViewAdapter
 import com.studyship.application.base.BaseRecyclerViewHolder
+import com.studyship.application.ext.containEntity
+import com.studyship.application.ext.customClickListener
+import com.studyship.application.ext.defaultClick
 import com.studyship.application.ui.adapter.holder.bottomsheet.BottomSheetRecyclerCategoryViewHolder
 import com.studyship.application.ui.adapter.source.BottomSheetSource
+import com.tsdev.data.source.Category
 import com.tsdev.data.source.LocationResource
 import java.lang.IllegalArgumentException
 
@@ -34,6 +39,24 @@ class BottomSheetRecyclerAdapter : BaseRecyclerViewAdapter<BottomSheetSource.Bot
         notifyDataSetChanged()
     }
 
+    private val categoryClickListener: (Category, Int) -> Unit = { item, position ->
+        val currentUserClickCategory =
+            (bottomSheetItem[position].data as? LocationResource)?.userClickedList
+
+        currentUserClickCategory?.containEntity(item)
+
+        notifyDataSetChanged()
+    }
+
+    private val defaultSelectedListener: (TextView, Category, Int) -> Unit =
+        { textView, category, position ->
+            val currentUserClickCategory =
+                (bottomSheetItem[position].data as? LocationResource)?.userClickedList
+
+            currentUserClickCategory?.customClickListener(category, textView)
+            currentUserClickCategory?.defaultClick(category, textView)
+        }
+
     override fun createBindingViewHolder(holder: BaseRecyclerViewHolder<*, *>, position: Int) {
         when (holder) {
             is BottomSheetRecyclerCategoryViewHolder -> {
@@ -54,7 +77,9 @@ class BottomSheetRecyclerAdapter : BaseRecyclerViewAdapter<BottomSheetSource.Bot
                         R.layout.recycler_location_item,
                         parent,
                         false
-                    ), expandedClickListener
+                    ), expandedClickListener,
+                    categoryClickListener,
+                    defaultSelectedListener
                 )
             }
             else -> throw IllegalArgumentException()
