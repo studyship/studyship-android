@@ -36,17 +36,11 @@ class ExpandedListAdapter @JvmOverloads constructor(
                 LayoutInflater.from(context).inflate(R.layout.layout_expanded_item, this, false)
 
             bottomSheet.run {
-                tv_bottom_sheet.text = context.getString(R.string.user_non_clicked_category, category.categoryName)
+                tv_bottom_sheet.text =
+                    context.getString(R.string.user_non_clicked_category, category.categoryName)
 
                 tv_bottom_sheet.setOnClickListener {
                     it.isSelected = !it.isSelected
-//                    if (tv_bottom_sheet.isSelected) {
-//                        tv_bottom_sheet.text =
-//                            context.getString(R.string.user_clicked_category, category.categoryName)
-//                    } else {
-//                        tv_bottom_sheet.text =
-//                            context.getString(R.string.user_non_clicked_category, category.categoryName)
-//                    }
                     customCategoryClickListener(category)
                 }
                 defaultSelectedCategory(tv_bottom_sheet, category)

@@ -1,6 +1,7 @@
 package com.studyship.application
 
 import android.app.Application
+import com.studyship.application.di.categoryMapper
 import com.studyship.application.di.customUiModule
 //import com.studyship.application.di.viewModelModule
 import com.tsdev.presentation.di.viewModelModule
@@ -14,7 +15,8 @@ class StudyShipApp : Application() {
             modules(
                 listOf(
                     viewModelModule,
-                    customUiModule
+                    customUiModule,
+                    categoryMapper
                 )
             )
         }

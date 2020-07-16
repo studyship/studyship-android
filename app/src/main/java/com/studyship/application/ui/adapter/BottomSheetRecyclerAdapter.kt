@@ -11,27 +11,31 @@ import com.studyship.application.base.BaseRecyclerViewHolder
 import com.studyship.application.ext.containEntity
 import com.studyship.application.ext.customClickListener
 import com.studyship.application.ext.defaultClick
+import com.studyship.application.mapper.Mapper
 import com.studyship.application.ui.adapter.holder.bottomsheet.BottomSheetRecyclerCategoryViewHolder
 import com.studyship.application.ui.adapter.source.BottomSheetSource
 import com.tsdev.data.source.Category
 import com.tsdev.data.source.LocationResource
+import com.tsdev.domain.repository.model.DomainCategory
+import com.tsdev.domain.repository.model.DomainLocationResource
 import java.lang.IllegalArgumentException
 
-class BottomSheetRecyclerAdapter : BaseRecyclerViewAdapter<BottomSheetSource.BottomSheetItem>() {
+class BottomSheetRecyclerAdapter(private val mapper: Mapper<DomainCategory, Category>) :
+    BaseRecyclerViewAdapter<BottomSheetSource.BottomSheetItem>() {
 
     private val bottomSheetItem = mutableListOf<BottomSheetSource.BottomSheetItem>()
 
     lateinit var hideKeyBoard: () -> Unit
 
     private val expandedClickListener: (Int, View) -> Unit = { position, view ->
-        (bottomSheetItem[position].data as? LocationResource)?.isExpanded =
-            (bottomSheetItem[position].data as? LocationResource)?.isExpanded != true
+        (bottomSheetItem[position].data as? DomainLocationResource)?.isExpanded =
+            (bottomSheetItem[position].data as? DomainLocationResource)?.isExpanded != true
 
         Log.e(
             "CLICKED",
-            (bottomSheetItem[position].data as? LocationResource)?.isExpanded.toString()
+            (bottomSheetItem[position].data as? DomainLocationResource)?.isExpanded.toString()
         )
-        view.isSelected = (bottomSheetItem[position].data as? LocationResource)?.isExpanded == true
+        view.isSelected = (bottomSheetItem[position].data as? DomainLocationResource)?.isExpanded == true
 
         if (::hideKeyBoard.isInitialized) {
             hideKeyBoard()
@@ -41,9 +45,10 @@ class BottomSheetRecyclerAdapter : BaseRecyclerViewAdapter<BottomSheetSource.Bot
 
     private val categoryClickListener: (Category, Int) -> Unit = { item, position ->
         val currentUserClickCategory =
-            (bottomSheetItem[position].data as? LocationResource)?.userClickedList
+            (bottomSheetItem[position].data as? DomainLocationResource)?.userClickedList
 
-        currentUserClickCategory?.containEntity(item)
+        val mapperCategory = mapper.fromMap(item)
+        currentUserClickCategory?.containEntity(mapperCategory)
 
         notifyDataSetChanged()
     }
@@ -51,16 +56,17 @@ class BottomSheetRecyclerAdapter : BaseRecyclerViewAdapter<BottomSheetSource.Bot
     private val defaultSelectedListener: (TextView, Category, Int) -> Unit =
         { textView, category, position ->
             val currentUserClickCategory =
-                (bottomSheetItem[position].data as? LocationResource)?.userClickedList
+                (bottomSheetItem[position].data as? DomainLocationResource)?.userClickedList
 
-            currentUserClickCategory?.customClickListener(category, textView)
-            currentUserClickCategory?.defaultClick(category, textView)
+            val mapperCategory = mapper.fromMap(category)
+            currentUserClickCategory?.customClickListener(mapperCategory, textView)
+            currentUserClickCategory?.defaultClick(mapperCategory, textView)
         }
 
     override fun createBindingViewHolder(holder: BaseRecyclerViewHolder<*, *>, position: Int) {
         when (holder) {
             is BottomSheetRecyclerCategoryViewHolder -> {
-                holder.setFlexibleView((bottomSheetItem[position].data as LocationResource).detailCategoryList)
+                holder.setFlexibleView((bottomSheetItem[position].data as DomainLocationResource).detailCategoryList)
                 holder.binding(bottomSheetItem[position].data)
             }
         }
@@ -79,7 +85,8 @@ class BottomSheetRecyclerAdapter : BaseRecyclerViewAdapter<BottomSheetSource.Bot
                         false
                     ), expandedClickListener,
                     categoryClickListener,
-                    defaultSelectedListener
+                    defaultSelectedListener,
+                    mapper
                 )
             }
             else -> throw IllegalArgumentException()

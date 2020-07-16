@@ -15,7 +15,7 @@ import com.studyship.application.ui.adapter.SuggestRecyclerAdapter
 import com.studyship.application.ui.viewmodel.SearchActivityViewModel
 import com.studyship.application.ui.widget.CustomBottomSheetDialog
 import com.studyship.application.util.customOverridePendingTransition
-import com.tsdev.data.source.SuggestResponse
+import com.tsdev.domain.repository.DomainSuggestResponse
 import com.tsdev.presentation.SearchKeywordViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -33,7 +33,7 @@ class SearchActivity : BaseActivity<SearchKeywordViewModel>() {
     }
 
     private val bottomSheetRecyclerAdapter by lazy {
-        BottomSheetRecyclerAdapter()
+        BottomSheetRecyclerAdapter(mapper)
     }
 
     private val suggestAdapter: SuggestRecyclerAdapter by lazy {
@@ -53,7 +53,7 @@ class SearchActivity : BaseActivity<SearchKeywordViewModel>() {
         }
 
         suggestAdapter.onClickListener = {
-            binding.inputUserText.setText((suggestAdapter.getItems(it) as SuggestResponse).suggestValue)
+            binding.inputUserText.setText((suggestAdapter.getItems(it) as DomainSuggestResponse).suggestValue)
         }
 
         searchHistoryAdapter.setOnClickRemoveListener = {
