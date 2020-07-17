@@ -10,6 +10,10 @@
         <variable
             name="vm"
             type="com.tsdev.presentation.SearchKeywordViewModel" />
+
+        <variable
+            name="activity"
+            type="com.studyship.application.ui.activity.SearchActivity" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -25,7 +29,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="@dimen/spacing_large"
-                android:onClick="@{vm.customFinishProviderImpl.onClick}"
+                android:onClick="@{() -> activity.finish()}"
                 android:layout_marginTop="@dimen/search_title_top_spacing"
                 android:src="@drawable/ic_arrow_back_yellow_24dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -121,7 +125,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_latest_search_history"
                 bind:saveHistory="@{vm.searchKeyword}"
-                bind:savePreference="@{vm.saveSearchKeyword}" />
+                bind:savePreference="@{vm.saveSearchKeyword}"
+                bind:loadPreference="@{vm.loadSearchKeyword}"
+                bind:isInitialized="@{activity.}"/>
 
 
             <TextView

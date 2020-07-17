@@ -113,6 +113,8 @@ dependencies {
     implementation project(":data")
     implementation project(":presentation")
     implementation project(':domain')
+    implementation project(':local')
+    implementation project(':remote')
 }
 androidExtensions {
 

@@ -1,5 +1,6 @@
 package com.tsdev.presentation
 
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.tsdev.domain.repository.DomainSuggestResponse
@@ -7,7 +8,6 @@ import com.tsdev.domain.repository.model.DomainCategory
 import com.tsdev.domain.repository.model.DomainLocationResource
 import com.tsdev.presentation.base.BaseViewModel
 import com.tsdev.presentation.constant.DEBOUNCE_INTERVAL_TIME
-import com.tsdev.presentation.ext.CustomFinishProviderImpl
 import com.tsdev.presentation.ext.SingleEvent
 import com.tsdev.presentation.ext.SingleMutableEvent
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -16,8 +16,12 @@ import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 import java.util.concurrent.TimeUnit
 
-class SearchKeywordViewModel(val customFinishProviderImpl: CustomFinishProviderImpl) :
+class SearchKeywordViewModel :
     BaseViewModel() {
+
+    lateinit var saveSearchKeyword: (String?) -> Unit
+
+    lateinit var loadSearchKeyword: () -> List<String>
 
     private val disposable by lazy { CompositeDisposable() }
 
@@ -51,10 +55,6 @@ class SearchKeywordViewModel(val customFinishProviderImpl: CustomFinishProviderI
 
     val listCategory: LiveData<List<DomainLocationResource>>
         get() = _listCategory
-
-    lateinit var saveSearchKeyword: (String?) -> Unit
-
-    lateinit var loadSearchKeyword: () -> List<String>
 
     init {
         _suggestList.value = listOf(

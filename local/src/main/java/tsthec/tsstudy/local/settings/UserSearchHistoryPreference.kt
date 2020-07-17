@@ -1,4 +1,4 @@
-package com.studyship.application.setting
+package tsthec.tsstudy.local.settings
 
 import android.content.SharedPreferences
 import androidx.core.content.edit
@@ -8,7 +8,7 @@ private const val SPLIT_CHAR = "|"
 
 private val searchHistoryList = mutableListOf<String>()
 
-class StringSharedPreference(
+class UserSearchHistoryPreference(
     private val preference: SharedPreferences
 ) {
 

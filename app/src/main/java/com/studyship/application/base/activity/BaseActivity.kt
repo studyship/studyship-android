@@ -11,7 +11,6 @@ import com.studyship.application.setting.SEARCH_HISTORY
 import com.studyship.application.setting.StringSharedPreference
 import com.tsdev.data.source.Category
 import com.tsdev.domain.repository.model.DomainCategory
-import com.tsdev.presentation.ext.CustomFinishProviderImpl
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subjects.BehaviorSubject
 import org.koin.android.ext.android.inject
@@ -36,6 +35,7 @@ abstract class BaseActivity<VM : ViewModel> : AppCompatActivity() {
             DataBindingUtil.setContentView<DATA_BINDING>(this, layout)
                 .apply {
                     setVariable(BR.vm, viewModel)
+                    setVariable(BR.activity, this@BaseActivity)
                 }
         }
 

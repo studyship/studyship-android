@@ -76,6 +76,10 @@ class SearchHistoryRecyclerAdapter(
         searchHistoryPreference.saveSearchHistory(keyword)
     }
 
+    fun loadUserHistory(): List<String> {
+        return searchHistoryPreference.loadSearchHistory()
+    }
+
     companion object {
         const val SEARCH_HISTORY_VIEW_TYPE = 1000
     }

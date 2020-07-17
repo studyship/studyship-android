@@ -47,22 +47,22 @@ fun RecyclerView.bindingAdapterSuggest(items: List<DomainSuggestResponse>?) {
     }
 }
 
-@BindingAdapter("saveHistory", "savePreference")
+@BindingAdapter("saveHistory", "savePreference", "loadPreference")
 fun RecyclerView.setSaveHistoryBindingAdapter(
     searchKeyword: String?,
-    savePreference: (String?) -> Unit
-//    loadPreference: () -> List<String>
+    savePreference: (String?) -> Unit,
+    loadPreference: () -> List<String>
 ) {
     val searchHistoryAdapter = adapter as? SearchHistoryRecyclerAdapter
 
-//    if (loadPreference().isNotEmpty()) {
-//        loadPreference().forEach { keyword ->
-//            searchHistoryAdapter?.addItem(SEARCH_HISTORY_VIEW_TYPE, keyword)
-//        }
-//    } else {
-    searchHistoryAdapter?.addItem(SEARCH_HISTORY_VIEW_TYPE, searchKeyword)
-    savePreference(searchKeyword)
-//    }
+    if (loadPreference().isNotEmpty()) {
+        loadPreference().forEach { keyword ->
+            searchHistoryAdapter?.addItem(SEARCH_HISTORY_VIEW_TYPE, keyword)
+        }
+    } else {
+        searchHistoryAdapter?.addItem(SEARCH_HISTORY_VIEW_TYPE, searchKeyword)
+        savePreference(searchKeyword)
+    }
 
     searchHistoryAdapter?.notifiedChangeItem
     this.run {
