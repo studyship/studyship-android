@@ -1,4 +1,4 @@
-package com.tsdev.domain.repository.model
+package tsthec.tsstudy.domain.model
 
 data class DomainLocationResource(
     val location: String,
@@ -6,6 +6,5 @@ data class DomainLocationResource(
     val userClickedList: MutableList<DomainCategory> = mutableListOf(),
     var isExpanded: Boolean = false
 )
-
 
 data class DomainCategory(val categoryName: String)

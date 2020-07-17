@@ -7,11 +7,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.studyship.application.ui.adapter.BottomSheetRecyclerAdapter
-import com.tsdev.data.source.Category
-import com.tsdev.data.source.LocationResource
-import com.tsdev.domain.repository.model.DomainLocationResource
-import com.tsdev.feat.widget.ExpandedListAdapter
 import com.tsdev.feat.widget.layout.HorizontalCategoryListView
+import tsthec.tsstudy.domain.model.DomainLocationResource
 
 enum class CustomViewType(val viewType: Int) {
     CATEGORY(3000),

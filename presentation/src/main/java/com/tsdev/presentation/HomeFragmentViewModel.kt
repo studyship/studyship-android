@@ -3,10 +3,10 @@ package com.tsdev.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.tsdev.domain.repository.model.DomainCategoryResponse
 import com.tsdev.presentation.ext.Event
 import com.tsdev.presentation.ext.SingleEvent
 import com.tsdev.presentation.ext.SingleMutableEvent
+import tsthec.tsstudy.domain.model.DomainCategoryResponse
 
 class HomeFragmentViewModel : ViewModel() {
 

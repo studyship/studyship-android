@@ -5,5 +5,5 @@ import org.koin.dsl.module
 import tsthec.tsstudy.local.StudyShipLocalDataSourceImpl
 
 val localDataSourceModule = module {
-    single<StudyShipLocalRemoteDataSource> { StudyShipLocalDataSourceImpl(get()) }
+    factory<StudyShipLocalRemoteDataSource> { StudyShipLocalDataSourceImpl(get()) }
 }

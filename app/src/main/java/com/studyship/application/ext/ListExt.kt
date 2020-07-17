@@ -2,8 +2,7 @@ package com.studyship.application.ext
 
 import android.widget.TextView
 import com.studyship.application.R
-import com.tsdev.data.source.Category
-import com.tsdev.domain.repository.model.DomainCategory
+import tsthec.tsstudy.domain.model.DomainCategory
 
 fun <T> MutableList<T>.containEntity(item: T) {
     if (contains(item)) {

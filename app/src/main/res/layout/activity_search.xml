@@ -125,9 +125,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_latest_search_history"
                 bind:saveHistory="@{vm.searchKeyword}"
-                bind:savePreference="@{vm.saveSearchKeyword}"
-                bind:loadPreference="@{vm.loadSearchKeyword}"
-                bind:isInitialized="@{activity.}"/>
+                bind:loadPreference="@{vm.savingSearchKeywordList}"
+                bind:isInitialized="@{vm.initializedData}"/>
 
 
             <TextView

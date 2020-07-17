@@ -41,6 +41,11 @@ dependencies {
     // koin
     implementation deps.library.koin_viewmodel
 
+    //rxjava
+    implementation deps.library.rxjava
+    //rxandroid
+    implementation deps.library.rxandroid
+
     //multi-module
     implementation project(':data')
 }

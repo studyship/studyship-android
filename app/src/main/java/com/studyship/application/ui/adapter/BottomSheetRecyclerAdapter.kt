@@ -16,8 +16,8 @@ import com.studyship.application.ui.adapter.holder.bottomsheet.BottomSheetRecycl
 import com.studyship.application.ui.adapter.source.BottomSheetSource
 import com.tsdev.data.source.Category
 import com.tsdev.data.source.LocationResource
-import com.tsdev.domain.repository.model.DomainCategory
-import com.tsdev.domain.repository.model.DomainLocationResource
+import tsthec.tsstudy.domain.model.DomainCategory
+import tsthec.tsstudy.domain.model.DomainLocationResource
 import java.lang.IllegalArgumentException
 
 class BottomSheetRecyclerAdapter(private val mapper: Mapper<DomainCategory, Category>) :

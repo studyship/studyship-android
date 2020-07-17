@@ -1,29 +1,23 @@
 package com.tsdev.presentation
 
-import android.view.View
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.tsdev.domain.repository.DomainSuggestResponse
-import com.tsdev.domain.repository.model.DomainCategory
-import com.tsdev.domain.repository.model.DomainLocationResource
 import com.tsdev.presentation.base.BaseViewModel
 import com.tsdev.presentation.constant.DEBOUNCE_INTERVAL_TIME
 import com.tsdev.presentation.ext.SingleEvent
 import com.tsdev.presentation.ext.SingleMutableEvent
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
+import tsthec.tsstudy.domain.model.DomainCategory
+import tsthec.tsstudy.domain.model.DomainLocationResource
+import tsthec.tsstudy.domain.model.DomainSuggestResponse
+import tsthec.tsstudy.domain.usecase.base.CompletableUseCase
 import java.util.concurrent.TimeUnit
 
-class SearchKeywordViewModel :
+class SearchKeywordViewModel(private val searchUseCase: CompletableUseCase<String>) :
     BaseViewModel() {
-
-    lateinit var saveSearchKeyword: (String?) -> Unit
-
-    lateinit var loadSearchKeyword: () -> List<String>
-
-    private val disposable by lazy { CompositeDisposable() }
 
     private val searchKeywordBehaviorSubject = PublishSubject.create<String>()
 
@@ -32,12 +26,17 @@ class SearchKeywordViewModel :
     val suggestList: LiveData<List<DomainSuggestResponse>>
         get() = _suggestList
 
+    private val _savingSearchKeywordList = MutableLiveData<List<String>>()
+    val savingSearchKeywordList: LiveData<List<String>>
+        get() = _savingSearchKeywordList
+
     private val _searchKeyword = MutableLiveData<String>()
 
     val searchKeyword: LiveData<String>
         get() = _searchKeyword
 
     private val _showBottomSheetDialog = SingleMutableEvent<Boolean>()
+
     val showBottomSheetDialog: SingleEvent<Boolean>
         get() = _showBottomSheetDialog
 
@@ -56,6 +55,10 @@ class SearchKeywordViewModel :
     val listCategory: LiveData<List<DomainLocationResource>>
         get() = _listCategory
 
+    private val _initializedLiveData = MutableLiveData(false)
+    val initializedData: LiveData<Boolean>
+        get() = _initializedLiveData
+
     init {
         _suggestList.value = listOf(
             DomainSuggestResponse("프로토타입"),
@@ -70,11 +73,14 @@ class SearchKeywordViewModel :
                 .debounce(DEBOUNCE_INTERVAL_TIME, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .filter { it.isNotEmpty() }
                 .onErrorReturn {
                     "ERROR!"
                 }
                 .subscribe {
+                    Log.e("SEARCH", it)
                     _searchKeyword.value = it
+                    saveUserSearchHistory(it)
                 }
         )
 
@@ -119,26 +125,49 @@ class SearchKeywordViewModel :
         )
 
     }
-
     //databinding 때문에 지울수가 없음
-    fun onTextChanged(
-        s: CharSequence
-    ) {
+    fun onTextChanged(s: CharSequence) {
+        _searchKeyword.value = ""
         if (s.isNotEmpty()) {
+            Log.e("KEYWORD", s.toString())
             searchKeywordBehaviorSubject.onNext(s.toString())
+            _initializedLiveData.value = true
         }
+//        if (s.isEmpty() && _initializedLiveData.value == false) {
+//            disposable.add(
+//                searchUseCase.loadUserSearchHistory()
+//                    .subscribeOn(Schedulers.computation())
+//                    .observeOn(AndroidSchedulers.mainThread())
+//                    .onErrorReturn {
+//                        emptyList()
+//                    }
+//                    .subscribe {
+//                        Log.e("SEARCH_LIST", it.toString())
+//                        _savingSearchKeywordList.value = it
+//                    }
+//            )
+//        }
     }
 
     fun showBottomSheet() {
         _showBottomSheetDialog.event = true
     }
 
-    override fun onCleared() {
-        disposable.clear()
-        super.onCleared()
-    }
-
     val customCategory: (Int) -> Unit = {
         _selectedCategory.value = _categoryList.value?.get(it)
+    }
+
+    private fun saveUserSearchHistory(keywords: String) {
+        disposable.add(
+            searchUseCase(keywords)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe()
+        )
+    }
+
+    override fun onCleared() {
+        disposable.clear()
+        _initializedLiveData.value = false
+        super.onCleared()
     }
 }

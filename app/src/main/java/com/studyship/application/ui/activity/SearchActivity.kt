@@ -2,7 +2,6 @@ package com.studyship.application.ui.activity
 
 import android.app.Activity
 import android.os.Bundle
-import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
@@ -15,18 +14,17 @@ import com.studyship.application.ui.adapter.SearchHistoryRecyclerAdapter
 import com.studyship.application.ui.adapter.SuggestRecyclerAdapter
 import com.studyship.application.ui.widget.CustomBottomSheetDialog
 import com.studyship.application.util.customOverridePendingTransition
-import com.tsdev.domain.repository.DomainSuggestResponse
 import com.tsdev.presentation.SearchKeywordViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
+import tsthec.tsstudy.domain.model.DomainSuggestResponse
 
 
 class SearchActivity : BaseActivity<SearchKeywordViewModel>() {
 
     private val binding by setDataBinding<ActivitySearchBinding>(R.layout.activity_search)
 
-    override val viewModel: SearchKeywordViewModel by viewModel()
 
     private val bottomSheet by inject<CustomBottomSheetDialog> {
         parametersOf(viewModel, supportFragmentManager, bottomSheetRecyclerAdapter)
@@ -41,19 +39,13 @@ class SearchActivity : BaseActivity<SearchKeywordViewModel>() {
     }
 
     private val searchHistoryAdapter: SearchHistoryRecyclerAdapter by lazy {
-        SearchHistoryRecyclerAdapter(preference)
+        SearchHistoryRecyclerAdapter()
     }
+
+    override val viewModel: SearchKeywordViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        viewModel.saveSearchKeyword = {
-            searchHistoryAdapter.saveUserHistory(it ?: "")
-        }
-
-        viewModel.loadSearchKeyword = {
-            searchHistoryAdapter.loadUserHistory()
-        }
 
         binding.run {
             lifecycleOwner = this@SearchActivity
