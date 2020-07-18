@@ -124,6 +124,19 @@ class SearchKeywordViewModel(private val searchUseCase: CompletableUseCase<Strin
             )
         )
 
+        disposable.add(
+            searchUseCase.loadUserSearchHistory()
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .onErrorReturn {
+                    emptyList()
+                }
+                .subscribe {
+                    Log.e("SEARCH_LIST", it.toString())
+                    _savingSearchKeywordList.value = it
+                }
+        )
+
     }
     //databinding 때문에 지울수가 없음
     fun onTextChanged(s: CharSequence) {
@@ -133,20 +146,6 @@ class SearchKeywordViewModel(private val searchUseCase: CompletableUseCase<Strin
             searchKeywordBehaviorSubject.onNext(s.toString())
             _initializedLiveData.value = true
         }
-//        if (s.isEmpty() && _initializedLiveData.value == false) {
-//            disposable.add(
-//                searchUseCase.loadUserSearchHistory()
-//                    .subscribeOn(Schedulers.computation())
-//                    .observeOn(AndroidSchedulers.mainThread())
-//                    .onErrorReturn {
-//                        emptyList()
-//                    }
-//                    .subscribe {
-//                        Log.e("SEARCH_LIST", it.toString())
-//                        _savingSearchKeywordList.value = it
-//                    }
-//            )
-//        }
     }
 
     fun showBottomSheet() {
