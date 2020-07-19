@@ -1,6 +1,5 @@
 package com.studyship.application.binding
 
-import android.util.Log
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,13 +8,9 @@ import com.studyship.application.constant.ViewType.CATEGORY_VIEW_HEADER
 import com.studyship.application.constant.ViewType.CATEGORY_VIEW_TYPE
 import com.studyship.application.constant.ViewType.SEARCH_HISTORY_VIEW_TYPE
 import com.studyship.application.constant.ViewType.SUGGEST_VIEW_TYPE
-import com.studyship.application.data.CategoryResponse
-import com.studyship.application.data.source.RecyclerItemSource
 import com.studyship.application.ui.adapter.CategoryRecyclerAdapter
 import com.studyship.application.ui.adapter.SearchHistoryRecyclerAdapter
 import com.studyship.application.ui.adapter.SuggestRecyclerAdapter
-import com.studyship.application.ui.adapter.holder.SetOnClickRemoveListener
-import com.tsdev.data.source.SuggestResponse
 import tsthec.tsstudy.domain.model.DomainCategoryResponse
 import tsthec.tsstudy.domain.model.DomainSearchUserHistory
 import tsthec.tsstudy.domain.model.DomainSuggestResponse
