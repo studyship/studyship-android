@@ -1,17 +1,16 @@
 package tsthec.tsstudy.domain.usecase.base
 
-import io.reactivex.Completable
 import io.reactivex.Maybe
 import io.reactivex.Scheduler
 
-abstract class CompletableUseCase<in Params>(
+abstract class CompletableUseCase<in Params, T>(
     private val subscribeOnScheduler: Scheduler
 ) : BaseUseCase<Params>() {
-    abstract fun buildMaybeUseCase(params: Params): Completable
+    abstract fun buildMaybeUseCase(params: Params): Maybe<List<T>>
 
-    abstract fun loadUserSearchHistory(): Maybe<List<String>>
+    abstract fun removeUserSearchHistory(item: Params)
 
-    override fun invoke(params: Params): Completable {
+    override fun invoke(params: Params): Maybe<List<T>> {
         return buildMaybeUseCase(params)
             .subscribeOn(subscribeOnScheduler)
     }

@@ -12,27 +12,28 @@ import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 import tsthec.tsstudy.domain.model.DomainCategory
 import tsthec.tsstudy.domain.model.DomainLocationResource
+import tsthec.tsstudy.domain.model.DomainSearchUserHistory
 import tsthec.tsstudy.domain.model.DomainSuggestResponse
 import tsthec.tsstudy.domain.usecase.base.CompletableUseCase
 import java.util.concurrent.TimeUnit
 
-class SearchKeywordViewModel(private val searchUseCase: CompletableUseCase<String>) :
+class SearchKeywordViewModel(private val searchUseCase: CompletableUseCase<DomainSearchUserHistory, DomainSearchUserHistory>) :
     BaseViewModel() {
 
-    private val searchKeywordBehaviorSubject = PublishSubject.create<String>()
+    private val searchKeywordBehaviorSubject = PublishSubject.create<DomainSearchUserHistory>()
 
     private val _suggestList = MutableLiveData<List<DomainSuggestResponse>>()
 
     val suggestList: LiveData<List<DomainSuggestResponse>>
         get() = _suggestList
 
-    private val _savingSearchKeywordList = MutableLiveData<List<String>>()
-    val savingSearchKeywordList: LiveData<List<String>>
+    private val _savingSearchKeywordList = MutableLiveData<List<DomainSearchUserHistory>>()
+    val savingSearchKeywordList: LiveData<List<DomainSearchUserHistory>>
         get() = _savingSearchKeywordList
 
-    private val _searchKeyword = MutableLiveData<String>()
+    private val _searchKeyword = MutableLiveData<DomainSearchUserHistory>()
 
-    val searchKeyword: LiveData<String>
+    val searchKeyword: LiveData<DomainSearchUserHistory>
         get() = _searchKeyword
 
     private val _showBottomSheetDialog = SingleMutableEvent<Boolean>()
@@ -73,12 +74,12 @@ class SearchKeywordViewModel(private val searchUseCase: CompletableUseCase<Strin
                 .debounce(DEBOUNCE_INTERVAL_TIME, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .filter { it.isNotEmpty() }
+                .filter { it.userKeywords.isNotEmpty() }
                 .onErrorReturn {
-                    "ERROR!"
+                    DomainSearchUserHistory("")
                 }
                 .subscribe {
-                    Log.e("SEARCH", it)
+                    Log.e("SEARCH", it.userKeywords)
                     _searchKeyword.value = it
                     saveUserSearchHistory(it)
                 }
@@ -125,25 +126,22 @@ class SearchKeywordViewModel(private val searchUseCase: CompletableUseCase<Strin
         )
 
         disposable.add(
-            searchUseCase.loadUserSearchHistory()
+            searchUseCase(_searchKeyword.value ?: DomainSearchUserHistory(""))
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
-                .onErrorReturn {
-                    emptyList()
-                }
                 .subscribe {
                     Log.e("SEARCH_LIST", it.toString())
                     _savingSearchKeywordList.value = it
                 }
         )
-
     }
+
     //databinding 때문에 지울수가 없음
     fun onTextChanged(s: CharSequence) {
-        _searchKeyword.value = ""
+        _searchKeyword.value = DomainSearchUserHistory("")
         if (s.isNotEmpty()) {
             Log.e("KEYWORD", s.toString())
-            searchKeywordBehaviorSubject.onNext(s.toString())
+            searchKeywordBehaviorSubject.onNext(DomainSearchUserHistory(s.toString()))
             _initializedLiveData.value = true
         }
     }
@@ -156,12 +154,16 @@ class SearchKeywordViewModel(private val searchUseCase: CompletableUseCase<Strin
         _selectedCategory.value = _categoryList.value?.get(it)
     }
 
-    private fun saveUserSearchHistory(keywords: String) {
+    private fun saveUserSearchHistory(keywords: DomainSearchUserHistory) {
         disposable.add(
             searchUseCase(keywords)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe()
         )
+    }
+
+    val removeUserSearchHistory: (DomainSearchUserHistory) -> Unit = { position ->
+        searchUseCase.removeUserSearchHistory(position)
     }
 
     override fun onCleared() {

@@ -6,6 +6,7 @@ import com.studyship.application.di.customUiModule
 import com.tsdev.data.di.repositoryModule
 import com.tsdev.presentation.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import tsthec.tsstudy.domain.di.useCaseModule
 import tsthec.tsstudy.local.di.localDataSourceModule
@@ -15,6 +16,7 @@ class StudyShipApp : Application() {
     override fun onCreate() {
         startKoin {
             androidContext(this@StudyShipApp)
+            androidLogger()
             modules(
                 listOf(
                     customUiModule,

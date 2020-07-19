@@ -8,6 +8,8 @@ import com.studyship.application.base.BaseRecyclerViewHolder
 import com.studyship.application.data.source.RecyclerItemSource
 import com.studyship.application.ui.adapter.holder.SearchHistoryRecyclerViewHolder
 import com.studyship.application.ui.adapter.holder.SetOnClickRemoveListener
+import com.tsdev.data.source.UserSearchHistory
+import tsthec.tsstudy.domain.model.DomainSearchUserHistory
 import tsthec.tsstudy.local.settings.UserSearchHistoryPreference
 
 class SearchHistoryRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.RecyclerItem>() {
@@ -19,7 +21,7 @@ class SearchHistoryRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.
     override fun createBindingViewHolder(holder: BaseRecyclerViewHolder<*, *>, position: Int) {
         when (holder) {
             is SearchHistoryRecyclerViewHolder -> {
-                holder.setBindingSearchHistory(searchHistoryItems[position].item as String)
+                holder.setBindingSearchHistory(searchHistoryItems[position].item as DomainSearchUserHistory)
             }
         }
     }

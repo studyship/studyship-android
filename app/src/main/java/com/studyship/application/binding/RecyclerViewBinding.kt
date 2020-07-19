@@ -14,8 +14,10 @@ import com.studyship.application.data.source.RecyclerItemSource
 import com.studyship.application.ui.adapter.CategoryRecyclerAdapter
 import com.studyship.application.ui.adapter.SearchHistoryRecyclerAdapter
 import com.studyship.application.ui.adapter.SuggestRecyclerAdapter
+import com.studyship.application.ui.adapter.holder.SetOnClickRemoveListener
 import com.tsdev.data.source.SuggestResponse
 import tsthec.tsstudy.domain.model.DomainCategoryResponse
+import tsthec.tsstudy.domain.model.DomainSearchUserHistory
 import tsthec.tsstudy.domain.model.DomainSuggestResponse
 
 @BindingAdapter("categoryList", "setHeaderName")
@@ -47,11 +49,12 @@ fun RecyclerView.bindingAdapterSuggest(items: List<DomainSuggestResponse>?) {
     }
 }
 
-@BindingAdapter("saveHistory", "loadPreference", "isInitialized")
+@BindingAdapter("saveHistory", "loadPreference", "isInitialized", "removeClickListener")
 fun RecyclerView.setSaveHistoryBindingAdapter(
-    searchKeyword: String?,
-    loadPreference: List<String>?,
-    initialized: Boolean
+    searchKeyword: DomainSearchUserHistory?,
+    loadPreference: List<DomainSearchUserHistory>?,
+    initialized: Boolean,
+    onClickRemoveListener: (DomainSearchUserHistory) -> Unit
 ) {
     val searchHistoryAdapter = adapter as? SearchHistoryRecyclerAdapter
 
@@ -60,9 +63,14 @@ fun RecyclerView.setSaveHistoryBindingAdapter(
             searchHistoryAdapter?.addItem(SEARCH_HISTORY_VIEW_TYPE, keyword)
         }
     } else {
-        if(searchKeyword != null && searchKeyword.isNotEmpty()) {
+        if (searchKeyword != null && searchKeyword.userKeywords.isNotEmpty()) {
             searchHistoryAdapter?.addItem(SEARCH_HISTORY_VIEW_TYPE, searchKeyword)
         }
+    }
+
+    searchHistoryAdapter?.setOnClickRemoveListener = {
+        searchHistoryAdapter?.destroyedPositionItem(it)
+        onClickRemoveListener(searchHistoryAdapter?.getItems(it) as DomainSearchUserHistory)
     }
 
     searchHistoryAdapter?.notifiedChangeRangeItemListener

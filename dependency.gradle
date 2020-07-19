@@ -24,7 +24,7 @@ ext {
                     constraintlayout   : "2.0.0-alpha2",
                     lifecycle_extension: "2.2.0",
                     recyclerview       : "1.1.0",
-                    room               : "2.2.4",
+                    room               : "2.2.5",
                     databinding        : "3.1.2",
                     gradle             : '3.6.0',
                     ktx_core           : "1.2.0",

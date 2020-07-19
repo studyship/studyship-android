@@ -56,9 +56,9 @@ class SearchActivity : BaseActivity<SearchKeywordViewModel>() {
             binding.inputUserText.setText((suggestAdapter.getItems(it) as DomainSuggestResponse).suggestValue)
         }
 
-        searchHistoryAdapter.setOnClickRemoveListener = {
-            searchHistoryAdapter.destroyedPositionItem(it)
-        }
+//        searchHistoryAdapter.setOnClickRemoveListener = {
+//            searchHistoryAdapter.destroyedPositionItem(it)
+//        }
 
         viewModel.showBottomSheetDialog.observe(this) {
             if (it.getContentValue()) {
