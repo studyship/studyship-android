@@ -8,15 +8,27 @@ import com.skydoves.transformationlayout.onTransformationStartContainer
 import com.studyship.application.R
 import com.studyship.application.base.activity.BaseActivity
 import com.studyship.application.ui.viewmodel.MainActivityViewModel
+import com.studyship.application.ui.widget.CustomBottomSheetDialog
 import com.studyship.application.util.loadNavigation
 import com.studyship.application.util.plusAssign
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class MainActivity : BaseActivity<MainActivityViewModel>() {
     companion object {
         private const val BACK_BUTTON_ITEM = 2000L
     }
+
+//    private val bottomSheet by inject<CustomBottomSheetDialog> {
+//        parametersOf(
+//            viewModel,
+//            supportFragmentManager,
+//            bottomSheetRecyclerAdapter,
+//            R.style.BottomSheetDialogTheme
+//        )
+//    }
 
     override val viewModel: MainActivityViewModel by viewModel()
 
@@ -26,9 +38,6 @@ class MainActivity : BaseActivity<MainActivityViewModel>() {
         onTransformationStartContainer()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
-
 
         compositeDisposable +=
             backButtonBehaviorSubject.buffer(2, 1).map {
@@ -49,6 +58,8 @@ class MainActivity : BaseActivity<MainActivityViewModel>() {
         navHostFragment?.let {
             NavigationUI.setupWithNavController(bottom_sheet_menu, it.navController)
         }
+
+        create_study.setOnClickListener {  }
     }
 
     override fun onBackPressed() {

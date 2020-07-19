@@ -9,11 +9,12 @@ import org.koin.dsl.module
 
 val customUiModule = module {
     factory { (viewModel: SearchKeywordViewModel, supportFragmentManager: FragmentManager,
-                  bottomSheetRecyclerAdapter: BottomSheetRecyclerAdapter) ->
+                  bottomSheetRecyclerAdapter: BottomSheetRecyclerAdapter, theme: Int) ->
         CustomBottomSheetDialog(
             viewModel,
             supportFragmentManager,
-            bottomSheetRecyclerAdapter
+            bottomSheetRecyclerAdapter,
+            theme
         )
     }
 }

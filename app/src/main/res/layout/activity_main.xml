@@ -7,26 +7,53 @@
     android:fitsSystemWindows="false"
     tools:context=".ui.activity.MainActivity">
 
-    <fragment
-        android:id="@+id/nav_host_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/bottom_nav_graph" />
+        android:layout_height="match_parent">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_sheet_menu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:backgroundTint="@color/bottom_navigation_background"
-        app:itemIconTint="@color/selected_bottom_state_color"
-        app:itemRippleColor="@android:color/transparent"
-        app:itemTextColor="@color/selected_bottom_state_color"
-        app:labelVisibilityMode="labeled"
-        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
-        app:menu="@menu/bottom_navigation_menu" />
+        <fragment
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_sheet_menu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navGraph="@navigation/bottom_nav_graph" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_sheet_menu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:backgroundTint="@color/bottom_navigation_background"
+            app:itemIconTint="@color/selected_bottom_state_color"
+            app:itemRippleColor="@android:color/transparent"
+            app:itemTextColor="@color/selected_bottom_state_color"
+            app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_navigation_menu" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/create_study"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:fabSize="auto"
+            app:maxImageSize="@dimen/spacing_xxx_large"
+            android:layout_marginBottom="@dimen/spacing_large"
+            android:layout_marginEnd="@dimen/spacing_large"
+            app:backgroundTint="@color/appbar_end_color_second"
+            app:backgroundTintMode="screen"
+            android:src="@drawable/ic_add_black_24dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_sheet_menu"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.studyship.application.R
@@ -17,7 +18,8 @@ import com.tsdev.presentation.SearchKeywordViewModel
 class CustomBottomSheetDialog(
     private val viewModel: SearchKeywordViewModel,
     private val supportFragmentManager: FragmentManager,
-    private val bottomSheetRecyclerAdapter: BottomSheetRecyclerAdapter
+    private val bottomSheetRecyclerAdapter: RecyclerView.Adapter<*>,
+    private val customTheme: Int
 ) : BottomSheetDialogFragment() {
 
     lateinit var binding: LayoutBottomSheetBinding
@@ -40,7 +42,7 @@ class CustomBottomSheetDialog(
         return binding.root
     }
 
-    override fun getTheme(): Int = R.style.BottomSheetDialogTheme
+    override fun getTheme(): Int = customTheme
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
         BottomSheetDialog(requireContext(), theme)

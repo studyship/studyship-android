@@ -27,7 +27,12 @@ class SearchActivity : BaseActivity<SearchKeywordViewModel>() {
 
 
     private val bottomSheet by inject<CustomBottomSheetDialog> {
-        parametersOf(viewModel, supportFragmentManager, bottomSheetRecyclerAdapter)
+        parametersOf(
+            viewModel,
+            supportFragmentManager,
+            bottomSheetRecyclerAdapter,
+            R.style.BottomSheetDialogTheme
+        )
     }
 
     private val bottomSheetRecyclerAdapter by lazy {
