@@ -9,7 +9,7 @@ import java.util.*
 data class UserSearchLocalHistory(
     @PrimaryKey
     @ColumnInfo(name = "id")
-    val id: Int = UUID.randomUUID().version(),
+    val id: String = UUID.randomUUID().toString(),
 
     @ColumnInfo(name = "keywords")
     val searchKeyword: String

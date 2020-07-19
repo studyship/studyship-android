@@ -64,8 +64,8 @@ fun RecyclerView.setSaveHistoryBindingAdapter(
     }
 
     searchHistoryAdapter?.setOnClickRemoveListener = {
-        searchHistoryAdapter?.destroyedPositionItem(it)
         onClickRemoveListener(searchHistoryAdapter?.getItems(it) as DomainSearchUserHistory)
+        searchHistoryAdapter.destroyedPositionItem(it)
     }
 
     searchHistoryAdapter?.notifiedChangeRangeItemListener

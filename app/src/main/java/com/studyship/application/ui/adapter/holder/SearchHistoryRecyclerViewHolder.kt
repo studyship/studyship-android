@@ -15,7 +15,7 @@ class SearchHistoryRecyclerViewHolder(
 
     init {
         containerView.history_close_button.setOnClickListener {
-            Log.e("TAG", "click")
+            Log.e("TAG", adapterPosition.toString())
             setOnClickRemoveListener(adapterPosition)
         }
     }
