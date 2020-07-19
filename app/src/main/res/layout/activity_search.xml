@@ -9,7 +9,11 @@
 
         <variable
             name="vm"
-            type="com.studyship.application.ui.viewmodel.SearchActivityViewModel" />
+            type="com.tsdev.presentation.SearchKeywordViewModel" />
+
+        <variable
+            name="activity"
+            type="com.studyship.application.ui.activity.SearchActivity" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -26,6 +30,7 @@
                 android:layout_height="30dp"
                 android:layout_marginStart="@dimen/spacing_large"
                 android:layout_marginTop="@dimen/search_title_top_spacing"
+                android:onClick="@{() -> activity.finish()}"
                 android:src="@drawable/ic_arrow_back_yellow_24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -62,6 +67,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
+                    android:onClick="@{() -> inputUserText.getText().clear()}"
                     android:src="@drawable/ic_cancel_black_24dp" />
             </FrameLayout>
 
@@ -111,13 +117,16 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="@dimen/spacing_large"
-                app:isVisible="@{inputUserText.text.length()}"
                 android:layout_marginTop="@dimen/spacing_normal"
                 android:layout_marginBottom="@dimen/spacing_normal"
+                app:isVisible="@{inputUserText.text.length()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_latest_search_history"
+                bind:isInitialized="@{vm.initializedData}"
+                bind:loadPreference="@{vm.savingSearchKeywordList}"
+                bind:removeClickListener="@{vm.removeUserSearchHistory}"
                 bind:saveHistory="@{vm.searchKeyword}" />
 
 

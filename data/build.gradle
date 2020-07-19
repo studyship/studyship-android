@@ -3,8 +3,15 @@ apply plugin: 'kotlin'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-}
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-sourceCompatibility = "7"
-targetCompatibility = "7"
+    //rxjava
+    implementation deps.library.rxjava
+    //rxandroid
+    implementation deps.library.rxandroid
+
+    //koin
+    implementation deps.library.koin_viewmodel
+
+    implementation project (":domain")
+}

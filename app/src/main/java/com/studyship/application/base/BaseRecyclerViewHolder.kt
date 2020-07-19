@@ -6,6 +6,8 @@ import androidx.databinding.ViewDataBinding
 import com.studyship.application.BR
 import com.studyship.application.base.cache.AndroidRecyclerViewHolder
 import com.tsdev.data.source.Category
+import com.tsdev.data.source.UserSearchHistory
+import tsthec.tsstudy.domain.model.DomainSearchUserHistory
 
 abstract class BaseRecyclerViewHolder<ITEM : Any?, VIEW_BINDING : ViewDataBinding>(layout: View) :
     AndroidRecyclerViewHolder(layout) {
@@ -33,7 +35,7 @@ abstract class BaseRecyclerViewHolder<ITEM : Any?, VIEW_BINDING : ViewDataBindin
         }
     }
 
-    fun setBindingSearchHistory(item: String) {
+    fun setBindingSearchHistory(item: DomainSearchUserHistory) {
         recyclerBinding.run {
             setVariable(BR.searchKeyword, item)
             executePendingBindings()

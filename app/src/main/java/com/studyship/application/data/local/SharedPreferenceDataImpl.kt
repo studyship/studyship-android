@@ -19,6 +19,4 @@ class SharedPreferenceDataImpl(contextData: Context) : SharedPreferenceData {
             putBoolean(SHARED_PREFERENCE_KEY, true)
         }
     }
-
-
 }

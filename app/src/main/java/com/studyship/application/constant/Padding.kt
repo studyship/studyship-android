@@ -8,5 +8,3 @@ object ViewType {
 
     const val SEARCH_HISTORY_VIEW_TYPE = 1000
 }
-
-const val DEBOUNCE_INTERVAL_TIME = 1500L

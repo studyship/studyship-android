@@ -8,4 +8,8 @@ interface SharedPreferenceData {
     fun getSpotLightSharedPreferData(): Boolean
 
     fun saveSpotLightSharedPreferData()
+
+//    fun saveSearchHistory(keyword: String)
+//
+//    fun loadSearchHistory(): List<String>
 }

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="data"
-            type="com.studyship.application.data.CategoryResponse" />
+            type="tsthec.tsstudy.domain.model.DomainCategoryResponse" />
     </data>
 
     <com.skydoves.transformationlayout.TransformationLayout
