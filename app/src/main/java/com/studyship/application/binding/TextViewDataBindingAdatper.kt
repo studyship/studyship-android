@@ -6,10 +6,14 @@ import com.studyship.application.R
 import tsthec.tsstudy.domain.model.DomainMakeStudyResponse
 
 @BindingAdapter("temporaryStudyText")
-fun TextView.setBindingTemporary(item: DomainMakeStudyResponse?) {
-    item?.temporarySize?.takeIf {
-        it == 0
-    }?.run {
-        text = context.getString(R.string.temporary_storage_my_study_empty)
-    } ?: run { text = context.getString(R.string.temporary_storage_my_study)}
+fun TextView.setBindingTemporary(item: Int?) {
+    text = if(item == 0) {
+        context.getString(R.string.temporary_storage_my_study_empty)
+    } else {
+        context.getString(R.string.temporary_storage_my_study, item)
+    }
+//    item?.temporarySize.takeIf {
+//    }?.run {
+//
+//    } ?: run { text =  }
 }

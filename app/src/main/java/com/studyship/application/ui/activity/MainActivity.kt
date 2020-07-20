@@ -29,7 +29,7 @@ class MainActivity : BaseActivity<MainActivityViewModel>() {
             viewModel,
             supportFragmentManager,
             makeStudyRecyclerAdapter,
-            R.style.BottomSheetDialogTheme
+            R.style.iOSBottomSheetDialogTheme
         )
     }
 

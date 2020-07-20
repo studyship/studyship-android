@@ -26,7 +26,7 @@ class MakeStudyRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.Recy
                 holder.setBindingMakeStudy(makeStudyListItem[position].item as DomainMakeStudyResponse)
             }
             is TemporaryStorageStudyRecyclerViewHolder -> {
-//                holder.setBindingMakeStudy(makeStudyListItem[position].item as DomainMakeStudyResponse)
+                holder.setBindingMakeStudy(makeStudyListItem[position].item as DomainMakeStudyResponse)
             }
         }
     }
