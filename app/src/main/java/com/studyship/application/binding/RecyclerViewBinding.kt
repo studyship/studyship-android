@@ -6,14 +6,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.studyship.application.constant.ViewType.CATEGORY_VIEW_HEADER
 import com.studyship.application.constant.ViewType.CATEGORY_VIEW_TYPE
+import com.studyship.application.constant.ViewType.MAKE_STUDY_VIEW_TYPE
 import com.studyship.application.constant.ViewType.SEARCH_HISTORY_VIEW_TYPE
 import com.studyship.application.constant.ViewType.SUGGEST_VIEW_TYPE
+import com.studyship.application.constant.ViewType.TEMPORARY_STORAGE_STUDY
 import com.studyship.application.ui.adapter.CategoryRecyclerAdapter
+import com.studyship.application.ui.adapter.MakeStudyRecyclerAdapter
 import com.studyship.application.ui.adapter.SearchHistoryRecyclerAdapter
 import com.studyship.application.ui.adapter.SuggestRecyclerAdapter
 import tsthec.tsstudy.domain.model.DomainCategoryResponse
+import tsthec.tsstudy.domain.model.DomainMakeStudyResponse
 import tsthec.tsstudy.domain.model.DomainSearchUserHistory
 import tsthec.tsstudy.domain.model.DomainSuggestResponse
+
+private const val MAKE_STUDY_TITLE = "새로운 스터디"
 
 @BindingAdapter("categoryList", "setHeaderName")
 fun RecyclerView.bindingAdapterCategory(list: List<DomainCategoryResponse>?, name: String?) {
@@ -72,5 +78,27 @@ fun RecyclerView.setSaveHistoryBindingAdapter(
     this.run {
         adapter = searchHistoryAdapter
         layoutManager = GridLayoutManager(context, 1)
+    }
+}
+
+@BindingAdapter("makeStudyViewList")
+fun RecyclerView.setMakeStudyBindingAdapter(items: List<DomainMakeStudyResponse>?) {
+    val makeStudyRecyclerAdapter = adapter as? MakeStudyRecyclerAdapter
+
+    makeStudyRecyclerAdapter?.destroyedEvent()
+
+    items?.let {
+        it.forEach { makeStudyResponse ->
+            if (makeStudyResponse.title == MAKE_STUDY_TITLE) {
+                makeStudyRecyclerAdapter?.addItem(MAKE_STUDY_VIEW_TYPE, makeStudyResponse)
+            } else {
+                makeStudyRecyclerAdapter?.addItem(TEMPORARY_STORAGE_STUDY, makeStudyResponse)
+            }
+        }
+    }
+
+    makeStudyRecyclerAdapter?.notifiedChangeRangeItemListener
+    this.run {
+        adapter = makeStudyRecyclerAdapter
     }
 }

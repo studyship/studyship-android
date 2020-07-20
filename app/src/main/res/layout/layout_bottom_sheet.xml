@@ -5,7 +5,7 @@
     <data>
 
         <variable
-            name="vm"
+            name="viewModel"
             type="com.tsdev.presentation.SearchKeywordViewModel" />
 
     </data>
@@ -19,8 +19,8 @@
 
         <com.tsdev.feat.widget.layout.HorizontalCategoryListView
             android:id="@+id/category_layout"
-            callbackClickListener="@{vm.customCategory}"
-            setListData="@{vm.categoryList}"
+            callbackClickListener="@{viewModel.customCategory}"
+            setListData="@{viewModel.categoryList}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +29,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/bottom_sheet_recyclerview"
-            expandedList="@{vm.listCategory}"
+            expandedList="@{viewModel.listCategory}"
             customViewType="@{3000}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

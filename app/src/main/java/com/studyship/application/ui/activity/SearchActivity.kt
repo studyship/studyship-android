@@ -25,9 +25,9 @@ class SearchActivity : BaseActivity<SearchKeywordViewModel>() {
 
     private val binding by setDataBinding<ActivitySearchBinding>(R.layout.activity_search)
 
-
     private val bottomSheet by inject<CustomBottomSheetDialog> {
         parametersOf(
+            R.layout.layout_bottom_sheet,
             viewModel,
             supportFragmentManager,
             bottomSheetRecyclerAdapter,
@@ -60,10 +60,6 @@ class SearchActivity : BaseActivity<SearchKeywordViewModel>() {
         suggestAdapter.onClickListener = {
             binding.inputUserText.setText((suggestAdapter.getItems(it) as DomainSuggestResponse).suggestValue)
         }
-
-//        searchHistoryAdapter.setOnClickRemoveListener = {
-//            searchHistoryAdapter.destroyedPositionItem(it)
-//        }
 
         viewModel.showBottomSheetDialog.observe(this) {
             if (it.getContentValue()) {

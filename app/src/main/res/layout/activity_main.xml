@@ -42,18 +42,17 @@
             android:id="@+id/create_study"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:fabSize="auto"
-            app:maxImageSize="@dimen/spacing_xxx_large"
-            android:layout_marginBottom="@dimen/spacing_large"
             android:layout_marginEnd="@dimen/spacing_large"
+            android:layout_marginBottom="@dimen/spacing_large"
+            android:src="@drawable/ic_add_black_24dp"
             app:backgroundTint="@color/appbar_end_color_second"
             app:backgroundTintMode="screen"
-            android:src="@drawable/ic_add_black_24dp"
+            app:fabSize="auto"
             app:layout_constraintBottom_toTopOf="@+id/bottom_sheet_menu"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:maxImageSize="@dimen/spacing_xxx_large" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

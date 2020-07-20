@@ -51,4 +51,9 @@
     <!--    BottomSheet String  -->
     <string name="user_not_click_anything"> </string>
     <string name="user_clicked_item_size">%1$d</string>
+
+    <!--    MakeStudy BottomSheet String    -->
+    <string name="make_new_study">새로운 스터디</string>
+    <string name="temporary_storage_my_study">임시 저장 (%1$d)</string>
+    <string name="temporary_storage_my_study_empty">임시 저장</string>
 </resources>
