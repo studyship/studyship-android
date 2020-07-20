@@ -56,4 +56,8 @@
     <string name="make_new_study">새로운 스터디</string>
     <string name="temporary_storage_my_study">임시 저장 (%1$d)</string>
     <string name="temporary_storage_my_study_empty">임시 저장</string>
+
+    <!--    Make Study String   -->
+    <string name="make_study_take_one">스터디 만들기(1/2)</string>
+    <string name="next_make_study_view">다음</string>
 </resources>

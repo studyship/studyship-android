@@ -12,7 +12,7 @@
 
     <com.google.android.material.appbar.CollapsingToolbarLayout
         android:layout_width="match_parent"
-        android:layout_height="90dp">
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -22,11 +22,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="@dimen/spacing_large"
-                android:layout_marginTop="@dimen/spacing_minus_normal"
+                android:layout_alignParentTop="true"
                 android:layout_marginEnd="@dimen/spacing_x_large"
-                android:layout_marginBottom="@dimen/search_layout_bottom_spacing"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/search_layout_bottom_spacing"
                 android:layout_toStartOf="@+id/notification_img"
                 android:background="@drawable/bg_main_app_bar"
                 android:onClick="@{() -> homeFragmentViewModel.moveSearchActivity()}"
@@ -53,9 +52,9 @@
                 android:layout_width="35dp"
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/spacing_large"
                 android:layout_marginEnd="@dimen/spacing_xx_large"
-                android:layout_marginBottom="@dimen/search_layout_bottom_spacing"
                 android:src="@drawable/ic_appbar_alarm_btn" />
         </RelativeLayout>
 
