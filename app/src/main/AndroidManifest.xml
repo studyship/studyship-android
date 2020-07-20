@@ -10,6 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.activity.TemporaryStudyActivity"></activity>
+        <activity android:name=".ui.activity.CreateStudyActivity" />
         <activity
             android:name=".ui.activity.SearchActivity"
             android:theme="@style/NoActionBar" />
