@@ -60,4 +60,7 @@
     <!--    Make Study String   -->
     <string name="make_study_take_one">스터디 만들기(1/2)</string>
     <string name="next_make_study_view">다음</string>
+    <string name="user_info_string">기본정보</string>
+    <string name="study_name">제목</string>
+    <string name="go_to_category">카테고리 선택 (최대 2개)</string>
 </resources>
