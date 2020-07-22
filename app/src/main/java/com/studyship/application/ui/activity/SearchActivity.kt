@@ -18,12 +18,14 @@ import com.tsdev.presentation.SearchKeywordViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
+import com.studyship.application.BR
 import tsthec.tsstudy.domain.model.DomainSuggestResponse
 
 
-class SearchActivity : BaseActivity<SearchKeywordViewModel>() {
+class SearchActivity :
+    BaseActivity<SearchKeywordViewModel, ActivitySearchBinding>(R.layout.activity_search) {
 
-    private val binding by setDataBinding<ActivitySearchBinding>(R.layout.activity_search)
+//    private val binding by setDataBinding<ActivitySearchBinding>(R.layout.activity_search)
 
     private val bottomSheet by inject<CustomBottomSheetDialog> {
         parametersOf(
@@ -51,10 +53,9 @@ class SearchActivity : BaseActivity<SearchKeywordViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding.run {
-            lifecycleOwner = this@SearchActivity
-            executePendingBindings()
+        bind {
+            setVariable(BR.vm, viewModel)
+            setVariable(BR.activity, this@SearchActivity)
         }
 
         suggestAdapter.onClickListener = {
@@ -96,8 +97,8 @@ class SearchActivity : BaseActivity<SearchKeywordViewModel>() {
     }
 
     override fun finish() {
+//        this.customOverridePendingTransition(enterAnim = R.anim.slide_in_right)
         super.finish()
-        this.customOverridePendingTransition(enterAnim = R.anim.slide_in_left)
     }
 
     companion object {

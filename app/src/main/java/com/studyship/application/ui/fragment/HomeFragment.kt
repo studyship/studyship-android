@@ -15,7 +15,6 @@ import com.studyship.application.ui.activity.StudyApplyActivity
 import com.studyship.application.ui.adapter.CategoryRecyclerAdapter
 import com.studyship.application.ui.adapter.holder.delegate.IRecyclerDelegate
 import com.studyship.application.util.comfortableStartActivity
-import com.studyship.application.util.customOverridePendingTransition
 import com.tsdev.presentation.HomeFragmentViewModel
 import com.tsdev.presentation.ext.singleObserve
 import kotlinx.android.synthetic.main.fragment_home_layout.view.*
@@ -63,9 +62,7 @@ class HomeFragment : BaseFragment<FragmentHomeLayoutBinding>(R.layout.fragment_h
 
         homeViewModel.moveSearchActivity.singleObserve(this) {
             if (it) {
-                context?.comfortableStartActivity<SearchActivity>(customOverridePending = {
-                    activity?.customOverridePendingTransition(R.anim.slide_in_right)
-                })
+                context?.comfortableStartActivity<SearchActivity>()
             }
         }
     }

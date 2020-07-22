@@ -7,8 +7,10 @@ import androidx.navigation.ui.NavigationUI
 import com.skydoves.transformationlayout.onTransformationStartContainer
 import com.studyship.application.R
 import com.studyship.application.base.activity.BaseActivity
+import com.studyship.application.databinding.ActivityMainBinding
 import com.studyship.application.ui.adapter.MakeStudyRecyclerAdapter
 import com.studyship.application.ui.widget.CustomBottomSheetDialog
+import com.studyship.application.util.customOverridePendingTransition
 import com.studyship.application.util.loadNavigation
 import com.studyship.application.util.plusAssign
 import com.tsdev.presentation.MainActivityViewModel
@@ -17,7 +19,7 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
-class MainActivity : BaseActivity<MainActivityViewModel>() {
+class MainActivity : BaseActivity<MainActivityViewModel, ActivityMainBinding>(R.layout.activity_main) {
 
     private val makeStudyRecyclerAdapter: MakeStudyRecyclerAdapter by lazy {
         MakeStudyRecyclerAdapter()
@@ -40,7 +42,6 @@ class MainActivity : BaseActivity<MainActivityViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         onTransformationStartContainer()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         compositeDisposable +=
             backButtonBehaviorSubject.buffer(2, 1).map {

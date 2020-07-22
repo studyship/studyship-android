@@ -26,12 +26,13 @@ inline fun <reified T : Activity> Context.comfortableStartActivity(
 
 inline fun <reified T : Activity> Context.comfortableStartActivity(
     vararg params: Pair<String, Any?>,
-    intentAction: Intent.() -> Unit = {},
-    customOverridePending: () -> Unit = {}
+    intentAction: Intent.() -> Unit = {}
+//    customOverridePending: () -> Unit = {}
 ) {
     val intent = createIntent(this, T::class.java, params).apply(intentAction)
+    intentAction(intent)
     startActivity(intent)
-    customOverridePending()
+//    customOverridePending()
 }
 
 fun FragmentActivity.customOverridePendingTransition(enterAnim: Int = 0, exitAnim: Int = 0) {
