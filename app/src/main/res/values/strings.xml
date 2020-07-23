@@ -63,4 +63,9 @@
     <string name="user_info_string">기본정보</string>
     <string name="study_name">제목</string>
     <string name="go_to_category">카테고리 선택 (최대 2개)</string>
+    <string name="add_study_step_one">1</string>
+    <string name="add_study_step_two">2</string>
+    <string name="user_prefer_place">선호장소</string>
+    <string name="gather_date">모이는 날짜</string>
+    <string name="gather_hint_string">복수선택가능</string>
 </resources>

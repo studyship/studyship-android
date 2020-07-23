@@ -59,7 +59,7 @@
         style="@style/FirstStepIndicator"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="1"
+        android:text="@string/add_study_step_one"
         android:textSize="@dimen/text_large"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,8 +74,8 @@
         android:textColor="@color/main_color_black"
         android:textSize="@dimen/text_large"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/textView18"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView18"
+        app:layout_constraintStart_toEndOf="@+id/textView18"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" />
 
     <TextView
@@ -83,7 +83,7 @@
         style="@style/SecondStepIndicator"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="2"
+        android:text="@string/add_study_step_two"
         android:textSize="@dimen/text_large"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textView16"
@@ -102,8 +102,10 @@
 
 
     <LinearLayout
+        android:id="@+id/category_linear_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_normal"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -112,20 +114,103 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="8"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/spacing_large"
-            android:text="@string/go_to_category" />
-        
+            android:layout_weight="8"
+            android:text="@string/go_to_category"
+            android:textSize="@dimen/text_large" />
+
         <FrameLayout
             android:layout_width="0dp"
-            android:layout_weight="2"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_sharp_chevron_right_24"/>
+                android:src="@drawable/ic_sharp_chevron_right_24" />
         </FrameLayout>
     </LinearLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:layout_marginEnd="@dimen/spacing_normal"
+        android:background="@drawable/bg_divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category_linear_layout" />
+
+    <LinearLayout
+        android:id="@+id/gather_place_linear_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/spacing_large"
+            android:layout_weight="8"
+            android:text="@string/user_prefer_place"
+            android:textSize="@dimen/text_large" />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_sharp_chevron_right_24" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/second_divider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:layout_marginEnd="@dimen/spacing_normal"
+        android:background="@drawable/bg_divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gather_place_linear_layout" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_margin="@dimen/spacing_large"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/second_divider">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gather_date"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/main_color_black" />
+
+        <TextView
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gather_hint_string" />
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,4 +6,9 @@
     <color name="default_text_color">#B3B3B3</color>
 
     <color name="selected_category_text_color">#FFFFFF</color>
+
+    <color name="user_gather_non_selected_color">#E0E0E0</color>
+    <color name="user_gather_selected_color">#FFC545</color>
+    <color name="user_gather_non_selected_text_color">#6C6B6B</color>
+    <color name="user_gather_selected_text_color">#FFFFFF</color>
 </resources>
