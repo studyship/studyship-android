@@ -5,9 +5,11 @@
     android:orientation="vertical">
 
     <TextView
-        android:background="@drawable/bg_user_gather_date_selector"
-        android:textColor=""
         android:id="@+id/date_string"
+        android:layout_marginStart="13dp"
+        android:padding="15dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_user_gather_date_selector"
+        android:textColor="@drawable/bg_user_gather_date_text_selector" />
 </LinearLayout>

@@ -190,9 +190,10 @@
         app:layout_constraintTop_toBottomOf="@+id/gather_place_linear_layout" />
 
     <LinearLayout
+        android:id="@+id/gather_hint_linea_layout"
         android:layout_width="0dp"
-        android:layout_margin="@dimen/spacing_large"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/second_divider">
@@ -201,16 +202,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/gather_date"
-            android:textStyle="bold"
+            android:textColor="@color/main_color_black"
             android:textSize="@dimen/text_normal"
-            android:textColor="@color/main_color_black" />
+            android:textStyle="bold" />
 
         <TextView
-            android:layout_marginStart="@dimen/spacing_normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal"
             android:text="@string/gather_hint_string" />
     </LinearLayout>
+
+    <com.tsdev.feat.widget.layout.HorizontalGatherDateLayout
+        android:id="@+id/gather_date_layout"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gather_hint_linea_layout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
