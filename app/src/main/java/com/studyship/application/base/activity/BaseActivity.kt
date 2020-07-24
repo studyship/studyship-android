@@ -1,5 +1,7 @@
 package com.studyship.application.base.activity
 
+import android.os.Bundle
+import android.os.PersistableBundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -16,9 +18,12 @@ import tsthec.tsstudy.domain.model.DomainCategory
 import tsthec.tsstudy.local.settings.SEARCH_HISTORY
 import tsthec.tsstudy.local.settings.UserSearchHistoryPreference
 
-abstract class BaseActivity<VM : ViewModel> : AppCompatActivity() {
+abstract class BaseActivity<VM : ViewModel, VIEW_BIND : ViewDataBinding>(@LayoutRes private val layout: Int) :
+    AppCompatActivity() {
 
-    abstract val viewModel: VM
+    protected lateinit var binding: VIEW_BIND
+        private set
+    protected abstract val viewModel: VM
 
     protected val compositeDisposable = CompositeDisposable()
 
@@ -26,16 +31,26 @@ abstract class BaseActivity<VM : ViewModel> : AppCompatActivity() {
 
     protected val mapper: Mapper<DomainCategory, Category> by inject()
 
-    inline fun <reified DATA_BINDING : ViewDataBinding> setDataBinding(@LayoutRes layout: Int): Lazy<DATA_BINDING> =
-        lazy {
-            DataBindingUtil.setContentView<DATA_BINDING>(this, layout)
-                .apply {
-                    setVariable(BR.vm, viewModel)
-                    setVariable(BR.activity, this@BaseActivity)
-                    lifecycleOwner = this@BaseActivity
-                    executePendingBindings()
-                }
-        }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = DataBindingUtil.setContentView(this, layout)
+        binding.lifecycleOwner = this
+//        binding.executePendingBindings()
+    }
+
+    //    inline fun <reified DATA_BINDING : ViewDataBinding> setDataBinding(@LayoutRes layout: Int): Lazy<DATA_BINDING> =
+//        lazy {
+//            DataBindingUtil.setContentView<DATA_BINDING>(this, layout)
+//                .apply {
+//                    setVariable(BR.vm, viewModel)
+//                    setVariable(BR.activity, this@BaseActivity)
+//                    lifecycleOwner = this@BaseActivity
+//                    executePendingBindings()
+//                }
+//        }
+    protected fun bind(bindSet: VIEW_BIND.() -> Unit) {
+        binding.run(bindSet)
+    }
 
     override fun onDestroy() {
         compositeDisposable.clear()

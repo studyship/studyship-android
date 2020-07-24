@@ -67,6 +67,9 @@
     <dimen name="custom_edit_text_round">5dp</dimen>
 
     <!--    Search Linear Layout Margin   -->
-    <dimen name="search_layout_bottom_spacing">38dp</dimen>
-    <dimen name="search_title_top_spacing">38dp</dimen>
+    <dimen name="search_layout_bottom_spacing">10dp</dimen>
+    <dimen name="search_title_top_spacing">10dp</dimen>
+
+    <!--    Add Study Layout Margin -->
+    <dimen name="user_info_top_margin">20dp</dimen>
 </resources>

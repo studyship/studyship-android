@@ -7,8 +7,11 @@ import com.studyship.application.R
 import com.studyship.application.base.BaseRecyclerViewAdapter
 import com.studyship.application.base.BaseRecyclerViewHolder
 import com.studyship.application.data.source.RecyclerItemSource
+import com.studyship.application.ui.activity.CreateStudyActivity
+import com.studyship.application.ui.activity.TemporaryStudyActivity
 import com.studyship.application.ui.adapter.holder.addstudy.MakeStudyRecyclerViewHolder
 import com.studyship.application.ui.adapter.holder.addstudy.TemporaryStorageStudyRecyclerViewHolder
+import com.studyship.application.util.comfortableStartActivity
 import tsthec.tsstudy.domain.model.DomainMakeStudyResponse
 import java.lang.IllegalArgumentException
 
@@ -16,8 +19,15 @@ class MakeStudyRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.Recy
 
     private val makeStudyListItem = mutableListOf<RecyclerItemSource.RecyclerItem>()
 
-    private val onMoveClickListener: (Context, String) -> Unit = { context, s ->
-//        it.comfortableStartActivity<>()
+    private val onMoveClickListener: (Context, String) -> Unit = { context, className ->
+        when(className) {
+            MAKE_STUDY_RECYCLER_VIEW_HOLDER_CLASSNAME -> {
+                context.comfortableStartActivity<CreateStudyActivity>()
+            }
+            TEMPORARY_STORAGE_STUDY_RECYCLER_VIEW_HOLDER -> {
+                context.comfortableStartActivity<TemporaryStudyActivity>()
+            }
+        }
     }
 
     override fun createBindingViewHolder(holder: BaseRecyclerViewHolder<*, *>, position: Int) {
@@ -91,5 +101,9 @@ class MakeStudyRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.Recy
         private const val CREATE_STUDY = 4000
 
         private const val TEMPORARY_STORAGE_STUDY = 4001
+
+        private const val MAKE_STUDY_RECYCLER_VIEW_HOLDER_CLASSNAME = "MakeStudyRecyclerViewHolder"
+
+        private const val TEMPORARY_STORAGE_STUDY_RECYCLER_VIEW_HOLDER = "TemporaryStorageStudyRecyclerViewHolder"
     }
 }

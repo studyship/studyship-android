@@ -14,6 +14,7 @@ class TemporaryStorageStudyRecyclerViewHolder(
     init {
         containerView.setOnClickListener {
             Log.e("ClassName", this::class.simpleName ?: "")
+            onMoveClickListener(it.context, this::class.simpleName ?: "")
         }
     }
 }

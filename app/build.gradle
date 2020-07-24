@@ -107,7 +107,6 @@ dependencies {
     implementation deps.library.spotlight
 
 
-
     //multi-module
     implementation project(":feat")
     implementation project(":data")
@@ -115,6 +114,7 @@ dependencies {
     implementation project(':domain')
     implementation project(':local')
     implementation project(':remote')
+    implementation project(':constant')
 }
 androidExtensions {
 

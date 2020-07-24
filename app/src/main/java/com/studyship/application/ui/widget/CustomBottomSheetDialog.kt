@@ -64,7 +64,10 @@ class CustomBottomSheetDialog(
         BottomSheetDialog(requireContext(), theme)
 
     fun showDialogWithData() {
-        show(supportFragmentManager, this.tag)
+        //중복 추가 방지.
+        if (!isAdded) {
+            show(supportFragmentManager, this.tag)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -6,14 +6,15 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <!--        <item name="android:windowDrawsSystemBarBackgrounds">true</item>-->
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <!--        <item name="android:windowTranslucentStatus">true</item>-->
     </style>
 
 
     <style name="NoActionBar" parent="AppTheme">
-        <item name="windowActionBar">true</item>
+        <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
@@ -60,4 +61,23 @@
     </style>
 
     <style name="iOSBottomSheetDialogTheme" parent="iOSBottomSheetDialog" />
+
+    <!--    Create Study Text Style     -->
+    <style name="CreateStudyRoundIndicator" parent="Widget.AppCompat.TextView">
+        <item name="android:paddingTop">@dimen/spacing_mini</item>
+        <item name="android:paddingEnd">@dimen/spacing_normal</item>
+        <item name="android:paddingStart">@dimen/spacing_normal</item>
+        <item name="android:paddingBottom">@dimen/spacing_mini</item>
+        <item name="android:textColor">@color/main_color_white</item>
+        <item name="android:layout_marginStart">@dimen/spacing_large</item>
+        <item name="android:layout_marginTop">@dimen/spacing_large</item>
+    </style>
+
+    <style name="FirstStepIndicator" parent="CreateStudyRoundIndicator">
+        <item name="android:background">@drawable/bg_make_study_indicator_selector</item>
+    </style>
+
+    <style name="SecondStepIndicator" parent="CreateStudyRoundIndicator">
+        <item name="android:background">@drawable/bg_make_study_indicator_non_focus</item>
+    </style>
 </resources>
