@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.tsdev.feat.R
+import com.tsdev.feat.widget.layout.base.BaseHorizontalScrollView
 import kotlinx.android.synthetic.main.layout_category_button.view.*
 
 typealias OnCategoryClickListener = (Int) -> Unit
@@ -18,53 +19,27 @@ class HorizontalCategoryListView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet,
     defAttrs: Int = 0
-) : HorizontalScrollView(context, attrs, defAttrs) {
+) : BaseHorizontalScrollView(context, attrs, defAttrs) {
 
-    lateinit var setCategoryOnClickListener: OnCategoryClickListener
+    init {
+        cacheCategoryButtons.clear()
+    }
 
-    private lateinit var selectedView: View
+    override lateinit var setCategoryOnClickListener: OnCategoryClickListener
 
-    private val cacheCategoryButtons = mutableListOf<View>()
+    override fun setItemView(value: String, items: List<String>, position: Int): View {
+        return LayoutInflater.from(context)
+            .inflate(R.layout.layout_category_button, this, false).apply {
+                tv_category_name.text = value
+            }
+    }
 
-    private val defaultParentView: LinearLayout = LinearLayout(context).apply {
+    override val defaultParentView: LinearLayout = LinearLayout(context).apply {
         orientation = LinearLayout.HORIZONTAL
         gravity = Gravity.START
     }
 
-    fun setCategory(names: List<String>) {
-        if (cacheCategoryButtons.isEmpty()) {
-            val customButtonView = names.mapIndexed { index, name ->
-                val categoryButton =
-                    LayoutInflater.from(context)
-                        .inflate(R.layout.layout_category_button, this, false)
-                categoryButton.setOnClickListener {
-                    if (::selectedView.isInitialized) {
-                        selectedView.isSelected = false
-                    }
-                    selectedView = it
-                    it.isSelected = true
-                    setCategoryOnClickListener(index)
-                }
-                categoryButton.run {
-                    tv_category_name.text = name
-                }
-                cacheCategoryButtons.add(categoryButton)
-                categoryButton
-            }
-
-            customButtonView.forEach(defaultParentView::addView)
-        }
-
-        if (childCount < HAS_CHILD) {
-            addView(defaultParentView)
-        }
-    }
-
     fun initSelected() {
         cacheCategoryButtons[0].performClick()
-    }
-
-    companion object {
-        private const val HAS_CHILD = 1
     }
 }

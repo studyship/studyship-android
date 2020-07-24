@@ -28,7 +28,7 @@ fun HorizontalCategoryListView.setBindingAdapter(
     }
 
     items?.let {
-        setCategory(it)
+        setLayoutData(it)
         initSelected()
     }
 }

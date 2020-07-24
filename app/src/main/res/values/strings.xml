@@ -68,4 +68,8 @@
     <string name="user_prefer_place">선호장소</string>
     <string name="gather_date">모이는 날짜</string>
     <string name="gather_hint_string">복수선택가능</string>
+    <string name="user_want_study_level">레벨</string>
+    <string name="user_want_study_time">모임 시간</string>
+    <string name="user_how_many">인원</string>
+    <string name="when_deadline_setting">언제 멤버 모집을 마감할까요?</string>
 </resources>

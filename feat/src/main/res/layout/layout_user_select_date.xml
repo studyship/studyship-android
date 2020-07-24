@@ -2,14 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
     <TextView
         android:id="@+id/date_string"
-        android:layout_marginStart="13dp"
-        android:padding="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
         android:background="@drawable/bg_user_gather_date_selector"
+        android:padding="15dp"
         android:textColor="@drawable/bg_user_gather_date_text_selector" />
+
+    <TextView
+        android:id="@+id/tv_divide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="or"
+        android:textColor="@color/user_gather_non_selected_text_color"
+        android:visibility="gone" />
 </LinearLayout>

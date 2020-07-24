@@ -2,6 +2,7 @@ package com.tsdev.feat.widget.layout
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +17,7 @@ class HorizontalGatherDateLayout @JvmOverloads constructor(
     defAttrs: Int = 0
 ) : HorizontalScrollView(context, attrs, defAttrs) {
 
-    val userSelectedDate = mutableListOf<String>()
+    val userSelectedDate = mutableMapOf<Int, String>()
 
     private val defaultParentView: LinearLayout by lazy {
         LinearLayout(context).apply {
@@ -36,11 +37,11 @@ class HorizontalGatherDateLayout @JvmOverloads constructor(
                 ).apply {
                     date_string.text = value
                     setOnClickListener { view ->
-                        userSelectedDate.getOrNull(position)?.run {
-                            userSelectedDate.removeAt(userSelectedDate.indexOf(value))
+                        userSelectedDate[position]?.run {
+                            userSelectedDate.remove(position)
                             view.isSelected = false
                         } ?: run {
-                            userSelectedDate.add(value)
+                            userSelectedDate[position] = value
                             view.isSelected = true
                         }
                     }
