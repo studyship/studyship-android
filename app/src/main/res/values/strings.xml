@@ -59,9 +59,13 @@
 
     <!--    Make Study String   -->
     <string name="make_study_take_one">스터디 만들기(1/2)</string>
+    <string name="make_study_take_two">스터디 만들기(2/2)</string>
     <string name="next_make_study_view">다음</string>
+    <string name="make_study_before_step">이전</string>
+    <string name="finish_make_study">완료</string>
     <string name="user_info_string">기본정보</string>
     <string name="study_name">제목</string>
+    <string name="study_goal_hint_string">예: 에이비엔비 UI 분석</string>
     <string name="go_to_category">카테고리 선택 (최대 2개)</string>
     <string name="add_study_step_one">1</string>
     <string name="add_study_step_two">2</string>
@@ -72,4 +76,9 @@
     <string name="user_want_study_time">모임 시간</string>
     <string name="user_how_many">인원</string>
     <string name="when_deadline_setting">언제 멤버 모집을 마감할까요?</string>
+    <string name="make_study_detail_info">상세설명</string>
+    <string name="study_goal_label">스터디목표(30자 이내)</string>
+    <string name="study_description">스터디 설명</string>
+    <string name="study_tendency">스터디 성향</string>
+    <string name="study_description_length_string">%1$d / 500</string>
 </resources>

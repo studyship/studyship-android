@@ -7,7 +7,7 @@ import com.studyship.application.R
 import com.studyship.application.base.BaseRecyclerViewAdapter
 import com.studyship.application.base.BaseRecyclerViewHolder
 import com.studyship.application.data.source.RecyclerItemSource
-import com.studyship.application.ui.activity.CreateStudyActivity
+import com.studyship.application.ui.activity.CreateStudyStepOneActivity
 import com.studyship.application.ui.activity.TemporaryStudyActivity
 import com.studyship.application.ui.adapter.holder.addstudy.MakeStudyRecyclerViewHolder
 import com.studyship.application.ui.adapter.holder.addstudy.TemporaryStorageStudyRecyclerViewHolder
@@ -22,7 +22,7 @@ class MakeStudyRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.Recy
     private val onMoveClickListener: (Context, String) -> Unit = { context, className ->
         when(className) {
             MAKE_STUDY_RECYCLER_VIEW_HOLDER_CLASSNAME -> {
-                context.comfortableStartActivity<CreateStudyActivity>()
+                context.comfortableStartActivity<CreateStudyStepOneActivity>()
             }
             TEMPORARY_STORAGE_STUDY_RECYCLER_VIEW_HOLDER -> {
                 context.comfortableStartActivity<TemporaryStudyActivity>()

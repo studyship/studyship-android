@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -23,6 +24,9 @@ android {
         }
     }
 
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -37,6 +41,12 @@ dependencies {
     //flexbox
     api 'com.google.android:flexbox:2.0.1'
 
+    //recyclerview
+    implementation deps.androidx.recyclerview
+
     //data
     implementation project (':data')
+
+    //content
+    implementation project (':constant')
 }
