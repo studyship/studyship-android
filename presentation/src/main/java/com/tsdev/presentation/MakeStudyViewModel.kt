@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.tsdev.presentation.base.BaseViewModel
+import com.tsdev.presentation.ext.Event
 import com.tsdev.presentation.ext.SingleEvent
 import com.tsdev.presentation.ext.SingleMutableEvent
 import com.tsdev.presentation.ext.setObservable
@@ -34,6 +35,12 @@ class MakeStudyViewModel : BaseViewModel() {
     val moveActivityLiveData: SingleEvent<String>
         get() = _moveActivityLiveData
 
+    private val _moveNextStepActivity = SingleMutableEvent<Boolean>()
+
+    val moveNextStepActivity: SingleEvent<Boolean>
+        get() = _moveNextStepActivity
+
+
     init {
         _userMustWriteLiveData.setObservable(_studyNameLiveData, _userCategorySelectedList) {
             isAllWriteUserRequireList()
@@ -50,5 +57,9 @@ class MakeStudyViewModel : BaseViewModel() {
             _moveActivityLiveData.event = ""
             _moveActivityLiveData.event = activityName
         } ?: run { _moveActivityLiveData.event = activityName }
+    }
+
+    fun moveNextStep() {
+        _moveNextStepActivity.value = Event(true)
     }
 }

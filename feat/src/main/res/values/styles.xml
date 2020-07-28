@@ -8,4 +8,6 @@
         <item name="android:paddingTop">@dimen/category_item_bottom_padding</item>
         <item name="android:paddingBottom">@dimen/category_item_bottom_padding</item>
     </style>
+
+
 </resources>

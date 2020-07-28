@@ -13,7 +13,7 @@ class HorizontalButtonLayout @JvmOverloads constructor(
 
     init {
 
-        context.resources.getStringArray(R.array.sign_up_array).forEachIndexed { index, s ->
+        context.resources.getStringArray(R.array.sign_up_array).forEachIndexed { _, _ ->
 
         }
     }

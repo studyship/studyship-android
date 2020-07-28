@@ -10,6 +10,7 @@ import com.tsdev.data.source.UserSearchHistory
 import tsthec.tsstudy.domain.model.DomainMakeStudyResponse
 import tsthec.tsstudy.domain.model.DomainSearchUserHistory
 
+@Suppress("UNCHECKED_CAST")
 abstract class BaseRecyclerViewHolder<ITEM : Any?, VIEW_BINDING : ViewDataBinding>(layout: View) :
     AndroidRecyclerViewHolder(layout) {
 

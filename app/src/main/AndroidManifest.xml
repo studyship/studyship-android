@@ -10,13 +10,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.UserPreferPlaceActivity"></activity>
+        <activity
+            android:name=".ui.activity.createstudy.CreateStudyStepTwoActivity"
+            android:theme="@style/NoActionBar" />
+        <activity android:name=".ui.activity.UserPreferPlaceActivity" />
         <activity android:name=".ui.activity.SelectedCategoryActivity" />
         <activity
             android:name=".ui.activity.TemporaryStudyActivity"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".ui.activity.CreateStudyActivity"
+            android:name=".ui.activity.createstudy.CreateStudyStepOneActivity"
             android:theme="@style/NoActionBar" />
         <activity
             android:name=".ui.activity.SearchActivity"

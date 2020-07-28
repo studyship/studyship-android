@@ -1,4 +1,4 @@
-package com.studyship.application.ui.activity
+package com.studyship.application.ui.activity.createstudy
 
 import android.os.Bundle
 import android.util.Log
@@ -7,13 +7,15 @@ import com.studyship.application.BR
 import com.studyship.application.R
 import com.studyship.application.base.activity.BaseActivity
 import com.studyship.application.databinding.ActivityCreateStudyBinding
+import com.studyship.application.ui.activity.SelectedCategoryActivity
+import com.studyship.application.ui.activity.UserPreferPlaceActivity
 import com.studyship.application.util.comfortableStartActivity
 import com.tsdev.presentation.MakeStudyViewModel
 import kotlinx.android.synthetic.main.activity_create_study.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import tsthec.tsstudy.constant.SimpleClassName
 
-class CreateStudyActivity :
+class CreateStudyStepOneActivity :
     BaseActivity<MakeStudyViewModel, ActivityCreateStudyBinding>(R.layout.activity_create_study) {
 
     override val viewModel: MakeStudyViewModel by viewModel()
@@ -51,6 +53,12 @@ class CreateStudyActivity :
         user_many_horizontal.setLayoutData(listOf("2명", "3명", "4명", "5명이상"))
         user_many_horizontal.setCategoryOnClickListener = {
             Log.e("POSITION", it.toString())
+        }
+
+        viewModel.moveNextStepActivity.observe(this) {
+            if(it.getContentValue()) {
+                comfortableStartActivity<CreateStudyStepTwoActivity>()
+            }
         }
     }
 }
