@@ -7,7 +7,7 @@ import com.studyship.application.R
 import com.studyship.application.base.BaseRecyclerViewAdapter
 import com.studyship.application.base.BaseRecyclerViewHolder
 import com.studyship.application.data.source.RecyclerItemSource
-import com.studyship.application.ui.activity.CreateStudyStepOneActivity
+import com.studyship.application.ui.activity.createstudy.CreateStudyStepOneActivity
 import com.studyship.application.ui.activity.TemporaryStudyActivity
 import com.studyship.application.ui.adapter.holder.addstudy.MakeStudyRecyclerViewHolder
 import com.studyship.application.ui.adapter.holder.addstudy.TemporaryStorageStudyRecyclerViewHolder

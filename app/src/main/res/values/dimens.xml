@@ -72,4 +72,6 @@
 
     <!--    Add Study Layout Margin -->
     <dimen name="user_info_top_margin">20dp</dimen>
+
+    <integer name="study_description_max_line">500</integer>
 </resources>

@@ -81,4 +81,5 @@
     <string name="study_description">스터디 설명</string>
     <string name="study_tendency">스터디 성향</string>
     <string name="study_description_length_string">%1$d / 500</string>
+    <string name="study_tag">태그 (최대 5개)</string>
 </resources>

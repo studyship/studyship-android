@@ -19,7 +19,7 @@
             android:name=".ui.activity.TemporaryStudyActivity"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".ui.activity.CreateStudyStepOneActivity"
+            android:name=".ui.activity.createstudy.CreateStudyStepOneActivity"
             android:theme="@style/NoActionBar" />
         <activity
             android:name=".ui.activity.SearchActivity"

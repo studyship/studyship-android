@@ -1,4 +1,4 @@
-package com.studyship.application.ui.activity
+package com.studyship.application.ui.activity.createstudy
 
 import android.os.Bundle
 import android.util.Log
@@ -7,7 +7,8 @@ import com.studyship.application.BR
 import com.studyship.application.R
 import com.studyship.application.base.activity.BaseActivity
 import com.studyship.application.databinding.ActivityCreateStudyBinding
-import com.studyship.application.ui.activity.createstudy.CreateStudyStepTwoActivity
+import com.studyship.application.ui.activity.SelectedCategoryActivity
+import com.studyship.application.ui.activity.UserPreferPlaceActivity
 import com.studyship.application.util.comfortableStartActivity
 import com.tsdev.presentation.MakeStudyViewModel
 import kotlinx.android.synthetic.main.activity_create_study.*
