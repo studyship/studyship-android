@@ -1,5 +1,6 @@
 package com.studyship.application.ui.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.studyship.application.R
@@ -51,6 +52,32 @@ class SearchHistoryRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.
         searchHistoryItems.add(RecyclerItemSource.RecyclerItem(viewType, item))
     }
 
+    fun isImplicateItem(searchKeyword: String?): Boolean {
+        searchHistoryItems.forEach {
+            if ((it.item as DomainSearchUserHistory).userKeywords == searchKeyword) {
+                return true
+            }
+        }
+        return false
+    }
+
+    fun setMoveItemAtFirstIndex(viewType: Int, item: Any?, searchKeyword: String) {
+        fun getPosition(searchKeyword: String): Int {
+            searchHistoryItems.forEachIndexed { index, recyclerItem ->
+                if ((recyclerItem.item as DomainSearchUserHistory).userKeywords == searchKeyword) {
+                    return index - 1
+                }
+            }
+//            return searchHistoryItems.lastIndex
+            return searchHistoryItems.lastIndex
+        }
+
+        val searchHistoryFirstData = searchHistoryItems[0]
+        searchHistoryItems[0] = RecyclerItemSource.RecyclerItem(viewType, item)
+        Log.e("POSITION", getPosition(searchKeyword).toString())
+        searchHistoryItems[getPosition(searchKeyword)] = searchHistoryFirstData
+    }
+
     override fun addItems(viewType: Int, itemList: List<Any>?) {
         itemList?.forEach {
             addItem(viewType, it)
@@ -61,7 +88,7 @@ class SearchHistoryRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.
         searchHistoryItems.clear()
     }
 
-    override fun getItems(position: Int): Any? = searchHistoryItems[position]
+    override fun getItems(position: Int): Any? = searchHistoryItems[position].item
 
     override fun destroyedPositionItem(position: Int) {
         searchHistoryItems.removeAt(position)

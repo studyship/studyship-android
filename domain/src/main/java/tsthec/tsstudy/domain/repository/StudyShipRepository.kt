@@ -10,5 +10,5 @@ interface StudyShipRepository : Repository {
 
     fun setUserSearchHistory(keywords: DomainSearchUserHistory): Completable
 
-    fun removeUserSearchHistory(position: DomainSearchUserHistory)
+    fun removeUserSearchHistory(position: DomainSearchUserHistory): Completable
 }

@@ -22,6 +22,7 @@ internal class StudyShipLocalDataSourceImpl(private val searchHistoryDAO: UserSe
     }
 
     override fun removeUserSearchHistory(position: UserSearchHistory): Completable {
-        return searchHistoryDAO.deleteUserSearchHistory(UserSearchLocalMapper.mapToEntity(position))
+        Log.e("delete", position.toString())
+        return searchHistoryDAO.deleteUserSearchHistory(UserSearchLocalMapper.mapToEntity(position).searchKeyword)
     }
 }

@@ -1,5 +1,6 @@
 package tsthec.tsstudy.domain.usecase
 
+import io.reactivex.Completable
 import io.reactivex.Maybe
 import io.reactivex.Scheduler
 import io.reactivex.schedulers.Schedulers
@@ -19,11 +20,7 @@ class GetStudyShipSharedPreferenceUseCase(
         }
     }
 
-//    override fun loadUserSearchHistory(): Maybe<List<DomainSearchUserHistory>> {
-//        return studyShipRepository.getLoadUserSearchHistory()
-//    }
-
-    override fun removeUserSearchHistory(item: DomainSearchUserHistory) {
-        studyShipRepository.removeUserSearchHistory(item)
+    override fun removeUserSearchHistory(item: DomainSearchUserHistory): Completable {
+        return studyShipRepository.removeUserSearchHistory(item)
     }
 }

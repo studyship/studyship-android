@@ -65,7 +65,16 @@ fun RecyclerView.setSaveHistoryBindingAdapter(
         }
     } else {
         if (searchKeyword != null && searchKeyword.userKeywords.isNotEmpty()) {
-            searchHistoryAdapter?.addItem(SEARCH_HISTORY_VIEW_TYPE, searchKeyword)
+
+            if (searchHistoryAdapter?.isImplicateItem(searchKeyword.userKeywords) == true) {
+                searchHistoryAdapter.setMoveItemAtFirstIndex(
+                    SEARCH_HISTORY_VIEW_TYPE,
+                    searchKeyword,
+                    searchKeyword.userKeywords
+                )
+            } else {
+                searchHistoryAdapter?.addItem(SEARCH_HISTORY_VIEW_TYPE, searchKeyword)
+            }
         }
     }
 

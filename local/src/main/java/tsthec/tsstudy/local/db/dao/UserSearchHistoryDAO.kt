@@ -13,6 +13,6 @@ interface UserSearchHistoryDAO {
     @Query("Select * from userSearchLocalHistory")
     fun loadUserSearchHistory(): Maybe<List<UserSearchLocalHistory>>
 
-    @Query("Delete from userSearchLocalHistory Where keywords = :item")
-    fun deleteUserSearchHistory(item: UserSearchLocalHistory): Completable
+    @Query("Delete from userSearchLocalHistory Where keywords = :keyword")
+    fun deleteUserSearchHistory(keyword: String): Completable
 }
