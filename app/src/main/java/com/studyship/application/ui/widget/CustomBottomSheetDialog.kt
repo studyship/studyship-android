@@ -17,6 +17,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.studyship.application.R
 import com.studyship.application.databinding.LayoutBottomSheetBinding
 import com.studyship.application.databinding.LayoutMakeStudyBottomSheetBinding
+import com.tsdev.presentation.HomeFragmentViewModel
 import com.tsdev.presentation.MainActivityViewModel
 import com.tsdev.presentation.SearchKeywordViewModel
 import kotlinx.android.synthetic.main.layout_bottom_sheet.view.*
@@ -49,7 +50,7 @@ class CustomBottomSheetDialog(
                     it.executePendingBindings()
                 }
                 R.layout.layout_make_study_bottom_sheet -> {
-                    it.setVariable(BR.mainViewModel, viewModel as MainActivityViewModel)
+                    it.setVariable(BR.homeViewModel, viewModel as HomeFragmentViewModel)
                     it.lifecycleOwner = this.viewLifecycleOwner
                     it.executePendingBindings()
                 }

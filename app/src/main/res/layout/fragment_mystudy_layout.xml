@@ -9,8 +9,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="@color/main_color_white"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/main_color_white">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout3"
@@ -36,20 +36,55 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout3" />
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout3"
+            app:tabIndicatorColor="@color/main_color_black"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="@dimen/spacing_mini"
+            app:tabMode="auto"
+            app:tabSelectedTextColor="@color/main_color_black"
+            app:tabTextAppearance="@style/my_tab"
+            app:tabTextColor="@color/add_study_activity_divider_color">
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="My_study"
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/my_study_joined" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/my_study_own" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/my_study_already" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/my_study_bookmark" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/my_study_temporary" />
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/my_study_view_pager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

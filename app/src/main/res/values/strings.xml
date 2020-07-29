@@ -82,4 +82,11 @@
     <string name="study_tendency">스터디 성향</string>
     <string name="study_description_length_string">%1$d / 500</string>
     <string name="study_tag">태그 (최대 5개)</string>
+
+    <!--    My Study Page   -->
+    <string name="my_study_joined">가입한</string>
+    <string name="my_study_own">내가 만든</string>
+    <string name="my_study_already">신청한</string>
+    <string name="my_study_bookmark">북마크</string>
+    <string name="my_study_temporary">임시저장</string>
 </resources>

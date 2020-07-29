@@ -1,6 +1,7 @@
 package com.studyship.application.ui.activity
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -10,7 +11,6 @@ import com.studyship.application.base.activity.BaseActivity
 import com.studyship.application.databinding.ActivityMainBinding
 import com.studyship.application.ui.adapter.MakeStudyRecyclerAdapter
 import com.studyship.application.ui.widget.CustomBottomSheetDialog
-import com.studyship.application.util.customOverridePendingTransition
 import com.studyship.application.util.loadNavigation
 import com.studyship.application.util.plusAssign
 import com.tsdev.presentation.MainActivityViewModel
@@ -19,21 +19,8 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
-class MainActivity : BaseActivity<MainActivityViewModel, ActivityMainBinding>(R.layout.activity_main) {
-
-    private val makeStudyRecyclerAdapter: MakeStudyRecyclerAdapter by lazy {
-        MakeStudyRecyclerAdapter()
-    }
-
-    private val bottomSheet by inject<CustomBottomSheetDialog> {
-        parametersOf(
-            R.layout.layout_make_study_bottom_sheet,
-            viewModel,
-            supportFragmentManager,
-            makeStudyRecyclerAdapter,
-            R.style.iOSBottomSheetDialogTheme
-        )
-    }
+class MainActivity :
+    BaseActivity<MainActivityViewModel, ActivityMainBinding>(R.layout.activity_main) {
 
     override val viewModel: MainActivityViewModel by viewModel()
 
@@ -51,10 +38,10 @@ class MainActivity : BaseActivity<MainActivityViewModel, ActivityMainBinding>(R.
                     finish()
                 else
                     Toast.makeText(
-                            this,
-                            getString(R.string.back_button_click_message),
-                            Toast.LENGTH_LONG
-                        )
+                        this,
+                        getString(R.string.back_button_click_message),
+                        Toast.LENGTH_LONG
+                    )
                         .show()
             }
 
@@ -62,8 +49,6 @@ class MainActivity : BaseActivity<MainActivityViewModel, ActivityMainBinding>(R.
         navHostFragment?.let {
             NavigationUI.setupWithNavController(bottom_sheet_menu, it.navController)
         }
-
-        create_study.setOnClickListener { bottomSheet.showDialogWithData() }
     }
 
     override fun onBackPressed() {

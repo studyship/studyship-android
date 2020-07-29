@@ -1,54 +1,63 @@
 package com.studyship.application.ui.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import com.skydoves.transformationlayout.TransformationLayout
 import com.studyship.application.R
+import com.studyship.application.BR
 import com.studyship.application.base.fragment.BaseFragment
 import com.studyship.application.databinding.FragmentHomeLayoutBinding
 import com.studyship.application.ui.activity.SearchActivity
 import com.studyship.application.ui.activity.SignInActivity
 import com.studyship.application.ui.activity.StudyApplyActivity
 import com.studyship.application.ui.adapter.CategoryRecyclerAdapter
+import com.studyship.application.ui.adapter.MakeStudyRecyclerAdapter
 import com.studyship.application.ui.adapter.holder.delegate.IRecyclerDelegate
+import com.studyship.application.ui.widget.CustomBottomSheetDialog
 import com.studyship.application.util.comfortableStartActivity
 import com.tsdev.presentation.HomeFragmentViewModel
 import com.tsdev.presentation.ext.singleObserve
 import kotlinx.android.synthetic.main.fragment_home_layout.view.*
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class HomeFragment : BaseFragment<FragmentHomeLayoutBinding>(R.layout.fragment_home_layout),
     IRecyclerDelegate {
-
-    override lateinit var viewDataBinding: FragmentHomeLayoutBinding
-
     private val homeViewModel by viewModel<HomeFragmentViewModel>()
+
+    private val bottomSheet by inject<CustomBottomSheetDialog> {
+        parametersOf(
+            R.layout.layout_make_study_bottom_sheet,
+            homeViewModel,
+            parentFragmentManager,
+            makeStudyRecyclerAdapter,
+            R.style.iOSBottomSheetDialogTheme
+        )
+    }
+
+    private val makeStudyRecyclerAdapter: MakeStudyRecyclerAdapter by lazy {
+        MakeStudyRecyclerAdapter()
+    }
+
 
     private val homeCategoryRecyclerAdapter: CategoryRecyclerAdapter by lazy {
         CategoryRecyclerAdapter(this)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        viewDataBinding = onCreateViewBinding(inflater, container)
-
-        viewDataBinding.homeFragmentViewModel = homeViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewDataBinding.run {
+            homeFragmentViewModel = homeViewModel
             lifecycleOwner = viewLifecycleOwner
             executePendingBindings()
         }
 
-        return viewDataBinding.root
-    }
+        bind {
+            setVariable(BR.customBottomNavigation, bottomSheet)
+        }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         viewDataBinding.root.category_recycler_view.run {
             layoutManager = GridLayoutManager(this.context, 3)
             adapter = homeCategoryRecyclerAdapter

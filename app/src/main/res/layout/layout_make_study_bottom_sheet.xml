@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="mainViewModel"
-            type="com.tsdev.presentation.MainActivityViewModel" />
+            name="homeViewModel"
+            type="com.tsdev.presentation.HomeFragmentViewModel" />
     </data>
 
     <RelativeLayout
@@ -16,7 +16,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/make_study_recycler_view"
-            makeStudyViewList="@{mainViewModel.makeStudyList}"
+            makeStudyViewList="@{homeViewModel.makeStudyList}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
