@@ -162,13 +162,14 @@ class SearchKeywordViewModel(private val searchUseCase: CompletableUseCase<Domai
     }
 
     val removeUserSearchHistory: (DomainSearchUserHistory) -> Unit = { position ->
-        searchUseCase.removeUserSearchHistory(position)
+        disposable.add(searchUseCase.removeUserSearchHistory(position)
             .subscribe({
                 Log.e("SUCCESS", "성공")
             }
                 , {
                     it.printStackTrace()
                 })
+        )
     }
 
     override fun onCleared() {

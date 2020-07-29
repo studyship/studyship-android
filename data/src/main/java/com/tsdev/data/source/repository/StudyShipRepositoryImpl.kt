@@ -36,4 +36,15 @@ internal class StudyShipRepositoryImpl(
         )
             .subscribeOn(databaseScheduler)
     }
+
+    override fun insertUserSearchHistory(keywords: List<DomainSearchUserHistory>): Completable {
+        val userSearchHistoryList = keywords.map(DomainMapper::mapperToData)
+        return studyShipLocalRemoteDataSource.insertAllHistory(userSearchHistoryList)
+            .subscribeOn(databaseScheduler)
+    }
+
+    override fun deleteAllHistory(): Completable {
+        return studyShipLocalRemoteDataSource.deleteAllHistory()
+            .subscribeOn(databaseScheduler)
+    }
 }

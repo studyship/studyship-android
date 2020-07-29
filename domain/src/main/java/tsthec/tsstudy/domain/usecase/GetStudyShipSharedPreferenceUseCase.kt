@@ -23,4 +23,12 @@ class GetStudyShipSharedPreferenceUseCase(
     override fun removeUserSearchHistory(item: DomainSearchUserHistory): Completable {
         return studyShipRepository.removeUserSearchHistory(item)
     }
+
+    override fun deleteAllHistory(): Completable {
+        return studyShipRepository.deleteAllHistory()
+    }
+
+    override fun insertUserAllHistory(history: List<DomainSearchUserHistory>): Completable {
+        return studyShipRepository.insertUserSearchHistory(history)
+    }
 }

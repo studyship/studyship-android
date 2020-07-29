@@ -15,7 +15,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/keyword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@{searchKeyword.userKeywords}"

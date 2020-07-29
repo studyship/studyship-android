@@ -1,6 +1,5 @@
 package com.studyship.application.ui.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.studyship.application.R
@@ -8,16 +7,17 @@ import com.studyship.application.base.BaseRecyclerViewAdapter
 import com.studyship.application.base.BaseRecyclerViewHolder
 import com.studyship.application.data.source.RecyclerItemSource
 import com.studyship.application.ui.adapter.holder.SearchHistoryRecyclerViewHolder
+import com.studyship.application.ui.adapter.holder.SetOnClickFocusListener
 import com.studyship.application.ui.adapter.holder.SetOnClickRemoveListener
-import com.tsdev.data.source.UserSearchHistory
 import tsthec.tsstudy.domain.model.DomainSearchUserHistory
-import tsthec.tsstudy.local.settings.UserSearchHistoryPreference
 
 class SearchHistoryRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.RecyclerItem>() {
 
     private val searchHistoryItems = mutableListOf<RecyclerItemSource.RecyclerItem>()
 
     lateinit var setOnClickRemoveListener: SetOnClickRemoveListener
+
+    lateinit var setOnClickFocusListener: SetOnClickFocusListener
 
     override fun createBindingViewHolder(holder: BaseRecyclerViewHolder<*, *>, position: Int) {
         when (holder) {
@@ -39,7 +39,8 @@ class SearchHistoryRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.
                         parent,
                         false
                     ),
-                    setOnClickRemoveListener
+                    setOnClickRemoveListener,
+                    setOnClickFocusListener
                 )
             }
             else -> throw IllegalAccessException()
@@ -61,11 +62,13 @@ class SearchHistoryRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.
         return false
     }
 
-    fun setMoveItemAtFirstIndex(viewType: Int, keyword: String) {
+    fun setMoveItemAtFirstIndex(
+        viewType: Int,
+        keyword: String,
+        refreshDatabase: (List<RecyclerItemSource.RecyclerItem>) -> Unit = { }
+    ) {
         fun getPosition(searchKeyword: String): Int {
-            Log.e("HISTORY", searchHistoryItems.toString())
             searchHistoryItems.forEachIndexed { index, recyclerItem ->
-                Log.e("KEYWORD", recyclerItem.item.toString())
                 if ((recyclerItem.item as DomainSearchUserHistory).userKeywords == searchKeyword) {
                     return index
                 }
@@ -73,11 +76,11 @@ class SearchHistoryRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.
             return searchHistoryItems.lastIndex
         }
 
-        val searchHistoryFirstData = searchHistoryItems[0]
-        Log.e("POSITION", getPosition(keyword).toString())
+        val searchHistoryFirstData = searchHistoryItems[TOP_OF_LIST_INDEX]
         searchHistoryItems[getPosition(keyword)] = searchHistoryFirstData
-        searchHistoryItems[0] =
+        searchHistoryItems[TOP_OF_LIST_INDEX] =
             RecyclerItemSource.RecyclerItem(viewType, DomainSearchUserHistory(keyword))
+        refreshDatabase(searchHistoryItems)
     }
 
     override fun addItems(viewType: Int, itemList: List<Any>?) {
@@ -103,5 +106,6 @@ class SearchHistoryRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.
 
     companion object {
         const val SEARCH_HISTORY_VIEW_TYPE = 1000
+        private const val TOP_OF_LIST_INDEX = 0
     }
 }
