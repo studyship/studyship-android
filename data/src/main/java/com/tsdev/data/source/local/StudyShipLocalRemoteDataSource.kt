@@ -12,4 +12,8 @@ interface StudyShipLocalRemoteDataSource : Local {
     fun saveUserSearchHistory(keywords: UserSearchHistory): Completable
 
     fun removeUserSearchHistory(position: UserSearchHistory): Completable
+
+    fun deleteAllHistory(): Completable
+
+    fun insertAllHistory(searchHistory: List<UserSearchHistory>): Completable
 }

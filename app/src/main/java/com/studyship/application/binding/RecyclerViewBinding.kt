@@ -10,6 +10,7 @@ import com.studyship.application.constant.ViewType.MAKE_STUDY_VIEW_TYPE
 import com.studyship.application.constant.ViewType.SEARCH_HISTORY_VIEW_TYPE
 import com.studyship.application.constant.ViewType.SUGGEST_VIEW_TYPE
 import com.studyship.application.constant.ViewType.TEMPORARY_STORAGE_STUDY
+import com.studyship.application.data.source.RecyclerItemSource
 import com.studyship.application.ui.adapter.CategoryRecyclerAdapter
 import com.studyship.application.ui.adapter.MakeStudyRecyclerAdapter
 import com.studyship.application.ui.adapter.SearchHistoryRecyclerAdapter
@@ -50,7 +51,12 @@ fun RecyclerView.bindingAdapterSuggest(items: List<DomainSuggestResponse>?) {
     }
 }
 
-@BindingAdapter("saveHistory", "loadPreference", "isInitialized", "removeClickListener")
+@BindingAdapter(
+    "saveHistory",
+    "loadPreference",
+    "isInitialized",
+    "removeClickListener"
+)
 fun RecyclerView.setSaveHistoryBindingAdapter(
     searchKeyword: DomainSearchUserHistory?,
     loadPreference: List<DomainSearchUserHistory>?,
@@ -65,7 +71,15 @@ fun RecyclerView.setSaveHistoryBindingAdapter(
         }
     } else {
         if (searchKeyword != null && searchKeyword.userKeywords.isNotEmpty()) {
-            searchHistoryAdapter?.addItem(SEARCH_HISTORY_VIEW_TYPE, searchKeyword)
+
+            if (searchHistoryAdapter?.isImplicateItem(searchKeyword.userKeywords) == true) {
+                searchHistoryAdapter.setMoveItemAtFirstIndex(
+                    SEARCH_HISTORY_VIEW_TYPE,
+                    searchKeyword.userKeywords
+                )
+            } else {
+                searchHistoryAdapter?.addItem(SEARCH_HISTORY_VIEW_TYPE, searchKeyword)
+            }
         }
     }
 

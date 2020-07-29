@@ -1,16 +1,17 @@
 package com.tsdev.data.source.repository
 
 import com.tsdev.data.mapper.DomainMapper
-import com.tsdev.data.source.UserSearchHistory
 import com.tsdev.data.source.local.StudyShipLocalRemoteDataSource
-import com.tsdev.data.source.remote.StudyShipRemoteDataSource
 import io.reactivex.Completable
 import io.reactivex.Maybe
+import io.reactivex.Scheduler
+import io.reactivex.schedulers.Schedulers
 import tsthec.tsstudy.domain.model.DomainSearchUserHistory
 import tsthec.tsstudy.domain.repository.StudyShipRepository
 
 internal class StudyShipRepositoryImpl(
-    private val studyShipLocalRemoteDataSource: StudyShipLocalRemoteDataSource
+    private val studyShipLocalRemoteDataSource: StudyShipLocalRemoteDataSource,
+    private val databaseScheduler: Scheduler = Schedulers.computation()
 ) : StudyShipRepository {
     override fun getLoadUserSearchHistory(): Maybe<List<DomainSearchUserHistory>> {
         return studyShipLocalRemoteDataSource.loadUserSearchHistory()
@@ -27,7 +28,23 @@ internal class StudyShipRepositoryImpl(
         )
     }
 
-    override fun removeUserSearchHistory(position: DomainSearchUserHistory) {
-        studyShipLocalRemoteDataSource.removeUserSearchHistory(DomainMapper.mapperToData(position))
+    override fun removeUserSearchHistory(position: DomainSearchUserHistory): Completable {
+        return studyShipLocalRemoteDataSource.removeUserSearchHistory(
+            DomainMapper.mapperToData(
+                position
+            )
+        )
+            .subscribeOn(databaseScheduler)
+    }
+
+    override fun insertUserSearchHistory(keywords: List<DomainSearchUserHistory>): Completable {
+        val userSearchHistoryList = keywords.map(DomainMapper::mapperToData)
+        return studyShipLocalRemoteDataSource.insertAllHistory(userSearchHistoryList)
+            .subscribeOn(databaseScheduler)
+    }
+
+    override fun deleteAllHistory(): Completable {
+        return studyShipLocalRemoteDataSource.deleteAllHistory()
+            .subscribeOn(databaseScheduler)
     }
 }

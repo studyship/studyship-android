@@ -7,10 +7,11 @@ import java.util.*
 
 @Entity(tableName = "userSearchLocalHistory")
 data class UserSearchLocalHistory(
-    @PrimaryKey
+
     @ColumnInfo(name = "id")
     val id: String = UUID.randomUUID().toString(),
 
+    @PrimaryKey
     @ColumnInfo(name = "keywords")
     val searchKeyword: String
 )

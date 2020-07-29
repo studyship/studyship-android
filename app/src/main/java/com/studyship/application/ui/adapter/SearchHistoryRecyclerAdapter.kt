@@ -7,16 +7,17 @@ import com.studyship.application.base.BaseRecyclerViewAdapter
 import com.studyship.application.base.BaseRecyclerViewHolder
 import com.studyship.application.data.source.RecyclerItemSource
 import com.studyship.application.ui.adapter.holder.SearchHistoryRecyclerViewHolder
+import com.studyship.application.ui.adapter.holder.SetOnClickFocusListener
 import com.studyship.application.ui.adapter.holder.SetOnClickRemoveListener
-import com.tsdev.data.source.UserSearchHistory
 import tsthec.tsstudy.domain.model.DomainSearchUserHistory
-import tsthec.tsstudy.local.settings.UserSearchHistoryPreference
 
 class SearchHistoryRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.RecyclerItem>() {
 
     private val searchHistoryItems = mutableListOf<RecyclerItemSource.RecyclerItem>()
 
     lateinit var setOnClickRemoveListener: SetOnClickRemoveListener
+
+    lateinit var setOnClickFocusListener: SetOnClickFocusListener
 
     override fun createBindingViewHolder(holder: BaseRecyclerViewHolder<*, *>, position: Int) {
         when (holder) {
@@ -38,7 +39,8 @@ class SearchHistoryRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.
                         parent,
                         false
                     ),
-                    setOnClickRemoveListener
+                    setOnClickRemoveListener,
+                    setOnClickFocusListener
                 )
             }
             else -> throw IllegalAccessException()
@@ -51,6 +53,36 @@ class SearchHistoryRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.
         searchHistoryItems.add(RecyclerItemSource.RecyclerItem(viewType, item))
     }
 
+    fun isImplicateItem(searchKeyword: String?): Boolean {
+        searchHistoryItems.forEach {
+            if ((it.item as DomainSearchUserHistory).userKeywords == searchKeyword) {
+                return true
+            }
+        }
+        return false
+    }
+
+    fun setMoveItemAtFirstIndex(
+        viewType: Int,
+        keyword: String,
+        refreshDatabase: (List<RecyclerItemSource.RecyclerItem>) -> Unit = { }
+    ) {
+        fun getPosition(searchKeyword: String): Int {
+            searchHistoryItems.forEachIndexed { index, recyclerItem ->
+                if ((recyclerItem.item as DomainSearchUserHistory).userKeywords == searchKeyword) {
+                    return index
+                }
+            }
+            return searchHistoryItems.lastIndex
+        }
+
+        val searchHistoryFirstData = searchHistoryItems[TOP_OF_LIST_INDEX]
+        searchHistoryItems[getPosition(keyword)] = searchHistoryFirstData
+        searchHistoryItems[TOP_OF_LIST_INDEX] =
+            RecyclerItemSource.RecyclerItem(viewType, DomainSearchUserHistory(keyword))
+        refreshDatabase(searchHistoryItems)
+    }
+
     override fun addItems(viewType: Int, itemList: List<Any>?) {
         itemList?.forEach {
             addItem(viewType, it)
@@ -61,7 +93,7 @@ class SearchHistoryRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.
         searchHistoryItems.clear()
     }
 
-    override fun getItems(position: Int): Any? = searchHistoryItems[position]
+    override fun getItems(position: Int): Any? = searchHistoryItems[position].item
 
     override fun destroyedPositionItem(position: Int) {
         searchHistoryItems.removeAt(position)
@@ -74,5 +106,6 @@ class SearchHistoryRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.
 
     companion object {
         const val SEARCH_HISTORY_VIEW_TYPE = 1000
+        private const val TOP_OF_LIST_INDEX = 0
     }
 }

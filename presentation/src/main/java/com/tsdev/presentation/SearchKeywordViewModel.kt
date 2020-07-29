@@ -79,7 +79,6 @@ class SearchKeywordViewModel(private val searchUseCase: CompletableUseCase<Domai
                     DomainSearchUserHistory("")
                 }
                 .subscribe {
-                    Log.e("SEARCH", it.userKeywords)
                     _searchKeyword.value = it
                     saveUserSearchHistory(it)
                 }
@@ -163,7 +162,14 @@ class SearchKeywordViewModel(private val searchUseCase: CompletableUseCase<Domai
     }
 
     val removeUserSearchHistory: (DomainSearchUserHistory) -> Unit = { position ->
-        searchUseCase.removeUserSearchHistory(position)
+        disposable.add(searchUseCase.removeUserSearchHistory(position)
+            .subscribe({
+                Log.e("SUCCESS", "성공")
+            }
+                , {
+                    it.printStackTrace()
+                })
+        )
     }
 
     override fun onCleared() {

@@ -9,7 +9,8 @@ import kotlinx.android.synthetic.main.recycler_search_history_item.view.*
 
 class SearchHistoryRecyclerViewHolder(
     view: View,
-    setOnClickRemoveListener: SetOnClickRemoveListener
+    setOnClickRemoveListener: SetOnClickRemoveListener,
+    setOnClickFocusListener: SetOnClickFocusListener
 ) :
     BaseRecyclerViewHolder<UserSearchHistory, RecyclerSearchHistoryItemBinding>(view) {
 
@@ -18,7 +19,12 @@ class SearchHistoryRecyclerViewHolder(
             Log.e("TAG", adapterPosition.toString())
             setOnClickRemoveListener(adapterPosition)
         }
+
+        containerView.keyword.setOnClickListener {
+            setOnClickFocusListener(adapterPosition)
+        }
     }
 }
 
 typealias SetOnClickRemoveListener = (Int) -> Unit
+typealias SetOnClickFocusListener = (Int) -> Unit

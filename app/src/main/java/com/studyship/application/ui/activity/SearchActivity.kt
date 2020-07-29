@@ -19,6 +19,7 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import com.studyship.application.BR
+import tsthec.tsstudy.domain.model.DomainSearchUserHistory
 import tsthec.tsstudy.domain.model.DomainSuggestResponse
 
 
@@ -60,6 +61,10 @@ class SearchActivity :
 
         suggestAdapter.onClickListener = {
             binding.inputUserText.setText((suggestAdapter.getItems(it) as DomainSuggestResponse).suggestValue)
+        }
+
+        searchHistoryAdapter.setOnClickFocusListener = {
+            binding.inputUserText.setText((searchHistoryAdapter.getItems(it) as DomainSearchUserHistory).userKeywords)
         }
 
         viewModel.showBottomSheetDialog.observe(this) {
