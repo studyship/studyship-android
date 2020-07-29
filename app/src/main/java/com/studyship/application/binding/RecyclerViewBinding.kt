@@ -69,7 +69,6 @@ fun RecyclerView.setSaveHistoryBindingAdapter(
             if (searchHistoryAdapter?.isImplicateItem(searchKeyword.userKeywords) == true) {
                 searchHistoryAdapter.setMoveItemAtFirstIndex(
                     SEARCH_HISTORY_VIEW_TYPE,
-                    searchKeyword,
                     searchKeyword.userKeywords
                 )
             } else {

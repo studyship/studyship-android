@@ -61,21 +61,23 @@ class SearchHistoryRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.
         return false
     }
 
-    fun setMoveItemAtFirstIndex(viewType: Int, item: Any?, searchKeyword: String) {
+    fun setMoveItemAtFirstIndex(viewType: Int, keyword: String) {
         fun getPosition(searchKeyword: String): Int {
+            Log.e("HISTORY", searchHistoryItems.toString())
             searchHistoryItems.forEachIndexed { index, recyclerItem ->
+                Log.e("KEYWORD", recyclerItem.item.toString())
                 if ((recyclerItem.item as DomainSearchUserHistory).userKeywords == searchKeyword) {
-                    return index - 1
+                    return index
                 }
             }
-//            return searchHistoryItems.lastIndex
             return searchHistoryItems.lastIndex
         }
 
         val searchHistoryFirstData = searchHistoryItems[0]
-        searchHistoryItems[0] = RecyclerItemSource.RecyclerItem(viewType, item)
-        Log.e("POSITION", getPosition(searchKeyword).toString())
-        searchHistoryItems[getPosition(searchKeyword)] = searchHistoryFirstData
+        Log.e("POSITION", getPosition(keyword).toString())
+        searchHistoryItems[getPosition(keyword)] = searchHistoryFirstData
+        searchHistoryItems[0] =
+            RecyclerItemSource.RecyclerItem(viewType, DomainSearchUserHistory(keyword))
     }
 
     override fun addItems(viewType: Int, itemList: List<Any>?) {
