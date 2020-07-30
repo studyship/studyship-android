@@ -11,6 +11,7 @@ import com.studyship.application.data.source.RecyclerItemSource
 import com.studyship.application.ui.adapter.holder.viewpager.MyStudyJoinRecyclerViewHolder
 import com.studyship.application.ui.adapter.holder.viewpager.MyStudyOwnCreateViewHolder
 import com.studyship.application.ui.fragment.viewpager.MyStudyJoinFragment
+import com.studyship.application.ui.fragment.viewpager.MyStudyOwnCreateFragment
 import tsthec.tsstudy.constant.ViewType
 
 class ViewPagerAdapter(fragmentActivity: FragmentActivity) :
@@ -26,6 +27,7 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity) :
             0 -> {
                 MyStudyJoinFragment()
             }
+            1 -> MyStudyOwnCreateFragment()
             else -> Fragment()
         }
     }

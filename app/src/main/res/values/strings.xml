@@ -85,7 +85,7 @@
 
     <!--    My Study Page   -->
     <string name="my_study_joined">현재 가입한 스터디</string>
-    <string name="my_study_own">내가 만든</string>
+    <string name="my_study_own">만든 스터디</string>
     <string name="my_study_already">신청한</string>
     <string name="my_study_bookmark">북마크</string>
     <string name="my_study_temporary">임시저장</string>
