@@ -7,8 +7,8 @@ import kotlinx.android.synthetic.main.recycler_view_pager_item.view.*
 
 class MyStudyJoinRecyclerViewHolder(layout: View) : RecyclerView.ViewHolder(layout) {
     fun bind(item: String, tabName: String) {
-        itemView.title.text =
-            itemView.context.getString(R.string.view_pager_title_string, tabName)
+//        itemView.title.text =
+//            itemView.context.getString(R.string.view_pager_title_string, tabName)
 
 //        if (tabName == "신청한") {
 //            itemView.title.visibility = View.GONE

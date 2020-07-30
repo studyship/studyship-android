@@ -10,6 +10,7 @@ import com.studyship.application.R
 import com.studyship.application.data.source.RecyclerItemSource
 import com.studyship.application.ui.adapter.holder.viewpager.MyStudyJoinRecyclerViewHolder
 import com.studyship.application.ui.adapter.holder.viewpager.MyStudyOwnCreateViewHolder
+import com.studyship.application.ui.fragment.viewpager.MyStudyJoinFragment
 import tsthec.tsstudy.constant.ViewType
 
 class ViewPagerAdapter(fragmentActivity: FragmentActivity) :
@@ -21,8 +22,11 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity) :
     override fun getItemCount(): Int = 5
 
     override fun createFragment(position: Int): Fragment {
-        when (position) {
-
+        return when (position) {
+            0 -> {
+                MyStudyJoinFragment()
+            }
+            else -> Fragment()
         }
     }
 

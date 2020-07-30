@@ -13,7 +13,7 @@ class MyStudyFragment :
 
     private val nameList = listOf("가입한", "내가 만든", "신청한", "북마크", "임시저장")
     private val viewPagerAdapter: ViewPagerAdapter by lazy {
-        ViewPagerAdapter()
+        ViewPagerAdapter(this.requireActivity())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

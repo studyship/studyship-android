@@ -15,6 +15,8 @@ abstract class BaseFragment<VIEW_DATA_BINDING : ViewDataBinding>(@LayoutRes priv
     protected lateinit var viewDataBinding: VIEW_DATA_BINDING
         private set
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
