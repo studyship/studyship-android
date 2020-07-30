@@ -77,7 +77,6 @@ dependencies {
     kapt deps.kapt.databinding
 
     //anko
-    implementation deps.library.anko
 
 
     //room

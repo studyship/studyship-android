@@ -26,7 +26,7 @@ class BackKeyPressUtilImpl(
                 Pair(ERROR_STATE, ERROR_STATE)
             }
             .subscribe {
-                if (it.first < it.second + BACK_KEY_INTERVAL) {
+                if (it.first + BACK_KEY_INTERVAL < it.second ) {
                     showToast(R.string.back_button_click_message, Toast.LENGTH_LONG)
                 } else {
                     finish()
