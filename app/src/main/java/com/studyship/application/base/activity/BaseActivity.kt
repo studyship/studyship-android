@@ -6,13 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
-import com.studyship.application.R
 import com.studyship.application.mapper.Mapper
-import com.studyship.application.util.BackKeyPressUtil
 import com.tsdev.data.source.Category
 import io.reactivex.disposables.CompositeDisposable
 import org.koin.android.ext.android.inject
-import org.koin.core.parameter.parametersOf
 import tsthec.tsstudy.domain.model.DomainCategory
 
 abstract class BaseActivity<VM : ViewModel, VIEW_BIND : ViewDataBinding>(@LayoutRes private val layout: Int) :

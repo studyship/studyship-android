@@ -6,6 +6,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
+import androidx.annotation.LayoutRes
 import com.tsdev.feat.R
 import com.tsdev.feat.widget.layout.base.BaseHorizontalScrollView
 import kotlinx.android.synthetic.main.layout_user_select_date.view.*
@@ -27,8 +28,13 @@ class HorizontalUserSelectedView @JvmOverloads constructor(
         }
     }
 
-    override fun setItemView(value: String, items: List<String>, position: Int): View {
-        return LayoutInflater.from(context).inflate(R.layout.layout_user_select_date, this, false)
+    override fun setItemView(
+        value: String,
+        items: List<String>,
+        position: Int,
+        @LayoutRes layout: Int
+    ): View {
+        return LayoutInflater.from(context).inflate(layout, this, false)
             .apply {
                 date_string.text = value
                 if (items.size - 2 == position) {

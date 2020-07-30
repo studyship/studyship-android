@@ -26,7 +26,10 @@ class MyStudyFragment :
 
         viewDataBinding.myStudyViewPager.adapter = viewPagerAdapter
 
-        TabLayoutMediator(viewDataBinding.tabLayout, viewDataBinding.myStudyViewPager) { tab, position ->
+        TabLayoutMediator(
+            viewDataBinding.tabLayout,
+            viewDataBinding.myStudyViewPager
+        ) { tab, position ->
             tab.text = nameList[position]
         }.attach()
     }

@@ -6,6 +6,7 @@ import androidx.databinding.InverseBindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.studyship.application.R
 import com.studyship.application.ui.adapter.BottomSheetRecyclerAdapter
 import com.tsdev.feat.widget.layout.HorizontalCategoryListView
 import tsthec.tsstudy.domain.model.DomainLocationResource
@@ -28,7 +29,7 @@ fun HorizontalCategoryListView.setBindingAdapter(
     }
 
     items?.let {
-        setLayoutData(it)
+        setLayoutData(it, R.layout.layout_category_button)
         initSelected()
     }
 }

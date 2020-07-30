@@ -49,33 +49,7 @@
             app:tabMode="auto"
             app:tabSelectedTextColor="@color/main_color_black"
             app:tabTextAppearance="@style/my_tab"
-            app:tabTextColor="@color/add_study_activity_divider_color">
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/my_study_joined" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/my_study_own" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/my_study_already" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/my_study_bookmark" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/my_study_temporary" />
-        </com.google.android.material.tabs.TabLayout>
+            app:tabTextColor="@color/add_study_activity_divider_color" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/my_study_view_pager"

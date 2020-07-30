@@ -11,4 +11,13 @@
     <color name="user_gather_selected_color">#FFC545</color>
     <color name="user_gather_non_selected_text_color">#6C6B6B</color>
     <color name="user_gather_selected_text_color">#FFFFFF</color>
+
+    <!--    Main Color  -->
+    <color name="main_color_yellow">#FFC545</color>
+    <color name="main_black_logo_color">#575756</color>
+    <color name="main_color_blue">#60D3E0</color>
+    <color name="main_color_black">#000</color>
+    <color name="main_color_white">#FFF</color>
+
+    <color name="my_study_filter_default_color">#E0E0E0</color>
 </resources>

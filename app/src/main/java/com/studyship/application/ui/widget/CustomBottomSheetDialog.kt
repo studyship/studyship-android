@@ -84,6 +84,5 @@ class CustomBottomSheetDialog(
                     bottomSheetRecyclerAdapter
             }
         }
-//        binding.root.bottom_sheet_recyclerview.adapter = bottomSheetRecyclerAdapter
     }
 }

@@ -65,4 +65,7 @@
 
     <!--    Add Study Activity Color    -->
     <color name="add_study_activity_divider_color">#E6E6E6</color>
+
+    <!--    My Study    -->
+    <color name="my_study_filter_default_color">#E0E0E0</color>
 </resources>
