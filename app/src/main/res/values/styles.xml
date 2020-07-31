@@ -80,4 +80,11 @@
     <style name="SecondStepIndicator" parent="CreateStudyRoundIndicator">
         <item name="android:background">@drawable/bg_make_study_indicator_non_focus</item>
     </style>
+
+    <!--    My Study Tab Style  -->
+    <style name="my_tab" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/main_color_black</item>
+    </style>
 </resources>

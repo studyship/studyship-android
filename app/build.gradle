@@ -76,10 +76,6 @@ dependencies {
     //databinding
     kapt deps.kapt.databinding
 
-    //anko
-    implementation deps.library.anko
-
-
     //room
     implementation deps.androidx.room_runtime
     kapt deps.kapt.room_compiler

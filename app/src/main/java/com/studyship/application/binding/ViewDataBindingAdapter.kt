@@ -1,7 +1,10 @@
 package com.studyship.application.binding
 
 import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.databinding.BindingAdapter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.studyship.application.R
 
 @BindingAdapter("isVisible")
 fun View.setVisibleDataBindingAdapter(textLength: Int?) {
@@ -25,4 +28,15 @@ fun View.setInVisibleBindingAdapter(userInputText: String?) {
 @BindingAdapter("finishAdapter")
 fun View.setFinishBindingAdapter(finish: View.OnClickListener) {
     finish.onClick(this)
+}
+
+@BindingAdapter("isFabButtonAnimated")
+fun FloatingActionButton.setVisibleFabButtonBindingAdapter(isAnimated: Boolean) {
+    val anim = AnimationUtils.loadAnimation(context, R.anim.fade_in)
+
+    animation = anim
+    
+    if (isAnimated) {
+        anim.start()
+    }
 }

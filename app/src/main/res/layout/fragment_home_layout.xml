@@ -6,6 +6,10 @@
         <variable
             name="homeFragmentViewModel"
             type="com.tsdev.presentation.HomeFragmentViewModel" />
+
+        <variable
+            name="customBottomNavigation"
+            type="com.studyship.application.ui.widget.CustomBottomSheetDialog" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -16,9 +20,9 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:minHeight="50dp"
             android:background="@drawable/appbar_background"
-            android:fitsSystemWindows="true">
+            android:fitsSystemWindows="true"
+            android:minHeight="50dp">
 
             <include
                 layout="@layout/appbar_header_layout"
@@ -34,6 +38,23 @@
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
             app:setHeaderName="@{homeFragmentViewModel.userName}"
             tool:listitem="@layout/recycler_category_item" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/create_study"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            isFabButtonAnimated="@{true}"
+            android:layout_marginEnd="@dimen/spacing_large"
+            android:layout_marginBottom="@dimen/spacing_large"
+            android:onClick="@{() ->customBottomNavigation.showDialogWithData()}"
+            android:src="@drawable/ic_add_black_24dp"
+            app:backgroundTint="@color/appbar_end_color_second"
+            app:backgroundTintMode="screen"
+            app:fabSize="auto"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_sheet_menu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:maxImageSize="@dimen/spacing_xxx_large" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

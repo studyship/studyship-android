@@ -12,9 +12,21 @@ import androidx.fragment.app.Fragment
 abstract class BaseFragment<VIEW_DATA_BINDING : ViewDataBinding>(@LayoutRes private val layout: Int) :
     Fragment() {
 
-    abstract var viewDataBinding: VIEW_DATA_BINDING
+    protected lateinit var viewDataBinding: VIEW_DATA_BINDING
+        private set
 
-    fun onCreateViewBinding(layoutInflater: LayoutInflater, container: ViewGroup?): VIEW_DATA_BINDING {
-        return DataBindingUtil.inflate(layoutInflater, layout, container, false)
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        viewDataBinding = DataBindingUtil.inflate(inflater, layout, container, false)
+        return viewDataBinding.root
+    }
+
+    fun bind(valuableSetter: VIEW_DATA_BINDING.() -> Unit) {
+        viewDataBinding.run(valuableSetter)
     }
 }

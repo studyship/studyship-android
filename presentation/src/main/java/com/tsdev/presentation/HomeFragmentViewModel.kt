@@ -7,6 +7,7 @@ import com.tsdev.presentation.ext.Event
 import com.tsdev.presentation.ext.SingleEvent
 import com.tsdev.presentation.ext.SingleMutableEvent
 import tsthec.tsstudy.domain.model.DomainCategoryResponse
+import tsthec.tsstudy.domain.model.DomainMakeStudyResponse
 
 class HomeFragmentViewModel : ViewModel() {
 
@@ -15,8 +16,8 @@ class HomeFragmentViewModel : ViewModel() {
         get() = _categoryList
 
     private val _categoryName = MutableLiveData<Event<String>>()
-    val categoryName: LiveData<Event<String>>
-        get() = _categoryName
+//    val categoryName: LiveData<Event<String>>
+//        get() = _categoryName
 
     private val _moveSignInActivity = SingleMutableEvent<Boolean>()
     val moveSignInActivity: SingleEvent<Boolean>
@@ -32,6 +33,11 @@ class HomeFragmentViewModel : ViewModel() {
 
     val userName: LiveData<String>
         get() = _userName
+
+    private val _makeStudyList = MutableLiveData<List<DomainMakeStudyResponse>>()
+
+    val makeStudyList: LiveData<List<DomainMakeStudyResponse>>
+        get() = _makeStudyList
 
 
     init {
@@ -56,6 +62,9 @@ class HomeFragmentViewModel : ViewModel() {
             }
         )
         _userName.value = "홍길동"
+
+        _makeStudyList.value =
+            listOf(DomainMakeStudyResponse("새로운 스터디"), DomainMakeStudyResponse("임시 저장", 4))
     }
 
     fun moveSignInActivity() {
