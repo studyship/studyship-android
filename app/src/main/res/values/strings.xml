@@ -87,7 +87,7 @@
     <string name="my_study_joined">현재 가입한 스터디</string>
     <string name="my_study_own">만든 스터디</string>
     <string name="my_study_already">신청한</string>
-    <string name="my_study_bookmark">북마크</string>
+    <string name="my_study_bookmark">북마크한 스터디</string>
     <string name="my_study_temporary">임시저장</string>
 
     <string name="how_many_study_card">%1$s</string>
