@@ -7,10 +7,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.studyship.application.data.source.RecyclerItemSource
 import com.studyship.application.ext.ViewPagerResource
-import com.studyship.application.ui.fragment.viewpager.MyStudyAppliedFragment
-import com.studyship.application.ui.fragment.viewpager.MyStudyBookMarkFragment
-import com.studyship.application.ui.fragment.viewpager.MyStudyJoinFragment
-import com.studyship.application.ui.fragment.viewpager.MyStudyOwnCreateFragment
+import com.studyship.application.ui.fragment.viewpager.*
 
 class ViewPagerAdapter(fm: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fm, lifecycle), ViewPagerResource {
@@ -25,7 +22,7 @@ class ViewPagerAdapter(fm: FragmentManager, lifecycle: Lifecycle) :
             1 -> MyStudyOwnCreateFragment()
             2 -> MyStudyAppliedFragment()
             3 -> MyStudyBookMarkFragment()
-            else -> Fragment()
+            else -> MyStudyTemporaryFragment()
         }
     }
 
