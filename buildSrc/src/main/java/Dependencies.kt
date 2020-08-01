@@ -11,6 +11,8 @@ object Versions {
     const val KOTLIN = "1.3.41"
     const val APP_COMPAT = "1.1.0"
 
+    const val JUNIT = "4.12"
+
     object Test {
         const val JUNIT = "1.1.1"
         const val ESPRESSO = "3.2.0"
@@ -59,6 +61,7 @@ object TestLibs {
 }
 
 object Libs {
+    const val JUNIT = "junit:junit:${Versions.JUNIT}"
     const val CLASSPATH = "com.android.tools.build:gradle:${Versions.ANDROID_PLUGIN}"
     const val NAVIGATION_ARG =
         "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.AndroidX.NAVIGATION_FRAGMENT}"
@@ -98,7 +101,7 @@ object Libs {
         const val SDK = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.KOTLIN}.kotlin_version"
 
         const val GRADLE_PLUGIN =
-            "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN}.kotlin_version"
+            "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN}"
     }
 
     const val CONVERTER_GSON = "com.squareup.retrofit2:converter-gson:${Versions.RETROFIT_VERSION}"
