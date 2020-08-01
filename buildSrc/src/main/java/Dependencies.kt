@@ -29,7 +29,6 @@ object Versions {
         const val GRADLE = "4.0.1"
         const val KTX_CORE = "1.2.0"
         const val KTX_FRAGMENT = "1.2.2"
-        const val KTX_NAVIGATION = "2.0.0"
         const val NAVIGATION_FRAGMENT = "2.3.0-alpha02"
         const val NAVIGATION_UI = "2.3.0-alpha02"
         const val SAVED_STATE = "2.2.0"
@@ -47,7 +46,6 @@ object Versions {
 
     const val LOTTIE = "3.3.1"
     const val KOIN = "2.1.3"
-    const val ANDROID_PLUGIN_VERSION = "4.0.1"
     const val RETROFIT_VERSION = "2.6.2"
     const val ANKO = "0.10.8"
     const val TRANSFORMATIONLAYOUT = "1.0.3"
@@ -61,6 +59,10 @@ object TestLibs {
 }
 
 object Libs {
+    const val CLASSPATH = "com.android.tools.build:gradle:${Versions.ANDROID_PLUGIN}"
+    const val NAVIGATION_ARG =
+        "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.AndroidX.NAVIGATION_FRAGMENT}"
+
     object Androidx {
         const val APPCOMPAT = "androidx.appcompat:appcompat:${Versions.APP_COMPAT}.appcompat"
         const val CONSTRAINT_LAYOUT =
