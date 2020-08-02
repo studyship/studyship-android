@@ -4,6 +4,7 @@ object Apps {
     const val TARGET_SDK = 29
     const val VERSION_CODE = 1
     const val VERSION_NAME = "1.0"
+    const val BUILD_TOOL_VERSION = "29.0.2"
 }
 
 object Versions {
@@ -55,9 +56,9 @@ object Versions {
 }
 
 object TestLibs {
-    const val JUNIT = "androidx.test.ext:junit:${Versions.Test.JUNIT}.test.junit"
+    const val JUNIT = "androidx.test.ext:junit:${Versions.Test.JUNIT}"
     const val ESPRESSO =
-        "androidx.test.espresso:espresso-core:$${Versions.Test.ESPRESSO}.test.espresso"
+        "androidx.test.espresso:espresso-core:${Versions.Test.ESPRESSO}"
 }
 
 object Libs {
@@ -67,38 +68,38 @@ object Libs {
         "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.AndroidX.NAVIGATION_FRAGMENT}"
 
     object Androidx {
-        const val APPCOMPAT = "androidx.appcompat:appcompat:${Versions.APP_COMPAT}.appcompat"
+        const val APPCOMPAT = "androidx.appcompat:appcompat:${Versions.APP_COMPAT}"
         const val CONSTRAINT_LAYOUT =
-            "androidx.constraintlayout:constraintlayout:${Versions.AndroidX.CONSTRAINT_LAYOUT}.androidx.constraintlayout"
+            "androidx.constraintlayout:constraintlayout:${Versions.AndroidX.CONSTRAINT_LAYOUT}"
         const val MATERIAL =
-            "com.google.android.material:material:${Versions.AndroidX.MATERIAL}.androidx.material"
+            "com.google.android.material:material:${Versions.AndroidX.MATERIAL}"
         const val RECYCLERVIEW =
-            "androidx.recyclerview:recyclerview:${Versions.AndroidX.RECYCLERVIEW}.androidx.recyclerview"
+            "androidx.recyclerview:recyclerview:${Versions.AndroidX.RECYCLERVIEW}"
         const val LIFECYCLE =
-            "androidx.lifecycle:lifecycle-extensions:${Versions.AndroidX.LIFECYCLE_EXTENSION}.androidx.lifecycle_extension"
+            "androidx.lifecycle:lifecycle-extensions:${Versions.AndroidX.LIFECYCLE_EXTENSION}"
         const val ROOM_RUNTIME =
-            "androidx.room:room-runtime:${Versions.AndroidX.ROOM}.androidx.room"
+            "androidx.room:room-runtime:${Versions.AndroidX.ROOM}"
         const val ROOM_RX_JAVA2 =
-            "androidx.room:room-rxjava2:${Versions.AndroidX.ROOM}.androidx.room"
+            "androidx.room:room-rxjava2:${Versions.AndroidX.ROOM}"
         const val GRADLE =
-            "com.android.tools.build:gradle:${Versions.AndroidX.GRADLE}.androidx.gradle"
+            "com.android.tools.build:gradle:${Versions.AndroidX.GRADLE}"
         const val NAVIGATION_FRAGMENT =
-            "androidx.navigation:navigation-fragment-ktx:${Versions.AndroidX.KTX_FRAGMENT}.androidx.navigation_fragment"
+            "androidx.navigation:navigation-fragment-ktx:${Versions.AndroidX.NAVIGATION_FRAGMENT}"
         const val NAVIGATION_UI =
-            "androidx.navigation:navigation-ui-ktx:${Versions.AndroidX.NAVIGATION_UI}.androidx.navigation_ui"
+            "androidx.navigation:navigation-ui-ktx:${Versions.AndroidX.NAVIGATION_UI}"
         const val SAVED_STATE =
-            "androidx.lifecycle:lifecycle-viewmodel-savedstate:${Versions.AndroidX.SAVED_STATE}.androidx.savedstate"
+            "androidx.lifecycle:lifecycle-viewmodel-savedstate:${Versions.AndroidX.SAVED_STATE}"
         const val DATA_BINDING =
-            "com.android.databinding:compiler:${Versions.AndroidX.DATA_BINDING}.androidx.databinding"
+            "com.android.databinding:compiler:${Versions.AndroidX.DATA_BINDING}"
         const val ROOM_COMPILER =
-            "androidx.room:room-compiler:${Versions.AndroidX.ROOM}.androidx.room"
-        const val KTX = "androidx.core:core-ktx:${Versions.AndroidX.KTX_CORE}.androidx.ktx_core"
+            "androidx.room:room-compiler:${Versions.AndroidX.ROOM}"
+        const val KTX = "androidx.core:core-ktx:${Versions.AndroidX.KTX_CORE}"
 
         const val KTX_FRAGMENT = "androidx.fragment:fragment-ktx:${Versions.AndroidX.KTX_FRAGMENT}"
     }
 
     object Kotlin {
-        const val SDK = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.KOTLIN}.kotlin_version"
+        const val SDK = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.KOTLIN}"
 
         const val GRADLE_PLUGIN =
             "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN}"
@@ -122,4 +123,5 @@ object Libs {
     const val TRANSFORMATIONLAYOUT =
         "com.github.skydoves:transformationlayout:${Versions.TRANSFORMATIONLAYOUT}"
     const val SPOTLIGHT = "com.github.takusemba:spotlight:${Versions.SPOTLIGHT}"
+    const val FLEX_BOX = "com.google.android:flexbox:2.0.1"
 }

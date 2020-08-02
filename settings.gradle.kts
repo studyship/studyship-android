@@ -1,4 +1,3 @@
-rootProject.name = "studyship-android"
 include(":app")
 include(":feat")
 include(":data")
@@ -7,3 +6,4 @@ include(":presentation")
 include(":local")
 include(":domain")
 include(":constant")
+rootProject.name = "studyship-android"

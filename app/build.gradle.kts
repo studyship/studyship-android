@@ -1,35 +1,23 @@
-//apply plugin: ''
-//apply plugin: 'kotlin-android'
-//apply plugin: 'kotlin-android-extensions'
-//apply plugin: 'kotlin-kapt'
-//apply plugin: 'androidx.navigation.safeargs.kotlin'
 plugins {
     id("com.android.application")
-    kotlin("android")
-    kotlin("android.extensions")
-    kotlin("kapt")
+    id("kotlin-android")
+    id("kotlin-android-extensions")
+    id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
     compileSdkVersion(Apps.COMPILE_SDK)
-//    versions . compile_Sdk_Version
-//    buildToolsVersion(Apps.) versions.build_Tools_Version
+    buildToolsVersion(Apps.BUILD_TOOL_VERSION)
 
     defaultConfig {
-//        applicationId "com.studyship.application"
+        applicationId = "com.studyship.application"
         minSdkVersion(Apps.MIN_SDK)
 //        versions.min_sdk_version
         targetSdkVersion(Apps.TARGET_SDK)
 //        versions.target_sdk_version
         versionCode = Apps.VERSION_CODE
         versionName = Apps.VERSION_NAME
-        multiDexEnabled = true
-        setProperty("archivesBaseName", "$applicationId-v$versionName($versionCode)")
-        resConfigs("en")
-        ndk {
-            abiFilters("armeabi-v7a", "x86", "arm64-v8a", "x86_64")
-        }
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -65,18 +53,11 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Libs.Kotlin.SDK)
-//    deps . kotlin . sdk
     implementation(Libs.Androidx.APPCOMPAT)
-    //deps . androidx . appcompat
     implementation(Libs.Androidx.CONSTRAINT_LAYOUT)
-//    deps . androidx . constraintlayout
     implementation(Libs.Androidx.APPCOMPAT)
-//    'androidx.appcompat:appcompat:1.1.0'
-//    implementation(Libs.) 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation(Libs.JUNIT)
-//    deps . junit
     androidTestImplementation(TestLibs.JUNIT)
-//    deps . test . junit
     androidTestImplementation(TestLibs.ESPRESSO)
 //    deps . test . espresso
 
