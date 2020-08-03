@@ -1,8 +1,3 @@
-//apply plugin: 'com.android.library'
-//apply plugin: 'kotlin-android'
-//apply plugin: 'kotlin-kapt'
-//apply plugin: 'kotlin-android-extensions'
-
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -23,11 +18,6 @@ android {
 //        versions.target_sdk_version
         versionCode = Apps.VERSION_CODE
         versionName = Apps.VERSION_NAME
-//        setProperty("archivesBaseName", "$applicationId-v$versionName($versionCode)")
-//        resConfigs("en")
-//        ndk {
-//            abiFilters("armeabi-v7a", "x86", "arm64-v8a", "x86_64")
-//        }
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

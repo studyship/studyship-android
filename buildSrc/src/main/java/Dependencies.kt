@@ -13,7 +13,7 @@ object Apps {
 
 object Versions {
     const val ANDROID_PLUGIN = "4.0.1"
-    const val KOTLIN = "1.3.41"
+    const val KOTLIN = "1.3.72"
     const val APP_COMPAT = "1.1.0"
 
     const val JUNIT = "4.12"
@@ -103,7 +103,7 @@ object Libs {
     }
 
     object Kotlin {
-        const val SDK = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.KOTLIN}"
+        const val SDK = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.KOTLIN}"
 
         const val GRADLE_PLUGIN =
             "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN}"
