@@ -1,22 +1,17 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
-    apply from: 'dependency.gradle'
-    ext {
-        kotlin_version = '1.3.61'
-    }
     repositories {
         google()
         jcenter()
 
     }
     dependencies {
-        classpath deps.androidx.gradle
-        classpath deps.kotlin.gradle_plugin
+        classpath(Libs.Androidx.GRADLE)
+        classpath(Libs.Kotlin.GRADLE_PLUGIN)
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-        classpath deps.classpath
-        classpath deps.navigation_arg
+        classpath(Libs.CLASSPATH)
+        classpath(Libs.NAVIGATION_ARG)
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -27,10 +22,9 @@ allprojects {
     repositories {
         google()
         jcenter()
-
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+tasks.register("clean", Delete::class) {
+    delete(rootProject.buildDir)
 }
