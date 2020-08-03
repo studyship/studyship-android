@@ -6,7 +6,6 @@ import com.studyship.application.base.BaseRecyclerViewHolder
 import com.studyship.application.databinding.RecyclerLocationItemBinding
 import com.studyship.application.mapper.Mapper
 import com.tsdev.data.source.Category
-import kotlinx.android.synthetic.main.recycler_location_item.*
 import kotlinx.android.synthetic.main.recycler_location_item.view.*
 import tsthec.tsstudy.domain.model.DomainCategory
 import tsthec.tsstudy.domain.model.DomainLocationResource
