@@ -15,18 +15,10 @@ android {
 //    "29.0.3"
 
     defaultConfig {
-//        applicationId "com.studyship.application"
         minSdkVersion(16)
-//        versions.min_sdk_version
         targetSdkVersion(Apps.TARGET_SDK)
-//        versions.target_sdk_version
         versionCode = Apps.VERSION_CODE
         versionName = Apps.VERSION_NAME
-//        setProperty("archivesBaseName", "$applicationId-v$versionName($versionCode)")
-//        resConfigs("en")
-//        ndk {
-//            abiFilters("armeabi-v7a", "x86", "arm64-v8a", "x86_64")
-//        }
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -52,29 +44,20 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-//    implementation fileTree (dir: 'libs', include: ['*.jar'])
 
-    implementation("${Libs.Kotlin.SDK}")
-//    implementation deps . kotlin . sdk
-    implementation("${Libs.Androidx.APPCOMPAT}")
-//    deps . androidx . appcompat
-    testImplementation("${Libs.JUNIT}")
-//    deps . junit
-    androidTestImplementation("${TestLibs.JUNIT}")
-//    'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation("${TestLibs.ESPRESSO}")
-//    'androidx.test.espresso:espresso-core:3.2.0'
+    implementation(Libs.Kotlin.SDK)
+    implementation(Libs.Androidx.APPCOMPAT)
+    testImplementation(Libs.JUNIT)
+    androidTestImplementation(TestLibs.JUNIT)
+    androidTestImplementation(TestLibs.ESPRESSO)
 
     //koin
-    implementation("${Libs.KOIN_VIEWMODEL}")
-//    deps . library . koin_viewmodel
+    implementation(Libs.KOIN_VIEWMODEL)
 
     //rxjava
-    implementation("${Libs.RX_JAVA}")
-//    deps . library . rxjava
+    implementation(Libs.RX_JAVA)
     //rxandroid
-    implementation("${Libs.RX_ANDROID}")
-//    deps . library . rxandroid
+    implementation(Libs.RX_ANDROID)
 
     implementation(project(":domain"))
 }

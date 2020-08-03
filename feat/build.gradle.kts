@@ -46,27 +46,19 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-//    implementation fileTree (dir: 'libs', include: ['*.jar'])
     implementation(Libs.Kotlin.SDK)
-//    deps . kotlin . sdk
     implementation(Libs.Androidx.APPCOMPAT)
-//    deps . androidx . appcompat
     testImplementation(Libs.JUNIT)
-//    deps . junit
     implementation(Libs.Androidx.CONSTRAINT_LAYOUT)
-//    deps . androidx . constraintlayout
     //
     androidTestImplementation(TestLibs.JUNIT)
-//    'androidx.test.ext:junit:1.1.1'
     androidTestImplementation(TestLibs.ESPRESSO)
-//    'androidx.test.espresso:espresso-core:3.2.0'
 
     //flexbox
     api(Libs.FLEX_BOX)
 
     //recyclerview
     implementation(Libs.Androidx.RECYCLERVIEW)
-//    deps . androidx . recyclerview
 
     //data
     implementation(project(":data"))

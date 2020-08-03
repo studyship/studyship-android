@@ -17,7 +17,6 @@ android {
 //    "29.0.3"
 
     defaultConfig {
-//        applicationId = "com.studyship.application"
         minSdkVersion(21)
 //        versions.min_sdk_version
         targetSdkVersion(Apps.TARGET_SDK)
@@ -57,45 +56,32 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-//    implementation fileTree (dir: 'libs', include: ['*.jar'])
     implementation(Libs.Kotlin.SDK)
-//    deps . kotlin . sdk
     implementation(Libs.Androidx.APPCOMPAT)
 
-//    deps . androidx . appcompat
     testImplementation(Libs.JUNIT)
-//    deps . junit
     implementation(Libs.Androidx.KTX)
-//    'androidx.core:core-ktx:1.3.0'
     androidTestImplementation(TestLibs.JUNIT)
-//    'androidx.test.ext:junit:1.1.1'
     androidTestImplementation(TestLibs.ESPRESSO)
-//    'androidx.test.espresso:espresso-core:3.2.0'
 
 
     // koin
-    implementation("${Libs.KOIN_VIEWMODEL}")
-//    deps . library . koin_viewmodel
+    implementation(Libs.KOIN_VIEWMODEL)
 
     //rxjava
-    implementation("${Libs.RX_JAVA}")
-//    deps . library . rxjava
+    implementation(Libs.RX_JAVA)
+
     //rxandroid
-    implementation("${Libs.RX_ANDROID}")
-//    deps . library . rxandroid
+    implementation(Libs.RX_ANDROID)
 
     //room
-    implementation("${Libs.Androidx.ROOM_RUNTIME}")
-//    deps . androidx . room_runtime
+    implementation(Libs.Androidx.ROOM_RUNTIME)
 
-    implementation("${Libs.Androidx.ROOM_RX_JAVA2}")
-//    deps . androidx . room_rxjava2
+    implementation(Libs.Androidx.ROOM_RX_JAVA2)
 
-    kapt("${Libs.Androidx.ROOM_COMPILER}")
-//    deps . kapt . room_compiler
+    kapt(Libs.Androidx.ROOM_COMPILER)
 
-    implementation("${Libs.CONVERTER_GSON}")
-//    deps . library . converter_gson
+    implementation(Libs.CONVERTER_GSON)
 
     //multi-module
     implementation(project(":data"))

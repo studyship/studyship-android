@@ -4,15 +4,12 @@ buildscript {
     repositories {
         google()
         jcenter()
-    }
-    dependencies {
-        classpath (Libs.Androidx.GRADLE)
-        classpath (Libs.Kotlin.GRADLE_PLUGIN)
-        // NOTE: Do not place your application dependencies here; they belong
-        classpath (Libs.CLASSPATH)
-        classpath (Libs.NAVIGATION_ARG)
-
-        // NOTE: Do not place your application dependencies here; they belong
+        dependencies {
+            classpath(Libs.Androidx.GRADLE)
+            classpath(Libs.Kotlin.GRADLE_PLUGIN)
+            classpath(Libs.CLASSPATH)
+            classpath(Libs.NAVIGATION_ARG)
+        }
     }
 }
 
@@ -24,5 +21,5 @@ allprojects {
 }
 
 tasks.register("clean", Delete::class) {
-    delete (rootProject.buildDir)
+    delete(rootProject.buildDir)
 }

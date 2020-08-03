@@ -1,5 +1,3 @@
-//apply plugin: 'java-library'
-//apply plugin: 'kotlin'
 
 plugins {
     id("kotlin")

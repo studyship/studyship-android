@@ -1,9 +1,7 @@
-//apply plugin : 'java-library'
-//apply plugin : 'kotlin'
 
 plugins {
-    `java-library`
     id("kotlin")
+    `java-library`
 }
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
