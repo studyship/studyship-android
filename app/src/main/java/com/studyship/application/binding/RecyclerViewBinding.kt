@@ -116,3 +116,9 @@ fun RecyclerView.setMakeStudyBindingAdapter(items: List<DomainMakeStudyResponse>
         adapter = makeStudyRecyclerAdapter
     }
 }
+
+//todo BindingAdapter
+//@BindingAdapter("joinStudyList")
+//fun RecyclerView.setJoinStudyList(items: List<>) {
+//
+//}
