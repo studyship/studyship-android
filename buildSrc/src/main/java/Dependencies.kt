@@ -9,6 +9,7 @@ object Apps {
     const val VERSION_CODE = 1
     const val VERSION_NAME = "1.0.0"
     const val BUILD_TOOL_VERSION = "29.0.2"
+    const val BUILD_TOOLS_VERSION3 = "29.0.3"
 }
 
 object Versions {
