@@ -8,7 +8,6 @@ plugins {
 android {
     compileSdkVersion(Apps.COMPILE_SDK)
     buildToolsVersion(Apps.BUILD_TOOLS_VERSION3)
-//    "29.0.3"
 
     defaultConfig {
         minSdkVersion(Apps.MIN_SDK)
@@ -39,6 +38,10 @@ android {
     buildFeatures {
         dataBinding = true
     }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -50,15 +53,27 @@ dependencies {
     androidTestImplementation(TestLibs.JUNIT)
     androidTestImplementation(TestLibs.ESPRESSO)
 
-    //flexbox
-    api(Libs.FLEX_BOX)
 
-    //recyclerview
-    implementation(Libs.Androidx.RECYCLERVIEW)
+    //koin
+    implementation(Libs.KOIN_VIEWMODEL)
 
-    //data
+    //rxjava
+    implementation(Libs.RX_JAVA)
+    //rxandroid
+    implementation(Libs.RX_ANDROID)
+
+    implementation(Libs.Androidx.KTX)
+
+    //room
+    implementation(Libs.Androidx.ROOM_RUNTIME)
+
+    implementation(Libs.Androidx.ROOM_RX_JAVA2)
+
+    kapt(Libs.Androidx.ROOM_COMPILER)
+
+    implementation(Libs.CONVERTER_GSON)
+
+    //multi-module
     implementation(project(":data"))
 
-    //content
-    implementation(project(":constant"))
 }

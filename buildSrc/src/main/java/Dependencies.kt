@@ -4,6 +4,7 @@ object Apps {
     val sourceCompatibility: JavaVersion = JavaVersion.VERSION_1_8
     val targetCompatibility: JavaVersion = JavaVersion.VERSION_1_8
     const val COMPILE_SDK = 29
+    const val APPLICATION_ID = "com.studyship.application"
     const val MIN_SDK = 23
     const val TARGET_SDK = 29
     const val VERSION_CODE = 1
