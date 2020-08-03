@@ -33,6 +33,6 @@ class BottomSheetRecyclerCategoryViewHolder(
     fun setFlexibleView(items: List<DomainCategory>) {
         items.map {
             mapper.toMap(it)
-        }.also { categories -> expanded_menu.setFlexItemLayout(categories) }
+        }.also { categories -> containerView.expanded_menu.setFlexItemLayout(categories) }
     }
 }
