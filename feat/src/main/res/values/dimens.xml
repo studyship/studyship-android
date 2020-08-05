@@ -7,7 +7,7 @@
 
     <!--    Category Padding    -->
     <dimen name="category_item_padding">12dp</dimen>
-    <dimen name="category_item_bottom_padding">6dp</dimen>
+    <dimen name="category_item_bottom_padding">3dp</dimen>
     <dimen name="category_item_start_margin">6dp</dimen>
 
 

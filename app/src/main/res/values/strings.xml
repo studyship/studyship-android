@@ -91,4 +91,7 @@
     <string name="my_study_temporary">임시저장 글</string>
 
     <string name="how_many_study_card">%1$s</string>
+    <string name="how_many_comments">%1$d</string>
+
+    <string name="maintain_user_title">선장</string>
 </resources>
