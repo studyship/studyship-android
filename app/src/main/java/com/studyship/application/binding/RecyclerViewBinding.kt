@@ -4,21 +4,23 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.studyship.application.constant.ViewType.CATEGORY_VIEW_HEADER
-import com.studyship.application.constant.ViewType.CATEGORY_VIEW_TYPE
-import com.studyship.application.constant.ViewType.MAKE_STUDY_VIEW_TYPE
-import com.studyship.application.constant.ViewType.SEARCH_HISTORY_VIEW_TYPE
-import com.studyship.application.constant.ViewType.SUGGEST_VIEW_TYPE
-import com.studyship.application.constant.ViewType.TEMPORARY_STORAGE_STUDY
-import com.studyship.application.data.source.RecyclerItemSource
 import com.studyship.application.ui.adapter.CategoryRecyclerAdapter
 import com.studyship.application.ui.adapter.MakeStudyRecyclerAdapter
 import com.studyship.application.ui.adapter.SearchHistoryRecyclerAdapter
 import com.studyship.application.ui.adapter.SuggestRecyclerAdapter
+import com.studyship.application.ui.adapter.mystudy.MyStudyJoinRecyclerAdapter
+import tsthec.tsstudy.constant.ViewType.CATEGORY_VIEW_HEADER
+import tsthec.tsstudy.constant.ViewType.CATEGORY_VIEW_TYPE
+import tsthec.tsstudy.constant.ViewType.JOIN_STUDY
+import tsthec.tsstudy.constant.ViewType.MAKE_STUDY_VIEW_TYPE
+import tsthec.tsstudy.constant.ViewType.SEARCH_HISTORY_VIEW_TYPE
+import tsthec.tsstudy.constant.ViewType.SUGGEST_VIEW_TYPE
+import tsthec.tsstudy.constant.ViewType.TEMPORARY_STORAGE_STUDY
 import tsthec.tsstudy.domain.model.DomainCategoryResponse
 import tsthec.tsstudy.domain.model.DomainMakeStudyResponse
 import tsthec.tsstudy.domain.model.DomainSearchUserHistory
 import tsthec.tsstudy.domain.model.DomainSuggestResponse
+import tsthec.tsstudy.domain.model.mystudy.response.DomainMyStudyResponse
 
 private const val MAKE_STUDY_TITLE = "새로운 스터디"
 
@@ -117,8 +119,18 @@ fun RecyclerView.setMakeStudyBindingAdapter(items: List<DomainMakeStudyResponse>
     }
 }
 
-//todo BindingAdapter
-//@BindingAdapter("joinStudyList")
-//fun RecyclerView.setJoinStudyList(items: List<>) {
-//
-//}
+@BindingAdapter("joinStudyList")
+fun RecyclerView.setJoinStudyList(items: List<DomainMyStudyResponse>?) {
+    val joinMyStudyRecyclerAdapter = adapter as? MyStudyJoinRecyclerAdapter
+
+    joinMyStudyRecyclerAdapter?.destroyedEvent()
+
+    items?.let { responseList ->
+        joinMyStudyRecyclerAdapter?.addItems(JOIN_STUDY, responseList)
+    }
+
+    joinMyStudyRecyclerAdapter?.notifiedChangeItem
+    this.run {
+        adapter = joinMyStudyRecyclerAdapter
+    }
+}

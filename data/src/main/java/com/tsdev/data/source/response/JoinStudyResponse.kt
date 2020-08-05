@@ -1,5 +1,6 @@
 package com.tsdev.data.source.response
 
+import com.tsdev.data.Response
 import com.tsdev.data.source.Category
 
 data class JoinStudyResponse(
@@ -11,6 +12,6 @@ data class JoinStudyResponse(
     val members: String,
     val comments: List<Comments>,
     val category: List<Category>
-) {
+) : Response {
     data class Comments(val userName: String, val contents: String)
 }

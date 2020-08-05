@@ -13,4 +13,21 @@ object ViewType {
     const val APPLIED_STUDY = 6002
     const val BOOKMARK_STUDY = 6003
     const val TEMPORARY_STUDY = 6004
+
+    //category
+    const val CATEGORY_VIEW_TYPE = 2000
+    const val CATEGORY_VIEW_HEADER = 1000
+
+    //suggest
+    const val SUGGEST_VIEW_TYPE = 1000
+
+
+    //history
+    const val SEARCH_HISTORY_VIEW_TYPE = 1000
+
+    //make-study
+    const val MAKE_STUDY_VIEW_TYPE = 4000
+
+    //temporary  study
+    const val TEMPORARY_STORAGE_STUDY = 4001
 }
