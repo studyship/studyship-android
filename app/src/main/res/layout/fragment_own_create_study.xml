@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_normal"
             android:layout_marginTop="@dimen/spacing_large"
-            android:text="@{String.format(@string/how_many_study_card, myStudyViewModel.joinLiveDataList.size())}"
+            android:text="@{String.format(@string/how_many_study_card, myStudyViewModel.ownMakeStudyList.size())}"
             android:textColor="@color/main_color_blue"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +40,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/my_join_study_recyclerView"
-            joinStudyList="@{myStudyViewModel.joinLiveDataList}"
+            ownMakeStudyList="@{myStudyViewModel.ownMakeStudyList}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

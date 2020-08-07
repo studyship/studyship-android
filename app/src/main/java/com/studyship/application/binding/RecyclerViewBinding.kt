@@ -9,10 +9,12 @@ import com.studyship.application.ui.adapter.MakeStudyRecyclerAdapter
 import com.studyship.application.ui.adapter.SearchHistoryRecyclerAdapter
 import com.studyship.application.ui.adapter.SuggestRecyclerAdapter
 import com.studyship.application.ui.adapter.mystudy.MyStudyJoinRecyclerAdapter
+import com.studyship.application.ui.adapter.mystudy.MyStudyOwnMakeRecyclerAdapter
 import tsthec.tsstudy.constant.ViewType.CATEGORY_VIEW_HEADER
 import tsthec.tsstudy.constant.ViewType.CATEGORY_VIEW_TYPE
 import tsthec.tsstudy.constant.ViewType.JOIN_STUDY
 import tsthec.tsstudy.constant.ViewType.MAKE_STUDY_VIEW_TYPE
+import tsthec.tsstudy.constant.ViewType.OWN_CREATE_STUDY
 import tsthec.tsstudy.constant.ViewType.SEARCH_HISTORY_VIEW_TYPE
 import tsthec.tsstudy.constant.ViewType.SUGGEST_VIEW_TYPE
 import tsthec.tsstudy.constant.ViewType.TEMPORARY_STORAGE_STUDY
@@ -132,5 +134,19 @@ fun RecyclerView.setJoinStudyList(items: List<DomainMyStudyResponse>?) {
     joinMyStudyRecyclerAdapter?.notifiedChangeItem
     this.run {
         adapter = joinMyStudyRecyclerAdapter
+    }
+}
+
+@BindingAdapter("ownMakeStudyList")
+fun RecyclerView.setOwnMakeStudyList(items: List<DomainMyStudyResponse>?) {
+    val ownMakeStudyRecyclerAdapter = adapter as? MyStudyOwnMakeRecyclerAdapter
+
+    ownMakeStudyRecyclerAdapter?.destroyedEvent()
+
+    items?.let {
+        ownMakeStudyRecyclerAdapter?.addItems(OWN_CREATE_STUDY, it)
+    }
+    this.run {
+        adapter = ownMakeStudyRecyclerAdapter
     }
 }
