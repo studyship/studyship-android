@@ -12,8 +12,72 @@ class MyStudyViewModel : BaseViewModel() {
     val joinLiveDataList: LiveData<List<DomainMyStudyResponse>>
         get() = _joinLiveDataList
 
+    private val _ownMakeStudyList = MutableLiveData<List<DomainMyStudyResponse>>()
+
+    val ownMakeStudyList: LiveData<List<DomainMyStudyResponse>>
+        get() = _ownMakeStudyList
+
     init {
         _joinLiveDataList.value = listOf(
+            DomainMyStudyResponse(
+                "피그마 스터디",
+                "동작구",
+                "토, 일",
+                "10분 전",
+                "윤태성",
+                "피그마피그마 연습",
+                "5",
+                listOf(
+                    DomainMyStudyResponse.DomainComment("안녕"),
+                    DomainMyStudyResponse.DomainComment("하세요")
+                ),
+                listOf(DomainCategory("UI/UX"), DomainCategory("디자인"))
+            ),
+            DomainMyStudyResponse(
+                "안드로이드 스터디",
+                "강남",
+                "토",
+                "30분 전",
+                "안드로이드",
+                "안드로이드 연습 안드로이드 연습",
+                "3",
+                listOf(
+                    DomainMyStudyResponse.DomainComment("Hello"),
+                    DomainMyStudyResponse.DomainComment("World")
+                ),
+                listOf(DomainCategory("IT"), DomainCategory("개발"))
+            )
+        )
+
+        _ownMakeStudyList.value = listOf(
+            DomainMyStudyResponse(
+                "피그마 스터디",
+                "동작구",
+                "토, 일",
+                "10분 전",
+                "윤태성",
+                "피그마피그마 연습",
+                "5",
+                listOf(
+                    DomainMyStudyResponse.DomainComment("안녕"),
+                    DomainMyStudyResponse.DomainComment("하세요")
+                ),
+                listOf(DomainCategory("UI/UX"), DomainCategory("디자인"))
+            ),
+            DomainMyStudyResponse(
+                "안드로이드 스터디",
+                "강남",
+                "토",
+                "30분 전",
+                "안드로이드",
+                "안드로이드 연습 안드로이드 연습",
+                "3",
+                listOf(
+                    DomainMyStudyResponse.DomainComment("Hello"),
+                    DomainMyStudyResponse.DomainComment("World")
+                ),
+                listOf(DomainCategory("IT"), DomainCategory("개발"))
+            ),
             DomainMyStudyResponse(
                 "피그마 스터디",
                 "동작구",
