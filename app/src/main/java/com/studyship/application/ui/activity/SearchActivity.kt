@@ -60,11 +60,19 @@ class SearchActivity :
         }
 
         suggestAdapter.onClickListener = {
+            binding.inputUserText.requestFocus()
             binding.inputUserText.setText((suggestAdapter.getItems(it) as DomainSuggestResponse).suggestValue)
+            binding.inputUserText.apply {
+                setSelection(text.toString().length)
+            }
         }
 
         searchHistoryAdapter.setOnClickFocusListener = {
+            binding.inputUserText.requestFocus()
             binding.inputUserText.setText((searchHistoryAdapter.getItems(it) as DomainSearchUserHistory).userKeywords)
+            binding.inputUserText.apply {
+                setSelection(text.toString().length)
+            }
         }
 
         viewModel.showBottomSheetDialog.observe(this) {

@@ -20,7 +20,7 @@ internal abstract class UserHistoryLocalDB : RoomDatabase() {
                 instance ?: Room.databaseBuilder(
                     context.applicationContext, UserHistoryLocalDB::class.java,
                     DB_NAME
-                ).build()
+                ).fallbackToDestructiveMigration().build()
             }
     }
 }
