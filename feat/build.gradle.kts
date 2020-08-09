@@ -59,6 +59,9 @@ dependencies {
     //data
     implementation(project(":data"))
 
+    //domain
+    implementation(project(":domain"))
+    
     //content
     implementation(project(":constant"))
 }

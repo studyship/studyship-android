@@ -14,28 +14,40 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:textStyle="bold"
-            android:layout_marginStart="@dimen/spacing_x_large"
-            android:layout_marginTop="@dimen/spacing_large"
-            android:id="@+id/textView3"
+            android:id="@+id/make_study_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_x_large"
+            android:layout_marginTop="@dimen/spacing_large"
             android:text="@string/my_study_own"
             android:textColor="@color/main_color_black"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:layout_width="0dp"
-            android:layout_marginTop="@dimen/spacing_large"
-            android:layout_marginStart="@dimen/spacing_normal"
             android:layout_height="wrap_content"
-            android:text="@{String.format(@string/how_many_study_card, myStudyViewModel.joinLiveDataList.size())}"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:text="@{String.format(@string/how_many_study_card, myStudyViewModel.ownMakeStudyList.size())}"
             android:textColor="@color/main_color_blue"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView3"
+            app:layout_constraintStart_toEndOf="@+id/make_study_title"
             app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/my_join_study_recyclerView"
+            ownMakeStudyList="@{myStudyViewModel.ownMakeStudyList}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/make_study_title" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

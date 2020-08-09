@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.studyship.application.R
 import com.studyship.application.ui.adapter.BottomSheetRecyclerAdapter
 import com.tsdev.feat.widget.layout.HorizontalCategoryListView
+import com.tsdev.feat.widget.layout.study.MadeStudyCategoryList
+import tsthec.tsstudy.domain.model.DomainCategory
 import tsthec.tsstudy.domain.model.DomainLocationResource
 
 enum class CustomViewType(val viewType: Int) {
@@ -69,5 +71,12 @@ fun RecyclerView.setBindingExpandedList(items: List<DomainLocationResource>?, vi
     this.run {
         adapter = bottomAdapter
         layoutManager = GridLayoutManager(context, 1)
+    }
+}
+
+@BindingAdapter("madeStudyList")
+fun MadeStudyCategoryList.setBindingAdapter(categories: List<DomainCategory>?) {
+    categories?.let {
+        setStudyCategoryList(it)
     }
 }
