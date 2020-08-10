@@ -79,15 +79,16 @@ class SearchKeywordViewModel(private val searchUseCase: CompletableUseCase<Domai
                 .onErrorReturn {
                     Result.Error(it.cause)
                 }
-                .map { Result.Success(it.data) }
                 .subscribe {
                     when (it.status) {
                         Status.SUCCESS -> {
-                            _searchKeyword.value = it.item
-                            saveUserSearchHistory(it.item)
+                            _searchKeyword.value = it.data
+                            saveUserSearchHistory(it.data)
                         }
                         Status.ERROR -> {
-
+                            it.errorMessage?.let { throwable ->
+                                searchKeywordBehaviorSubject.onError(throwable)
+                            }
                         }
                     }
                 }
@@ -152,8 +153,7 @@ class SearchKeywordViewModel(private val searchUseCase: CompletableUseCase<Domai
 
             searchKeywordBehaviorSubject.onNext(Result.Success(DomainSearchUserHistory(s.toString())))
             _initializedLiveData.value = true
-        }
-        else {
+        } else {
             searchKeywordBehaviorSubject.onNext(Result.Error(Throwable("Empty Keywords")))
         }
     }
