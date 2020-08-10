@@ -5,8 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.tsdev.presentation.base.BaseViewModel
 import com.tsdev.presentation.constant.DEBOUNCE_INTERVAL_TIME
+import com.tsdev.presentation.ext.Result
 import com.tsdev.presentation.ext.SingleEvent
 import com.tsdev.presentation.ext.SingleMutableEvent
+import com.tsdev.presentation.ext.Status
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
@@ -20,7 +22,8 @@ import java.util.concurrent.TimeUnit
 class SearchKeywordViewModel(private val searchUseCase: CompletableUseCase<DomainSearchUserHistory, DomainSearchUserHistory>) :
     BaseViewModel() {
 
-    private val searchKeywordBehaviorSubject = PublishSubject.create<DomainSearchUserHistory>()
+    private val searchKeywordBehaviorSubject =
+        PublishSubject.create<Result<DomainSearchUserHistory>>()
 
     private val _suggestList = MutableLiveData<List<DomainSuggestResponse>>()
 
@@ -72,15 +75,22 @@ class SearchKeywordViewModel(private val searchUseCase: CompletableUseCase<Domai
         disposable.add(
             searchKeywordBehaviorSubject
                 .debounce(DEBOUNCE_INTERVAL_TIME, TimeUnit.MILLISECONDS)
-                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .filter { it.userKeywords.isNotEmpty() }
                 .onErrorReturn {
-                    DomainSearchUserHistory("")
+                    Result.Error(it.cause)
                 }
                 .subscribe {
-                    _searchKeyword.value = it
-                    saveUserSearchHistory(it)
+                    when (it.status) {
+                        Status.SUCCESS -> {
+                            _searchKeyword.value = it.data
+                            saveUserSearchHistory(it.data)
+                        }
+                        Status.ERROR -> {
+                            it.errorMessage?.let { throwable ->
+                                searchKeywordBehaviorSubject.onError(throwable)
+                            }
+                        }
+                    }
                 }
         )
 
@@ -140,8 +150,11 @@ class SearchKeywordViewModel(private val searchUseCase: CompletableUseCase<Domai
         _searchKeyword.value = DomainSearchUserHistory("")
         if (s.isNotEmpty()) {
             Log.e("KEYWORD", s.toString())
-            searchKeywordBehaviorSubject.onNext(DomainSearchUserHistory(s.toString()))
+
+            searchKeywordBehaviorSubject.onNext(Result.Success(DomainSearchUserHistory(s.toString())))
             _initializedLiveData.value = true
+        } else {
+            searchKeywordBehaviorSubject.onNext(Result.Error(Throwable("Empty Keywords")))
         }
     }
 
@@ -153,22 +166,25 @@ class SearchKeywordViewModel(private val searchUseCase: CompletableUseCase<Domai
         _selectedCategory.value = _categoryList.value?.get(it)
     }
 
-    private fun saveUserSearchHistory(keywords: DomainSearchUserHistory) {
-        disposable.add(
-            searchUseCase(keywords)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe()
-        )
+    private fun saveUserSearchHistory(keywords: DomainSearchUserHistory?) {
+        keywords?.let {
+            disposable.add(
+                searchUseCase(it)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe()
+            )
+        }
     }
 
     val removeUserSearchHistory: (DomainSearchUserHistory) -> Unit = { position ->
-        disposable.add(searchUseCase.removeUserSearchHistory(position)
-            .subscribe({
-                Log.e("SUCCESS", "성공")
-            }
-                , {
-                    it.printStackTrace()
-                })
+        disposable.add(
+            searchUseCase.removeUserSearchHistory(position)
+                .subscribe({
+                    Log.e("SUCCESS", "성공")
+                }
+                    , {
+                        it.printStackTrace()
+                    })
         )
     }
 
