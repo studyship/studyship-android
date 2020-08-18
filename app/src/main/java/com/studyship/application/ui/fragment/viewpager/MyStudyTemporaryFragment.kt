@@ -10,9 +10,9 @@ import com.tsdev.presentation.MyStudyViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MyStudyTemporaryFragment :
-    BaseFragment<FragmentMyStudyTemporaryBinding>(R.layout.fragment_my_study_temporary) {
+    BaseFragment<FragmentMyStudyTemporaryBinding, MyStudyViewModel>(R.layout.fragment_my_study_temporary) {
 
-    private val viewModel by viewModel<MyStudyViewModel>()
+    override val viewModel by viewModel<MyStudyViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
