@@ -10,13 +10,14 @@ import com.tsdev.presentation.MyStudyViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MyStudyBookMarkFragment :
-    BaseFragment<FragmentMyStudyBookmarkBinding>(R.layout.fragment_my_study_bookmark) {
+    BaseFragment<FragmentMyStudyBookmarkBinding, MyStudyViewModel>(R.layout.fragment_my_study_bookmark) {
 
-    private val viewModel by viewModel<MyStudyViewModel>()
+    override val viewModel by viewModel<MyStudyViewModel>()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bind {
-            setVariable(BR.myStudyViewModel, viewModel)
+            myStudyViewModel = viewModel
             executePendingBindings()
         }
     }
