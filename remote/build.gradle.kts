@@ -50,6 +50,7 @@ dependencies {
     implementation(Libs.ADAPTER_RX_JAVA2)
     implementation(Libs.OK_HTTP_LOGGING)
     implementation(Libs.OK_HTTP3)
+    implementation(Libs.CONVERTER_GSON)
 
     implementation(project(":data"))
 }
