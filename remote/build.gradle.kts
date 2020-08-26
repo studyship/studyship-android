@@ -44,5 +44,12 @@ dependencies {
     androidTestImplementation(TestLibs.JUNIT)
     androidTestImplementation(TestLibs.ESPRESSO)
 
+
+    //network
+    implementation(Libs.RETROFIT)
+    implementation(Libs.ADAPTER_RX_JAVA2)
+    implementation(Libs.OK_HTTP_LOGGING)
+    implementation(Libs.OK_HTTP3)
+
     implementation(project(":data"))
 }
