@@ -52,5 +52,8 @@ dependencies {
     implementation(Libs.OK_HTTP3)
     implementation(Libs.CONVERTER_GSON)
 
+    //koin
+    implementation(Libs.KOIN_VIEWMODEL)
+
     implementation(project(":data"))
 }

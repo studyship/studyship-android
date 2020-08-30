@@ -9,7 +9,7 @@ import com.tsdev.remote.data.signin.SignInUserInfoRequest
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-interface StudyShipAPI : Api {
+interface StudyShipUserAPI : Api {
     @POST("/users")
     fun signInStudyShipUser(
         @Body signInUserInfo: SignInUserInfoRequest
