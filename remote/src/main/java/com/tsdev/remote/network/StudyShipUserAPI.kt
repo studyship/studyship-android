@@ -6,8 +6,8 @@ import com.tsdev.remote.data.CheckUserResponse
 import com.tsdev.remote.data.login.LoginRequest
 import com.tsdev.remote.data.signin.SignInResponse
 import com.tsdev.remote.data.signin.SignInUserInfoRequest
-import retrofit2.http.Body
-import retrofit2.http.POST
+import com.tsdev.remote.data.user.DetailUserResponse
+import retrofit2.http.*
 
 interface StudyShipUserAPI : Api {
     @POST("/users")
@@ -24,4 +24,14 @@ interface StudyShipUserAPI : Api {
     fun signInUser(
         @Body loginRequest: LoginRequest
     ): SignInResponse
+
+    @GET("/users/{id}")
+    fun getDetailUserInfo(
+        @Path("id") userID: Int
+    ): DetailUserResponse
+
+    @PUT("/users/{id}")
+    fun patchUserInfo(
+        @Path("id") userID: Int
+    ): DetailUserResponse
 }
