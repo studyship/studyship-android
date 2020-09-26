@@ -11,9 +11,9 @@ import com.tsdev.presentation.MyStudyViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MyStudyOwnCreateFragment :
-    BaseFragment<FragmentOwnCreateStudyBinding>(R.layout.fragment_own_create_study) {
+    BaseFragment<FragmentOwnCreateStudyBinding, MyStudyViewModel>(R.layout.fragment_own_create_study) {
 
-    private val viewModel by viewModel<MyStudyViewModel>()
+    override val viewModel by viewModel<MyStudyViewModel>()
 
     private val ownCreateStudyRecyclerAdapter by lazy {
         MyStudyOwnMakeRecyclerAdapter()

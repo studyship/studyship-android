@@ -23,14 +23,14 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
-class HomeFragment : BaseFragment<FragmentHomeLayoutBinding>(R.layout.fragment_home_layout),
+class HomeFragment : BaseFragment<FragmentHomeLayoutBinding, HomeFragmentViewModel>(R.layout.fragment_home_layout),
     IRecyclerDelegate {
-    private val homeViewModel by viewModel<HomeFragmentViewModel>()
+    override val viewModel by viewModel<HomeFragmentViewModel>()
 
     private val bottomSheet by inject<CustomBottomSheetDialog> {
         parametersOf(
             R.layout.layout_make_study_bottom_sheet,
-            homeViewModel,
+            viewModel,
             parentFragmentManager,
             makeStudyRecyclerAdapter,
             R.style.iOSBottomSheetDialogTheme
@@ -49,7 +49,7 @@ class HomeFragment : BaseFragment<FragmentHomeLayoutBinding>(R.layout.fragment_h
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewDataBinding.run {
-            homeFragmentViewModel = homeViewModel
+            homeFragmentViewModel = viewModel
             lifecycleOwner = viewLifecycleOwner
             executePendingBindings()
         }
@@ -63,13 +63,13 @@ class HomeFragment : BaseFragment<FragmentHomeLayoutBinding>(R.layout.fragment_h
             adapter = homeCategoryRecyclerAdapter
         }
 
-        homeViewModel.moveSignInActivity.singleObserve(this) {
+        viewModel.moveSignInActivity.singleObserve(this) {
             if (it) {
                 context?.comfortableStartActivity<SignInActivity>()
             }
         }
 
-        homeViewModel.moveSearchActivity.singleObserve(this) {
+        viewModel.moveSearchActivity.singleObserve(this) {
             if (it) {
                 context?.comfortableStartActivity<SearchActivity>()
             }

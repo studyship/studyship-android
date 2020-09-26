@@ -11,9 +11,9 @@ import com.tsdev.presentation.MyStudyViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MyStudyJoinFragment :
-    BaseFragment<FragmentMyStudyJoinBinding>(R.layout.fragment_my_study_join) {
+    BaseFragment<FragmentMyStudyJoinBinding, MyStudyViewModel>(R.layout.fragment_my_study_join) {
 
-    private val viewModel by viewModel<MyStudyViewModel>()
+    override val viewModel by viewModel<MyStudyViewModel>()
     private val myJoinStudyAdapter: MyStudyJoinRecyclerAdapter by lazy {
         MyStudyJoinRecyclerAdapter()
     }

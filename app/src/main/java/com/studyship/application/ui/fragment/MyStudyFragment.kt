@@ -9,10 +9,12 @@ import com.studyship.application.databinding.FragmentMystudyLayoutBinding
 import com.studyship.application.ext.ViewPagerResource
 import com.studyship.application.ext.setUpViewPager
 import com.studyship.application.ui.adapter.viewpager.ViewPagerAdapter
+import com.tsdev.presentation.base.BaseViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MyStudyFragment :
-    BaseFragment<FragmentMystudyLayoutBinding>(R.layout.fragment_mystudy_layout) {
-
+    BaseFragment<FragmentMystudyLayoutBinding, BaseViewModel>(R.layout.fragment_mystudy_layout) {
+    override val viewModel: BaseViewModel by viewModel()
     private val nameList = listOf("가입한", "내가 만든", "신청한", "북마크", "임시저장")
     private val viewPagerAdapter: ViewPagerAdapter by lazy {
         ViewPagerAdapter(childFragmentManager, lifecycle)
