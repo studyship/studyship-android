@@ -4,6 +4,7 @@ plugins {
     kotlin("android.extensions")
     kotlin("kapt")
     id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-android")
 }
 
 android {
@@ -58,6 +59,8 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Libs.Kotlin.SDK)
     implementation(Libs.Androidx.APPCOMPAT)
+    implementation("androidx.appcompat:appcompat:1.1.0")
+    implementation("androidx.constraintlayout:constraintlayout:1.1.3")
     testImplementation(Libs.JUNIT)
     implementation(Libs.Androidx.CONSTRAINT_LAYOUT)
     androidTestImplementation(TestLibs.JUNIT)

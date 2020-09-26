@@ -11,6 +11,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ui.splash.SplashActivity"
+            android:theme="@style/NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ui.activity.createstudy.CreateStudyStepTwoActivity"
             android:theme="@style/NoActionBar" />
         <activity android:name=".ui.activity.UserPreferPlaceActivity" />
@@ -30,19 +39,13 @@
         <activity
             android:name=".ui.activity.StudyApplyActivity"
             android:theme="@style/NoActionBar" />
-        <activity android:name=".ui.splash.SplashActivity" />
         <activity
             android:name=".ui.activity.AddStudyActivity"
             android:theme="@style/NoActionBar" />
         <activity
             android:name=".ui.activity.MainActivity"
-            android:theme="@style/NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/NoActionBar" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
