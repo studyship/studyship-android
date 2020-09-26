@@ -14,4 +14,6 @@ val viewModelModule = module {
     viewModel { MakeStudyViewModel() }
 
     viewModel { MyStudyViewModel() }
+
+    viewModel { SplashViewModel() }
 }

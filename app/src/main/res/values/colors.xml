@@ -41,6 +41,7 @@
     <color name="apply_study_time_text_color">#CCCCCC</color>
     <color name="apply_study_category_bg_color">#FFC545</color>
     <color name="apply_study_response_percent_text_color">#60D3E0</color>
+    <color name="apply_study_splash_center_color">#60DEE0</color>
 
     <!--    Custom EditText Color   -->
     <color name="edit_text_default_color">#E6E6E6</color>
