@@ -148,6 +148,7 @@
                     android:layout_margin="@dimen/spacing_normal"
                     android:hint="@string/study_goal_hint_string"
                     android:inputType="text"
+                    android:maxLength="30"
                     android:maxLines="1"
                     android:textSize="@dimen/text_large"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -223,6 +224,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/study_tendency_label" />
 
                 <TextView
+                    android:id="@+id/tv_tag"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/spacing_large"
@@ -232,6 +234,26 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/user_tendency_recycler_view" />
+
+                <EditText
+                    android:id="@+id/et_tag"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_normal"
+                    android:hint="@string/study_tag_hint"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_tag" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_normal"
+                    android:text="@string/study_tag_alert_tv"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_tag" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>

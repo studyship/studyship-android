@@ -82,6 +82,8 @@
     <string name="study_tendency">스터디 성향</string>
     <string name="study_description_length_string">%1$d / 500</string>
     <string name="study_tag">태그 (최대 5개)</string>
+    <string name="study_tag_hint">#태그를 입력주세요. 예) 피그마</string>
+    <string name="study_tag_alert_tv">스페이스를 누르면 자동으로 #가 추가됩니다.\n 태그를 설정하면 정확한 스터디 검색을 도와줍니다 :)</string>
 
     <!--    My Study Page   -->
     <string name="my_study_joined">현재 가입한 스터디</string>
