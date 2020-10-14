@@ -24,6 +24,9 @@ abstract class BaseFragment<VIEW_DATA_BINDING : ViewDataBinding, VIEW_MODEL : Ba
         savedInstanceState: Bundle?
     ): View? {
         viewDataBinding = DataBindingUtil.inflate(inflater, layout, container, false)
+
+        viewDataBinding.lifecycleOwner = viewLifecycleOwner
+        viewDataBinding.executePendingBindings()
         return viewDataBinding.root
     }
 
