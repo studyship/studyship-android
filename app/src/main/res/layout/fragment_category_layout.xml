@@ -43,12 +43,20 @@
             app:layout_constraintTop_toBottomOf="@+id/appBarLayout4"
             app:tabIndicatorColor="@color/main_color_black"
             app:tabIndicatorFullWidth="false"
-            app:tabIndicatorHeight="@dimen/spacing_mini"
-            app:tabMode="auto"
+            app:tabIndicatorHeight="@dimen/spacing_micro"
+            app:tabMode="scrollable"
             app:tabSelectedTextColor="@color/main_color_black"
             app:tabTextAppearance="@style/my_tab"
             app:tabTextColor="@color/add_study_activity_divider_color" />
 
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="12dp"
+            android:background="@drawable/bg_category_divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/category_tab" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/category_viewpager"
@@ -57,6 +65,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/category_tab" />
+            app:layout_constraintTop_toBottomOf="@+id/divider" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
