@@ -59,7 +59,9 @@
             android:id="@+id/password_check"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_large"
             android:hint="@string/password_check_hint"
+            android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="@+id/right"
             app:layout_constraintStart_toStartOf="@+id/left"
             app:layout_constraintTop_toBottomOf="@+id/title_appBar" />
@@ -68,7 +70,9 @@
             android:id="@+id/password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_normal"
             android:hint="@string/password_hint"
+            android:inputType="textPassword"
             app:layout_constraintEnd_toStartOf="@+id/right"
             app:layout_constraintStart_toStartOf="@+id/left"
             app:layout_constraintTop_toBottomOf="@+id/password_check" />
@@ -77,17 +81,43 @@
             android:id="@+id/email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_normal"
             android:hint="@string/email_hint"
+            android:inputType="textEmailAddress"
             app:layout_constraintEnd_toStartOf="@+id/right"
             app:layout_constraintStart_toStartOf="@+id/left"
             app:layout_constraintTop_toBottomOf="@+id/password" />
 
         <EditText
+            android:id="@+id/editText2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_normal"
             android:hint="@string/nickname_hint"
+            android:inputType="text"
             app:layout_constraintEnd_toStartOf="@+id/right"
             app:layout_constraintStart_toStartOf="@+id/left"
             app:layout_constraintTop_toBottomOf="@+id/email" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/main_color_blue"
+            android:gravity="center"
+            android:text="@string/finish"
+            android:textColor="@color/main_color_white"
+            android:textFontWeight="700"
+            android:textSize="@dimen/text_normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="@dimen/spacing_huge" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
