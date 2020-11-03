@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.SignUpActivity">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/title_appBar"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/main_color_white"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|start"
+                android:src="@drawable/ic_baseline_chevron_left_24" />
+
+            <!--            todo 노토산스 적용    -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/spacing_xx_large"
+                android:gravity="center"
+                android:text="@string/sign_up_title"
+                android:textColor="@color/main_color_black" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/spacing_large"
+            app:layout_constraintWidth_default="percent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/spacing_large"
+            app:layout_constraintWidth_default="percent" />
+
+        <EditText
+            android:id="@+id/password_check"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/password_check_hint"
+            app:layout_constraintEnd_toEndOf="@+id/right"
+            app:layout_constraintStart_toStartOf="@+id/left"
+            app:layout_constraintTop_toBottomOf="@+id/title_appBar" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/password_hint"
+            app:layout_constraintEnd_toStartOf="@+id/right"
+            app:layout_constraintStart_toStartOf="@+id/left"
+            app:layout_constraintTop_toBottomOf="@+id/password_check" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/email_hint"
+            app:layout_constraintEnd_toStartOf="@+id/right"
+            app:layout_constraintStart_toStartOf="@+id/left"
+            app:layout_constraintTop_toBottomOf="@+id/password" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/nickname_hint"
+            app:layout_constraintEnd_toStartOf="@+id/right"
+            app:layout_constraintStart_toStartOf="@+id/left"
+            app:layout_constraintTop_toBottomOf="@+id/email" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

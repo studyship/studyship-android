@@ -96,4 +96,11 @@
     <string name="how_many_comments">%1$d</string>
 
     <string name="maintain_user_title">선장</string>
+
+    <!--    SignUp Page    -->
+    <string name="sign_up_title">이메일 계정으로 가입</string>
+    <string name="nickname_hint">이름(닉네임)</string>
+    <string name="email_hint">이메일</string>
+    <string name="password_hint">비밀번호</string>
+    <string name="password_check_hint">비밀번호 확인</string>
 </resources>
