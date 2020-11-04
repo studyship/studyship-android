@@ -20,25 +20,29 @@
             android:layout_width="0dp"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/main_color_white"
-            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center|start"
-                android:src="@drawable/ic_baseline_chevron_left_24" />
-
-            <!--            todo 노토산스 적용    -->
-            <TextView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/spacing_xx_large"
-                android:gravity="center"
-                android:text="@string/sign_up_title"
-                android:textColor="@color/main_color_black" />
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center|start"
+                    android:src="@drawable/ic_baseline_chevron_left_24" />
+
+                <!--            todo 노토산스 적용    -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/sign_up_title"
+                    android:textColor="@color/main_color_black" />
+
+            </RelativeLayout>
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -91,16 +95,24 @@
             app:layout_constraintStart_toStartOf="@+id/left"
             app:layout_constraintTop_toBottomOf="@+id/password" />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editText2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_normal"
-            android:hint="@string/nickname_hint"
-            android:inputType="text"
+            android:error="@{vm.errorMessage}"
             app:layout_constraintEnd_toStartOf="@+id/right"
             app:layout_constraintStart_toStartOf="@+id/left"
-            app:layout_constraintTop_toBottomOf="@+id/email" />
+            app:layout_constraintTop_toBottomOf="@+id/email">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/nickname_hint"
+                android:inputType="text"
+                android:onTextChanged="@{vm::onNameChangeListener}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <TextView
             android:layout_width="0dp"
