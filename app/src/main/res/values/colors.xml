@@ -10,6 +10,7 @@
     <color name="main_color_blue">#60D3E0</color>
     <color name="main_color_black">#000</color>
     <color name="main_color_white">#FFF</color>
+    <color name="main_color_gray">#E5E5E5</color>
 
     <!--    Bottom navigation color     -->
     <color name="selected_bottom_navigation_color">#3F3F3F</color>
