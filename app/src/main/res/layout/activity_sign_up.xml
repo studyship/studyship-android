@@ -29,10 +29,10 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:onClick="@{() -> vm.}"
                     android:layout_width="30dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center|start"
+                    android:onClick="@{() -> vm.backButtonClickListener()}"
                     android:src="@drawable/ic_baseline_chevron_left_24" />
 
                 <!--            todo 노토산스 적용    -->
@@ -131,7 +131,7 @@
                 android:layout_height="match_parent"
                 android:hint="@string/nickname_hint"
                 android:inputType="text"
-                android:onTextChanged="@{vm::onNameChangeListener}" />
+                android:onTextChanged="@{() -> vm.onChangeListener()}" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -155,6 +155,6 @@
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:orientation="horizontal"
-            app:layout_constraintGuide_end="@dimen/spacing_huge" />
+            app:layout_constraintGuide_end="@dimen/spacing_xxx_large" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -5,6 +5,7 @@ import com.studyship.application.R
 import com.studyship.application.base.activity.BaseActivity
 import com.studyship.application.databinding.ActivitySignUpBinding
 import com.tsdev.presentation.SignUpViewModel
+import com.tsdev.presentation.ext.singleObserve
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignUpActivity :
@@ -17,6 +18,14 @@ class SignUpActivity :
         bind {
             vm = viewModel
             executePendingBindings()
+        }
+
+        viewModel.backButtonState.singleObserve(this) { isClicked ->
+            if (isClicked) {
+                finish()
+            } else {
+                return@singleObserve
+            }
         }
     }
 }
