@@ -8,6 +8,10 @@
         <variable
             name="vm"
             type="com.tsdev.presentation.SignUpViewModel" />
+
+        <variable
+            name="regex"
+            type="tsthec.tsstudy.constant.SignUpRegex" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -131,7 +135,8 @@
                 android:layout_height="match_parent"
                 android:hint="@string/nickname_hint"
                 android:inputType="text"
-                android:onTextChanged="@{() -> vm.onChangeListener()}" />
+                android:onTextChanged="@{(text, start, before ,count) ->  vm.onChangeListener(text, regex.NICKNAME)}"
+                android:text="@={vm.email}" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -140,7 +145,7 @@
             android:layout_height="0dp"
             android:background="@{vm.isSuccess ? @color/main_color_blue : @color/main_color_gray}"
             android:gravity="center"
-            android:onClick="@{vm.isFinish ? vm::onClickFinishListener : vm::onClickNextInformation}"
+            android:onClick="@{() -> vm.isFinish ? vm.onClickFinishListener() : vm.onClickNextInformation()}"
             android:text="@{vm.isFinish ? @string/finish : @string/next}"
             android:textColor="@color/main_color_white"
             android:textFontWeight="700"

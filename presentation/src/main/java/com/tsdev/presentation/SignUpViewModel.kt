@@ -1,24 +1,27 @@
 package com.tsdev.presentation
 
 import android.util.Log
-import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.tsdev.presentation.base.BaseViewModel
 import com.tsdev.presentation.ext.SingleEvent
 import com.tsdev.presentation.ext.SingleMutableEvent
 import com.tsdev.presentation.ext.isHadBlack
+import com.tsdev.presentation.helper.ResourceHelper
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.subjects.BehaviorSubject
+import io.reactivex.subjects.PublishSubject
+import tsthec.tsstudy.constant.SignUpRegex
 import java.util.concurrent.TimeUnit
 
-class SignUpViewModel : BaseViewModel() {
-    private val inputBehaviorSubject = BehaviorSubject.createDefault("")
+class SignUpViewModel(private val resource: ResourceHelper) : BaseViewModel() {
 
-    private val _email = MutableLiveData<String>()
+    //2way data-binding
+    val nickname = MutableLiveData<String>()
+    val email = MutableLiveData<String>()
+    val password = MutableLiveData<String>()
 
-    val email: LiveData<String>
-        get() = _email
+    //퍼블리쉬 서브젝트 -> 구독하는 순간부터 데이터 발행.
+    private val inputBehaviorSubject = PublishSubject.create<String>()
 
     private val _isFinish = MutableLiveData<Boolean>()
 
@@ -55,38 +58,40 @@ class SignUpViewModel : BaseViewModel() {
         )
     }
 
-    fun onClickNextInformation(view: View) {
+    fun onClickNextInformation() {
         _isSuccess.value = false
         inputBehaviorSubject.onNext(EMPTY_STRING)
     }
 
-    fun onClickFinishListener(view: View) {
+    fun onClickFinishListener() {
         //todo 회원가입 api 태워야함.
     }
 
-    @JvmOverloads
     fun onChangeListener(
         s: CharSequence,
-        regex: Regex? = null,
-        errorMessage: String,
-        defaultError: String = "공백은 입력이 불가합니다."
+        regex: String
     ) {
+        Log.d("TEST", regex)
+
         if (s.toString().isNotEmpty()) {
             s.toString().isHadBlack { c: Char -> c != ' ' }.let {
-                if (regex?.matches(s.toString()) != true) {
-                    _errorMessage.value = errorMessage
-                    return@let
-                }
-
                 if (it) {
                     inputBehaviorSubject.onNext(s.toString())
                     _errorMessage.value = null
                     Log.d("VALUE", s.toString())
                 } else {
                     _isSuccess.value = false
-                    _errorMessage.value = defaultError
+                    _errorMessage.value = resource.getStringRes(R.string.blank_error_message)
                 }
             }
+
+            //regex 체크.
+            if (!regex.toRegex().matches(s.toString())) {
+                _isSuccess.value = false
+                _errorMessage.value = resource.getStringRes(R.string.email_regex_error_message)
+                return
+            }
+
         }
     }
 

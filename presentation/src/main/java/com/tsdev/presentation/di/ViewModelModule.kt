@@ -17,5 +17,5 @@ val viewModelModule = module {
 
     viewModel { SplashViewModel() }
 
-    viewModel { SignUpViewModel() }
+    viewModel { SignUpViewModel(get()) }
 }
