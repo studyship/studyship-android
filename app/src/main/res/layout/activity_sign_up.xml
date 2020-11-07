@@ -12,12 +12,14 @@
         <variable
             name="regex"
             type="tsthec.tsstudy.constant.SignUpRegex" />
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.SignUpActivity">
+        tools:context=".ui.activity.SignUpActivity">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/title_appBar"
@@ -107,6 +109,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_normal"
+            android:visibility="@{vm.animatedMutableLiveData.getValue(0) ? View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toStartOf="@+id/right"
             app:layout_constraintStart_toStartOf="@+id/left"
             app:layout_constraintTop_toBottomOf="@+id/password">
@@ -135,17 +138,18 @@
                 android:layout_height="match_parent"
                 android:hint="@string/nickname_hint"
                 android:inputType="text"
-                android:onTextChanged="@{(text, start, before ,count) ->  vm.onChangeListener(text, regex.NICKNAME)}"
+                android:onTextChanged="@{(text, start, before ,count) ->  vm.onChangeListener(text, regex.NICKNAME, @string/email_regex_error_message)}"
                 android:text="@={vm.email}" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <TextView
+            android:enabled="@{vm.isSuccess}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@{vm.isSuccess ? @color/main_color_blue : @color/main_color_gray}"
             android:gravity="center"
-            android:onClick="@{() -> vm.isFinish ? vm.onClickFinishListener() : vm.onClickNextInformation()}"
+            throttleClickListener="@{() -> vm.isFinish ? vm.onClickFinishListener() : vm.onClickNextInformation()}"
             android:text="@{vm.isFinish ? @string/finish : @string/next}"
             android:textColor="@color/main_color_white"
             android:textFontWeight="700"

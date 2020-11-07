@@ -9,7 +9,7 @@ import com.studyship.application.R
 import com.studyship.application.BR
 import com.studyship.application.base.fragment.BaseFragment
 import com.studyship.application.databinding.FragmentHomeLayoutBinding
-import com.studyship.application.ui.SignUpActivity
+import com.studyship.application.ui.activity.SignUpActivity
 import com.studyship.application.ui.activity.SearchActivity
 import com.studyship.application.ui.activity.SignInActivity
 import com.studyship.application.ui.activity.StudyApplyActivity
@@ -19,7 +19,6 @@ import com.studyship.application.ui.adapter.holder.delegate.IRecyclerDelegate
 import com.studyship.application.ui.widget.CustomBottomSheetDialog
 import com.studyship.application.util.comfortableStartActivity
 import com.tsdev.presentation.HomeFragmentViewModel
-import com.tsdev.presentation.SignUpViewModel
 import com.tsdev.presentation.ext.singleObserve
 import kotlinx.android.synthetic.main.appbar_header_layout.view.*
 import kotlinx.android.synthetic.main.fragment_home_layout.view.*

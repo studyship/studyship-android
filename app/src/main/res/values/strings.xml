@@ -105,4 +105,6 @@
     <string name="password_check_hint">비밀번호 확인</string>
     <string name="finish">완료</string>
     <string name="next">다음</string>
+    <string name="email_regex_error_message">영어, 한글, 숫자만 가능합니다.</string>
+    <string name="blank_error_message">공백이 들어갈 수 없습니다.</string>
 </resources>

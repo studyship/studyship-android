@@ -1,4 +1,4 @@
-package com.studyship.application.ui
+package com.studyship.application.ui.activity
 
 import android.os.Bundle
 import com.studyship.application.R

@@ -1,9 +1,11 @@
 package com.tsdev.presentation
 
 import android.util.Log
+import androidx.annotation.StringRes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.tsdev.presentation.base.BaseViewModel
+import com.tsdev.presentation.ext.AnimatedMutableLiveData
 import com.tsdev.presentation.ext.SingleEvent
 import com.tsdev.presentation.ext.SingleMutableEvent
 import com.tsdev.presentation.ext.isHadBlack
@@ -19,6 +21,10 @@ class SignUpViewModel(private val resource: ResourceHelper) : BaseViewModel() {
     val nickname = MutableLiveData<String>()
     val email = MutableLiveData<String>()
     val password = MutableLiveData<String>()
+
+    val animatedMutableLiveData = AnimatedMutableLiveData<Boolean>()
+
+    var section = 0
 
     //퍼블리쉬 서브젝트 -> 구독하는 순간부터 데이터 발행.
     private val inputBehaviorSubject = PublishSubject.create<String>()
@@ -56,23 +62,36 @@ class SignUpViewModel(private val resource: ResourceHelper) : BaseViewModel() {
                     }
                 }
         )
+
+        //email, password, passwordCheck
+        animatedMutableLiveData.setterAnimatedInitData(
+            MutableLiveData(),
+            MutableLiveData(),
+            MutableLiveData()
+        )
     }
 
     fun onClickNextInformation() {
         _isSuccess.value = false
         inputBehaviorSubject.onNext(EMPTY_STRING)
+        animatedMutableLiveData.onChangeValue(section) {
+            it.value = true
+        }
+        section++
+        Log.d("클릭리스너 확인용", "클릭")
     }
 
     fun onClickFinishListener() {
         //todo 회원가입 api 태워야함.
+
+        Log.d("클릭리스너 확인용", "클릭")
     }
 
     fun onChangeListener(
         s: CharSequence,
-        regex: String
+        regex: String,
+        errorMessage: String
     ) {
-        Log.d("TEST", regex)
-
         if (s.toString().isNotEmpty()) {
             s.toString().isHadBlack { c: Char -> c != ' ' }.let {
                 if (it) {
@@ -81,22 +100,24 @@ class SignUpViewModel(private val resource: ResourceHelper) : BaseViewModel() {
                     Log.d("VALUE", s.toString())
                 } else {
                     _isSuccess.value = false
-                    _errorMessage.value = resource.getStringRes(R.string.blank_error_message)
+                    _errorMessage.value = errorMessage
                 }
             }
-
             //regex 체크.
             if (!regex.toRegex().matches(s.toString())) {
                 _isSuccess.value = false
-                _errorMessage.value = resource.getStringRes(R.string.email_regex_error_message)
+                _errorMessage.value = errorMessage
                 return
             }
-
+        } else {
+            _isSuccess.value = false
+            _errorMessage.value = null
         }
     }
 
     fun backButtonClickListener() {
         _backButtonState.event = true
+        section = 0
     }
 
     companion object {

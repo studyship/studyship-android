@@ -5,6 +5,8 @@ import android.view.animation.AnimationUtils
 import androidx.databinding.BindingAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.studyship.application.R
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 
 @BindingAdapter("isVisible")
 fun View.setVisibleDataBindingAdapter(textLength: Int?) {
@@ -35,8 +37,20 @@ fun FloatingActionButton.setVisibleFabButtonBindingAdapter(isAnimated: Boolean) 
     val anim = AnimationUtils.loadAnimation(context, R.anim.fade_in)
 
     animation = anim
-    
+
     if (isAnimated) {
         anim.start()
+    }
+}
+
+@BindingAdapter("throttleClickListener")
+fun View.setThrottleClickListener(onClickListener: () -> Unit) {
+    var nextTime = 0L
+
+    setOnClickListener {
+        if (nextTime < System.currentTimeMillis() - 2000L) {
+            onClickListener()
+        }
+        nextTime = System.currentTimeMillis()
     }
 }
