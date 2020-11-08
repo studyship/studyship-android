@@ -18,4 +18,6 @@ val viewModelModule = module {
     viewModel { SplashViewModel() }
 
     viewModel { StudyCategoryViewModel() }
+
+    viewModel { CategoryMainViewModel() }
 }
