@@ -1,9 +1,11 @@
 package com.studyship.application.binding
 
 import android.view.View
+import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.databinding.BindingAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.textfield.TextInputLayout
 import com.studyship.application.R
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -52,5 +54,16 @@ fun View.setThrottleClickListener(onClickListener: () -> Unit) {
             onClickListener()
         }
         nextTime = System.currentTimeMillis()
+    }
+}
+
+@BindingAdapter("isVisible")
+fun View.setIsVisible(isVisible: Boolean) {
+    val customAnimation = AnimationUtils.loadAnimation(context, R.anim.opacity_animation)
+
+    animation = customAnimation
+
+    if (isVisible && customAnimation != null) {
+        customAnimation.start()
     }
 }

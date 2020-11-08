@@ -1,7 +1,6 @@
 package com.tsdev.presentation
 
 import android.util.Log
-import androidx.annotation.StringRes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.tsdev.presentation.base.BaseViewModel
@@ -21,6 +20,9 @@ class SignUpViewModel(private val resource: ResourceHelper) : BaseViewModel() {
     val nickname = MutableLiveData<String>()
     val email = MutableLiveData<String>()
     val password = MutableLiveData<String>()
+    val checkPassword = MutableLiveData<String>()
+
+    //todo 여럿 LiveData 를 한번에 적용시키는 방법 확인.
 
     val animatedMutableLiveData = AnimatedMutableLiveData<Boolean>()
 
@@ -39,22 +41,41 @@ class SignUpViewModel(private val resource: ResourceHelper) : BaseViewModel() {
     val isSuccess: LiveData<Boolean>
         get() = _isSuccess
 
-    private val _errorMessage = MutableLiveData<String>()
-
-    val errorMessage: LiveData<String>
-        get() = _errorMessage
 
     private val _backButtonState = SingleMutableEvent<Boolean>()
 
     val backButtonState: SingleEvent<Boolean>
         get() = _backButtonState
 
+    //error message list
+
+    private val _nickNameErrorMessage = MutableLiveData<String>()
+
+    val nickNameErrorMessage: LiveData<String>
+        get() = _nickNameErrorMessage
+
+    private val _emailErrorMessage = MutableLiveData<String>()
+
+    val emailErrorMessage: LiveData<String>
+        get() = _emailErrorMessage
+
+    private val _passwordErrorMessage = MutableLiveData<String>()
+
+    val passwordErrorMessage: LiveData<String>
+        get() = _passwordErrorMessage
+
+    private val _passwordCheckErrorMessage = MutableLiveData<String>()
+
+    val passwordCheckErrorMessage: LiveData<String>
+        get() = _passwordCheckErrorMessage
+
+
     init {
         _isSuccess.value = false
         _isFinish.value = false
 
         disposable.add(
-            inputBehaviorSubject.debounce(2000L, TimeUnit.MILLISECONDS)
+            inputBehaviorSubject.debounce(1500L, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     if (it.isNotEmpty()) {
@@ -78,6 +99,9 @@ class SignUpViewModel(private val resource: ResourceHelper) : BaseViewModel() {
             it.value = true
         }
         section++
+        if (section >= FINAL_SECTION) {
+            _isFinish.value = true
+        }
         Log.d("클릭리스너 확인용", "클릭")
     }
 
@@ -93,25 +117,34 @@ class SignUpViewModel(private val resource: ResourceHelper) : BaseViewModel() {
         errorMessage: String
     ) {
         if (s.toString().isNotEmpty()) {
+            //regex 체크.
+            Log.e("regex 체크", regex.toRegex().matches(s.toString()).toString())
+            if (!regex.toRegex().matches(s.toString())) {
+                _isSuccess.value = false
+                setErrorMessageState(regex, errorMessage)
+                return
+            }
             s.toString().isHadBlack { c: Char -> c != ' ' }.let {
                 if (it) {
                     inputBehaviorSubject.onNext(s.toString())
-                    _errorMessage.value = null
+                    setPassErrorMessageState()
                     Log.d("VALUE", s.toString())
                 } else {
                     _isSuccess.value = false
-                    _errorMessage.value = errorMessage
+                    setErrorMessageState(regex, errorMessage)
                 }
-            }
-            //regex 체크.
-            if (!regex.toRegex().matches(s.toString())) {
-                _isSuccess.value = false
-                _errorMessage.value = errorMessage
-                return
             }
         } else {
             _isSuccess.value = false
-            _errorMessage.value = null
+            setPassErrorMessageState()
+        }
+    }
+
+    fun onCheckSamePassword(text: CharSequence, message: String) {
+        if (password.value != text.toString()) {
+            _passwordCheckErrorMessage.value = message
+        } else {
+            _passwordCheckErrorMessage.value = null
         }
     }
 
@@ -120,7 +153,29 @@ class SignUpViewModel(private val resource: ResourceHelper) : BaseViewModel() {
         section = 0
     }
 
+    private fun setErrorMessageState(regex: String, message: String) {
+        when (regex) {
+            SignUpRegex.EMAIL -> {
+                _emailErrorMessage.value = message
+            }
+            SignUpRegex.NICKNAME -> {
+                _nickNameErrorMessage.value = message
+            }
+            SignUpRegex.PASSWORD -> {
+                _passwordErrorMessage.value = message
+            }
+        }
+    }
+
+    private fun setPassErrorMessageState() {
+        _emailErrorMessage.value = null
+        _nickNameErrorMessage.value = null
+        _passwordErrorMessage.value = null
+        _passwordCheckErrorMessage.value = null
+    }
+
     companion object {
         private const val EMPTY_STRING = ""
+        private const val FINAL_SECTION = 3
     }
 }
