@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    Sign Up String  -->
+    <string name="email_regex_error_message">영어, 한글, 숫자만 가능합니다.</string>
+    <string name="blank_error_message">공백이 들어갈 수 없습니다.</string>
+</resources>

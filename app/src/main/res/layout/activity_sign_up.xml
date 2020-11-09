@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.tsdev.presentation.SignUpViewModel" />
+
+        <variable
+            name="regex"
+            type="tsthec.tsstudy.constant.SignUpRegex" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:fillViewport="true"
+            android:layout_height="match_parent"
+            tools:context=".ui.activity.SignUpActivity">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.appbar.AppBarLayout
+                    android:id="@+id/title_appBar"
+                    android:layout_width="0dp"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/main_color_white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center|start"
+                            android:onClick="@{() -> vm.backButtonClickListener()}"
+                            android:src="@drawable/ic_baseline_chevron_left_24" />
+
+                        <!--            todo 노토산스 적용    -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="@string/sign_up_title"
+                            android:textColor="@color/main_color_black" />
+
+                    </RelativeLayout>
+
+                </com.google.android.material.appbar.AppBarLayout>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/left"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="@dimen/spacing_large"
+                    app:layout_constraintWidth_default="percent" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/right"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="@dimen/spacing_large"
+                    app:layout_constraintWidth_default="percent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/password_check"
+                    isVisible="@{vm.animatedMutableLiveData.getValue(2)}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:error="@{vm.passwordCheckErrorMessage}"
+                    android:visibility="@{vm.animatedMutableLiveData.getValue(2) ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintEnd_toEndOf="@+id/right"
+                    app:layout_constraintStart_toStartOf="@+id/left"
+                    app:layout_constraintTop_toBottomOf="@+id/title_appBar">
+
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/password_check_hint"
+                        android:inputType="textPassword"
+                        android:maxLength="12"
+                        android:maxLines="1"
+                        android:onTextChanged="@{(text, start, before ,count) ->  vm.onCheckSamePassword(text, @string/password_check_error_message)}"
+                        android:text="@={vm.checkPassword}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/password"
+                    isVisible="@{vm.animatedMutableLiveData.getValue(1)}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_normal"
+                    android:error="@{vm.passwordErrorMessage}"
+                    android:visibility="@{vm.animatedMutableLiveData.getValue(1) ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintEnd_toStartOf="@+id/right"
+                    app:layout_constraintStart_toStartOf="@+id/left"
+                    app:layout_constraintTop_toBottomOf="@+id/password_check">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/password_hint"
+                        android:inputType="textPassword"
+                        android:maxLength="12"
+                        android:maxLines="1"
+                        android:onTextChanged="@{(text, start, before ,count) ->  vm.onChangeListener(text, regex.PASSWORD, @string/password_regex_error_message)}"
+                        android:text="@={vm.password}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/email"
+                    isVisible="@{vm.animatedMutableLiveData.getValue(0)}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_normal"
+                    android:error="@{vm.emailErrorMessage}"
+                    android:visibility="@{vm.animatedMutableLiveData.getValue(0) ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintEnd_toStartOf="@+id/right"
+                    app:layout_constraintStart_toStartOf="@+id/left"
+                    app:layout_constraintTop_toBottomOf="@+id/password">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/email_hint"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:onTextChanged="@{(text, start, before ,count) ->  vm.onChangeListener(text, regex.EMAIL, @string/email_regex_error_message)}"
+                        android:text="@={vm.email}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/editText2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_normal"
+                    android:error="@{vm.nickNameErrorMessage}"
+                    app:layout_constraintEnd_toStartOf="@+id/right"
+                    app:layout_constraintStart_toStartOf="@+id/left"
+                    app:layout_constraintTop_toBottomOf="@+id/email">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/nickname_hint"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:onTextChanged="@{(text, start, before ,count) ->  vm.onChangeListener(text, regex.NICKNAME, @string/name_regex_error_message)}"
+                        android:text="@={vm.nickname}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <TextView
+                    throttleClickListener="@{() -> vm.isFinish ? vm.onClickFinishListener() : vm.onClickNextInformation()}"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@{vm.isSuccess ? @color/main_color_blue : @color/main_color_gray}"
+                    android:enabled="@{vm.isSuccess}"
+                    android:gravity="center"
+                    android:text="@{vm.isFinish ? @string/finish : @string/next}"
+                    android:textColor="@color/main_color_white"
+                    android:textFontWeight="700"
+                    android:textSize="@dimen/text_normal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_end="@dimen/spacing_xxx_large" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -4,6 +4,7 @@ import android.app.Application
 import com.studyship.application.di.categoryMapper
 import com.studyship.application.di.customUiModule
 import com.tsdev.data.di.repositoryModule
+import com.tsdev.presentation.di.resourceModule
 import com.tsdev.presentation.di.viewModelModule
 import io.reactivex.plugins.RxJavaPlugins
 import org.koin.android.ext.koin.androidContext
@@ -26,7 +27,8 @@ class StudyShipApp : Application() {
                     repositoryModule,
                     preferenceModule,
                     useCaseModule,
-                    viewModelModule
+                    viewModelModule,
+                    resourceModule
                 )
             )
         }

@@ -96,4 +96,18 @@
     <string name="how_many_comments">%1$d</string>
 
     <string name="maintain_user_title">선장</string>
+
+    <!--    SignUp Page    -->
+    <string name="sign_up_title">이메일 계정으로 가입</string>
+    <string name="nickname_hint">이름(닉네임)</string>
+    <string name="email_hint">이메일</string>
+    <string name="password_hint">비밀번호</string>
+    <string name="password_check_hint">비밀번호 확인</string>
+    <string name="finish">완료</string>
+    <string name="next">다음</string>
+    <string name="name_regex_error_message">영어, 한글, 숫자만 가능합니다.</string>
+    <string name="blank_error_message">공백이 들어갈 수 없습니다.</string>
+    <string name="email_regex_error_message">이메일 형식에 맞지 않습니다.</string>
+    <string name="password_regex_error_message">영어 특수문자 포함 8 – 12 자리여야 합니다.</string>
+    <string name="password_check_error_message">비밀번호가 일치하지 않습니다.</string>
 </resources>

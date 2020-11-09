@@ -47,4 +47,5 @@ dependencies {
     implementation(Libs.RX_ANDROID)
 
     implementation(project(":domain"))
+    implementation(project(":constant"))
 }
