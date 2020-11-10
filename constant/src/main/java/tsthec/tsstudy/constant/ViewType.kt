@@ -30,4 +30,11 @@ object ViewType {
 
     //temporary  study
     const val TEMPORARY_STORAGE_STUDY = 4001
+
+    //category
+    const val MAIN_CATEGORY_LIST = 3000
+    const val LOCATION_LABEL = 3001
+    const val LOCATION_BUTTON = 3002
+    const val DETAIL_LOCATION_LABEL = 3003
+    const val DETAIL_LOCATION_LIST = 3004
 }

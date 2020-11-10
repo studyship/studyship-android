@@ -110,4 +110,9 @@
     <string name="email_regex_error_message">이메일 형식에 맞지 않습니다.</string>
     <string name="password_regex_error_message">영어 특수문자 포함 8 – 12 자리여야 합니다.</string>
     <string name="password_check_error_message">비밀번호가 일치하지 않습니다.</string>
+
+    <!--    Category    -->
+    <string name="mylocation_label">내 근처 중심</string>
+    <string name="current_location">현재 위치</string>
+    <string name="detail_location_label">상세 위치 선택</string>
 </resources>

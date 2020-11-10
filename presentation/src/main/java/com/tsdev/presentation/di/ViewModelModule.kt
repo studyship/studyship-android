@@ -18,4 +18,10 @@ val viewModelModule = module {
     viewModel { SplashViewModel() }
 
     viewModel { SignUpViewModel(get()) }
+
+    viewModel { StudyCategoryViewModel() }
+
+    viewModel { CategoryMainViewModel() }
+
+    viewModel { CategoryLocationViewModel() }
 }

@@ -8,20 +8,21 @@ import com.studyship.application.ui.adapter.CategoryRecyclerAdapter
 import com.studyship.application.ui.adapter.MakeStudyRecyclerAdapter
 import com.studyship.application.ui.adapter.SearchHistoryRecyclerAdapter
 import com.studyship.application.ui.adapter.SuggestRecyclerAdapter
+import com.studyship.application.ui.adapter.category.CategoryLocationRecyclerAdapter
+import com.studyship.application.ui.adapter.category.CategoryMainRecyclerAdapter
 import com.studyship.application.ui.adapter.mystudy.MyStudyJoinRecyclerAdapter
 import com.studyship.application.ui.adapter.mystudy.MyStudyOwnMakeRecyclerAdapter
+import tsthec.tsstudy.constant.ViewType
 import tsthec.tsstudy.constant.ViewType.CATEGORY_VIEW_HEADER
 import tsthec.tsstudy.constant.ViewType.CATEGORY_VIEW_TYPE
 import tsthec.tsstudy.constant.ViewType.JOIN_STUDY
+import tsthec.tsstudy.constant.ViewType.MAIN_CATEGORY_LIST
 import tsthec.tsstudy.constant.ViewType.MAKE_STUDY_VIEW_TYPE
 import tsthec.tsstudy.constant.ViewType.OWN_CREATE_STUDY
 import tsthec.tsstudy.constant.ViewType.SEARCH_HISTORY_VIEW_TYPE
 import tsthec.tsstudy.constant.ViewType.SUGGEST_VIEW_TYPE
 import tsthec.tsstudy.constant.ViewType.TEMPORARY_STORAGE_STUDY
-import tsthec.tsstudy.domain.model.DomainCategoryResponse
-import tsthec.tsstudy.domain.model.DomainMakeStudyResponse
-import tsthec.tsstudy.domain.model.DomainSearchUserHistory
-import tsthec.tsstudy.domain.model.DomainSuggestResponse
+import tsthec.tsstudy.domain.model.*
 import tsthec.tsstudy.domain.model.mystudy.response.DomainMyStudyResponse
 
 private const val MAKE_STUDY_TITLE = "새로운 스터디"
@@ -148,5 +149,39 @@ fun RecyclerView.setOwnMakeStudyList(items: List<DomainMyStudyResponse>?) {
     }
     this.run {
         adapter = ownMakeStudyRecyclerAdapter
+    }
+}
+
+@BindingAdapter("setOnCategoryList")
+fun RecyclerView.setOnCategoryList(items: List<DomainMainCategory>?) {
+    val mainCategoryRecyclerAdapter = adapter as? CategoryMainRecyclerAdapter
+
+    mainCategoryRecyclerAdapter?.destroyedEvent()
+
+    items?.let {
+        mainCategoryRecyclerAdapter?.addItems(MAIN_CATEGORY_LIST, it)
+    }
+
+    this.run {
+        adapter = mainCategoryRecyclerAdapter
+    }
+}
+
+@BindingAdapter("setOnLocationList")
+fun RecyclerView.setOnLocationList(items: List<DomainDetailLocation>?) {
+    val categoryLocationRecyclerAdapter = adapter as? CategoryLocationRecyclerAdapter
+
+//    categoryLocationRecyclerAdapter?.destroyedEvent()
+
+    categoryLocationRecyclerAdapter?.addItem(ViewType.LOCATION_LABEL, "ANY")
+    categoryLocationRecyclerAdapter?.addItem(ViewType.LOCATION_BUTTON, "Any")
+    categoryLocationRecyclerAdapter?.addItem(ViewType.DETAIL_LOCATION_LABEL, "Any")
+
+    items?.let {
+        categoryLocationRecyclerAdapter?.addItems(ViewType.DETAIL_LOCATION_LIST, it)
+    }
+
+    this.run {
+        adapter = categoryLocationRecyclerAdapter
     }
 }
