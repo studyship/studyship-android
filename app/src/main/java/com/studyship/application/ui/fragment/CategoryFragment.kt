@@ -36,7 +36,7 @@ class CategoryFragment :
         viewDataBinding.categoryTab.setUpViewPager(
             viewDataBinding.categoryViewpager,
             studyCategoryAdapter,
-            false
+            autoRefresh = false
         )
 
 

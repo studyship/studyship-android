@@ -45,7 +45,6 @@
         <activity
             android:name=".ui.activity.MainActivity"
             android:theme="@style/NoActionBar" />
-
     </application>
 
 </manifest>

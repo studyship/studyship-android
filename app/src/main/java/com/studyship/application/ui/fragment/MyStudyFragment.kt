@@ -28,7 +28,11 @@ class MyStudyFragment :
 
         viewDataBinding.myStudyViewPager.adapter = viewPagerAdapter
 
-        viewDataBinding.tabLayout.setUpViewPager(viewDataBinding.myStudyViewPager, viewPagerAdapter, true)
+        viewDataBinding.tabLayout.setUpViewPager(
+            viewDataBinding.myStudyViewPager,
+            viewPagerAdapter,
+            autoRefresh = true
+        )
     }
 
 }

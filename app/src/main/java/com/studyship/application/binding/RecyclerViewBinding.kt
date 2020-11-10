@@ -8,9 +8,11 @@ import com.studyship.application.ui.adapter.CategoryRecyclerAdapter
 import com.studyship.application.ui.adapter.MakeStudyRecyclerAdapter
 import com.studyship.application.ui.adapter.SearchHistoryRecyclerAdapter
 import com.studyship.application.ui.adapter.SuggestRecyclerAdapter
+import com.studyship.application.ui.adapter.category.CategoryLocationRecyclerAdapter
 import com.studyship.application.ui.adapter.category.CategoryMainRecyclerAdapter
 import com.studyship.application.ui.adapter.mystudy.MyStudyJoinRecyclerAdapter
 import com.studyship.application.ui.adapter.mystudy.MyStudyOwnMakeRecyclerAdapter
+import tsthec.tsstudy.constant.ViewType
 import tsthec.tsstudy.constant.ViewType.CATEGORY_VIEW_HEADER
 import tsthec.tsstudy.constant.ViewType.CATEGORY_VIEW_TYPE
 import tsthec.tsstudy.constant.ViewType.JOIN_STUDY
@@ -162,5 +164,24 @@ fun RecyclerView.setOnCategoryList(items: List<DomainMainCategory>?) {
 
     this.run {
         adapter = mainCategoryRecyclerAdapter
+    }
+}
+
+@BindingAdapter("setOnLocationList")
+fun RecyclerView.setOnLocationList(items: List<DomainDetailLocation>?) {
+    val categoryLocationRecyclerAdapter = adapter as? CategoryLocationRecyclerAdapter
+
+//    categoryLocationRecyclerAdapter?.destroyedEvent()
+
+    categoryLocationRecyclerAdapter?.addItem(ViewType.LOCATION_LABEL, "ANY")
+    categoryLocationRecyclerAdapter?.addItem(ViewType.LOCATION_BUTTON, "Any")
+    categoryLocationRecyclerAdapter?.addItem(ViewType.DETAIL_LOCATION_LABEL, "Any")
+
+    items?.let {
+        categoryLocationRecyclerAdapter?.addItems(ViewType.DETAIL_LOCATION_LIST, it)
+    }
+
+    this.run {
+        adapter = categoryLocationRecyclerAdapter
     }
 }

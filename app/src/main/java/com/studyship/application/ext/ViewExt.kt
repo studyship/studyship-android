@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -20,10 +21,18 @@ interface ViewPagerResource {
 fun TabLayout.setUpViewPager(
     viewPager2: ViewPager2,
     viewPagerResource: ViewPagerResource,
+    tabBadgeCount: Int = 0,
     autoRefresh: Boolean
 ) {
-    TabLayoutMediator(this, viewPager2, autoRefresh, TabLayoutMediator.TabConfigurationStrategy {
-        tab, position ->
-        tab.text = viewPagerResource.getTitle(position)
-    }).attach()
+    TabLayoutMediator(
+        this,
+        viewPager2,
+        autoRefresh,
+        TabLayoutMediator.TabConfigurationStrategy { tab, position ->
+            tab.text = viewPagerResource.getTitle(position)
+            if (tabBadgeCount != 0) {
+                val badge = tab.orCreateBadge
+                badge.number = tabBadgeCount
+            }
+        }).attach()
 }

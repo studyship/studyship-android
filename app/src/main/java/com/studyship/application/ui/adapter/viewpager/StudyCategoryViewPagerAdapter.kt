@@ -13,7 +13,7 @@ class StudyCategoryViewPagerAdapter(fragmentManager: FragmentManager, lifecycle:
 
 
     override fun getItemCount(): Int {
-        return CATEGORY_COUNT
+        return CATEGORIES.size
     }
 
     override fun createFragment(position: Int): Fragment {
@@ -25,11 +25,10 @@ class StudyCategoryViewPagerAdapter(fragmentManager: FragmentManager, lifecycle:
     }
 
     companion object {
-        private const val CATEGORY_COUNT = 3
-        private val CATEGORY_NAMES = listOf("카테고리", "지역", "검색필터")
+        private val CATEGORIES = listOf("카테고리", "지역", "검색필터")
     }
 
     override fun getTitle(position: Int): String {
-        return CATEGORY_NAMES[position]
+        return CATEGORIES[position]
     }
 }

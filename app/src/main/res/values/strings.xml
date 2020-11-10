@@ -96,4 +96,7 @@
     <string name="how_many_comments">%1$d</string>
 
     <string name="maintain_user_title">선장</string>
+    <string name="mylocation_label">내 근처 중심</string>
+    <string name="current_location">현재 위치</string>
+    <string name="detail_location_label">상세 위치 선택</string>
 </resources>

@@ -20,4 +20,6 @@ val viewModelModule = module {
     viewModel { StudyCategoryViewModel() }
 
     viewModel { CategoryMainViewModel() }
+
+    viewModel { CategoryLocationViewModel() }
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_x_large"
+            android:background="@drawable/bg_current_location"
+            android:drawableStart="@drawable/ic_baseline_my_location_24"
+            android:drawablePadding="@dimen/spacing_small"
+            android:gravity="center"
+            android:padding="@dimen/spacing_small"
+            android:text="@string/current_location"
+            android:textColor="@color/default_current_location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="위치" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
