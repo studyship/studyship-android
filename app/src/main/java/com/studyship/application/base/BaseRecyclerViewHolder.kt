@@ -5,6 +5,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.studyship.application.BR
 import com.studyship.application.base.cache.AndroidRecyclerViewHolder
+import tsthec.tsstudy.domain.model.DomainDetailLocation
+import tsthec.tsstudy.domain.model.DomainMainCategory
 import tsthec.tsstudy.domain.model.DomainMakeStudyResponse
 import tsthec.tsstudy.domain.model.DomainSearchUserHistory
 
@@ -45,6 +47,20 @@ abstract class BaseRecyclerViewHolder<ITEM : Any?, VIEW_BINDING : ViewDataBindin
     fun setBindingMakeStudy(item: DomainMakeStudyResponse) {
         recyclerBinding.run {
             setVariable(BR.makeStudyData, item)
+            executePendingBindings()
+        }
+    }
+
+    fun setBindingMainCategory(item: DomainMainCategory) {
+        recyclerBinding.run {
+            setVariable(BR.categories, item)
+            executePendingBindings()
+        }
+    }
+
+    fun setBindingLocationCategory(item: DomainDetailLocation) {
+        recyclerBinding.run {
+            setVariable(BR.locations, item)
             executePendingBindings()
         }
     }

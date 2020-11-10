@@ -70,4 +70,9 @@
 
     <!--    My Study    -->
     <color name="my_study_filter_default_color">#E0E0E0</color>
+
+    <!--    Category    -->
+    <color name="divider">#E5E5E5</color>
+    <color name="divider_border">#F9F9F9</color>
+    <color name="default_current_location">#B2B2B2</color>
 </resources>

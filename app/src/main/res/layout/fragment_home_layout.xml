@@ -50,8 +50,8 @@
             android:onClick="@{() ->customBottomNavigation.showDialogWithData()}"
             android:src="@drawable/ic_add_black_24dp"
             app:backgroundTint="@color/appbar_end_color_second"
-            app:backgroundTintMode="screen"
             app:fabSize="auto"
+            app:tint="@color/main_color_white"
             app:layout_constraintBottom_toTopOf="@+id/bottom_sheet_menu"
             app:layout_constraintEnd_toEndOf="parent"
             app:maxImageSize="@dimen/spacing_xxx_large" />
