@@ -52,13 +52,9 @@ class HomeFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewDataBinding.run {
-            homeFragmentViewModel = viewModel
-            lifecycleOwner = viewLifecycleOwner
-            executePendingBindings()
-        }
 
         bind {
+            homeFragmentViewModel = viewModel
             setVariable(BR.customBottomNavigation, bottomSheet)
         }
 

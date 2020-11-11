@@ -17,18 +17,18 @@ class StudyApplyActivity : TransformationAppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_study_apply)
 
-        reply_response_percent_tv.text  =  getString(R.string.reply_response_percent, 5)
+//        reply_response_percent_tv.text  =  getString(R.string.reply_response_percent, 5)
 
         back_img.setOnClickListener { finish() }
 
-        val spannable = SpannableStringBuilder(apply_study_captain_name.text)
-        spannable.setSpan(
-            StyleSpan(BOLD),
-            3, // start
-            6, // end
-            Spannable.SPAN_EXCLUSIVE_INCLUSIVE
-        )
+//        val spannable = SpannableStringBuilder(apply_study_captain_name.text)
+//        spannable.setSpan(
+//            StyleSpan(BOLD),
+//            3, // start
+//            6, // end
+//            Spannable.SPAN_EXCLUSIVE_INCLUSIVE
+//        )
 
-        apply_study_captain_name.text = spannable
+//        apply_study_captain_name.text = spannable
     }
 }
