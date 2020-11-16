@@ -27,6 +27,7 @@ class SplashActivity :
         viewModel.splashCallback.observe(this, Observer {
             if (it.getContentValue()) {
                 comfortableStartActivity<MainActivity>()
+                finish()
             }
         })
     }

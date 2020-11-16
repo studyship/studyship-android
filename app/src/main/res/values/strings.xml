@@ -19,8 +19,17 @@
     <string name="back_button_click_message">뒤로가기 버튼을 한번 더 누를시 종료됩니다.</string>
 
     <!--    Apply Study String  -->
-    <string name="reply_response_percent">답변 응답률 %d%%</string>
+    <string name="reply_response_percent">답변 응답률 $1%d</string>
     <string name="go_to_study_feed_from_captain">스터디 이력 보러가기 ></string>
+    <string name="make_user_name">선장 김수민</string>
+    <string name="detail_study_label">스터디 정보</string>
+    <string name="date">날짜</string>
+    <string name="prefer_location">선호장소</string>
+    <string name="people">인원</string>
+    <string name="level">레벨</string>
+    <string name="time">시간</string>
+    <string name="deadline">멤버 모집 마감일</string>
+    <string name="goal_label">목표</string>
 
     <!--    Sign-in String  -->
     <string name="sign_in_default_string">나랑 잘 맞는 스터디메이트,\n 스터디쉽에서 간편하게 구해보세요!</string>
