@@ -46,10 +46,291 @@
             android:text="여기에 horizontal view 들어와야함" />
 
         <ImageView
-            android:layout_below="@+id/horizontal_view"
+            android:id="@+id/thumb_nail_profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/horizontal_view"
+            android:layout_marginTop="@dimen/spacing_large"
             android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/thumb_nail_profile"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:background="@drawable/bg_user_name"
+            android:drawableEnd="@drawable/ic_baseline_chat_bubble_outline_24"
+            android:drawablePadding="@dimen/spacing_small"
+            android:gravity="center"
+            android:paddingStart="@dimen/spacing_normal"
+            android:paddingTop="@dimen/spacing_small"
+            android:paddingEnd="@dimen/spacing_normal"
+            android:paddingBottom="@dimen/spacing_small"
+            android:text="@string/make_user_name"
+            android:textSize="@dimen/text_large" />
+
+        <TextView
+            android:id="@+id/response_percent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_name"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:gravity="center"
+            android:textColor="@color/apply_study_response_percent_text_color"
+            tools:text="@string/reply_response_percent" />
+
+        <LinearLayout
+            android:id="@+id/study_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/response_percent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:text="@string/detail_study_label"
+                android:textColor="@color/detail_label"
+                android:textSize="@dimen/text_normal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_calendar_today_24" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    android:layout_weight="3"
+                    android:text="@string/date" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="7"
+                    android:text="월,화,수,목,금,토,일" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_calendar_today_24" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    android:layout_weight="3"
+                    android:text="@string/date" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="7"
+                    android:text="월,화,수,목,금,토,일" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_calendar_today_24" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    android:layout_weight="3"
+                    android:text="@string/date" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="7"
+                    android:text="월,화,수,목,금,토,일" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_calendar_today_24" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    android:layout_weight="3"
+                    android:text="@string/date" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="7"
+                    android:text="월,화,수,목,금,토,일" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_calendar_today_24" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    android:layout_weight="3"
+                    android:text="@string/date" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="7"
+                    android:text="월,화,수,목,금,토,일" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_calendar_today_24" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    android:layout_weight="3"
+                    android:text="@string/date" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="7"
+                    android:text="월,화,수,목,금,토,일" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/study_info"
+            android:layout_marginStart="@dimen/spacing_large"
+            android:layout_marginTop="@dimen/spacing_xx_large"
+            android:layout_marginEnd="@dimen/spacing_large"
+            android:background="@drawable/bg_divider" />
+
+        <TextView
+            android:id="@+id/goal_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider"
+            android:layout_marginStart="@dimen/spacing_large"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:text="@string/goal_label"
+            android:textColor="@color/app_bar_color"
+            android:textSize="@dimen/text_normal" />
+
+        <TextView
+            android:id="@+id/goal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/goal_label"
+            android:layout_marginStart="@dimen/spacing_large"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="스터디쉽 앱 카피하기"
+            android:textSize="@dimen/text_small" />
+
+        <TextView
+            android:id="@+id/study_description_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/goal"
+            android:layout_marginStart="@dimen/spacing_large"
+            android:layout_marginTop="@dimen/spacing_xx_large"
+            android:text="@string/study_description"
+            android:textColor="@color/app_bar_color"
+            android:textSize="@dimen/text_normal" />
+
+
+        <TextView
+            android:id="@+id/study_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/study_description_label"
+            android:layout_marginStart="@dimen/spacing_large"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_marginEnd="@dimen/spacing_large"
+            android:text="에어비앤비 앱 카피 하실분 모집합니다! 진행은 피그마로 할 예정이고, 결과물은 컴포넌트 리스트로 생각중입니다. 성실하게 끝까지 진행하실 분만!!!!! 기간은 한달정도 예상해요 벌금도 걷을 생각이에요. 같이 피그마 기초 뗍시다!" />
+
+        <TextView
+            android:id="@+id/study_tendency_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/study_description"
+            android:layout_marginStart="@dimen/spacing_large"
+            android:layout_marginTop="@dimen/spacing_xx_large"
+            android:text="@string/study_tendency"
+            android:textColor="@color/app_bar_color"
+            android:textSize="@dimen/text_normal" />
+
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
