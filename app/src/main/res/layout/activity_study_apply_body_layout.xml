@@ -46,10 +46,33 @@
             android:text="여기에 horizontal view 들어와야함" />
 
         <ImageView
-            android:layout_below="@+id/horizontal_view"
+            android:id="@+id/profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/horizontal_view"
+            android:layout_marginTop="@dimen/spacing_x_large"
             android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/user_level"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile"
+            android:layout_marginTop="@dimen/spacing_mini"
+            android:gravity="center"
+            android:text="선장 ???" />
+
+        <TextView
+            android:id="@+id/reaction_layer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_level"
+            android:gravity="center"
+            android:text="응답률"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:textColor="@color/main_color_blue" />
+
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
