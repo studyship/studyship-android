@@ -24,4 +24,6 @@ val viewModelModule = module {
     viewModel { CategoryMainViewModel() }
 
     viewModel { CategoryLocationViewModel() }
+
+    viewModel { MyProfileViewModel() }
 }
