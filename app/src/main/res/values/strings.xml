@@ -124,4 +124,11 @@
     <string name="mylocation_label">내 근처 중심</string>
     <string name="current_location">현재 위치</string>
     <string name="detail_location_label">상세 위치 선택</string>
+
+    <!--    MyProfile   -->
+    <string name="members">함께한 멤버</string>
+    <string name="notice">공지사항</string>
+    <string name="app_setting">앱 설정</string>
+    <string name="qna">문의 정보</string>
+    <string name="app_version">앱 버전</string>
 </resources>
