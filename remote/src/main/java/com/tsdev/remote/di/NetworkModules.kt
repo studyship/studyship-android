@@ -27,6 +27,16 @@ val networkModules = module {
             .build()
     }
 
+    //named -> StringQualifier 리턴
+
+    /*
+        data class StringQualifier(override val value: QualifierValue) : Qualifier{
+            override fun toString(): String {
+                return "q:'$value'"
+        }
+
+        참고하기.
+     */
     single<Interceptor>(named("customInterceptor")) { CustomInterceptor() }
 
     single {
