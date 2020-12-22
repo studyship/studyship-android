@@ -59,6 +59,7 @@ object Versions {
     const val ANKO = "0.10.8"
     const val TRANSFORMATIONLAYOUT = "1.0.3"
     const val SPOTLIGHT = "2.0.1"
+    const val ANIMATION_DIALOG = "1.0.2"
 }
 
 object TestLibs {
@@ -130,4 +131,6 @@ object Libs {
         "com.github.skydoves:transformationlayout:${Versions.TRANSFORMATIONLAYOUT}"
     const val SPOTLIGHT = "com.github.takusemba:spotlight:${Versions.SPOTLIGHT}"
     const val FLEX_BOX = "com.google.android:flexbox:2.0.1"
+    const val ANIMATION_DIALOG =
+        "com.github.TaeseongYun:AnimatedDialog:${Versions.ANIMATION_DIALOG}"
 }

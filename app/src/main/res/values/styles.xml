@@ -87,4 +87,15 @@
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/main_color_black</item>
     </style>
+
+    <!--    Animated Dialog Style   -->
+    <style name="AnimatedDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowOverscan">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+    </style>
+
 </resources>

@@ -117,6 +117,9 @@ dependencies {
     //Spotlight
     implementation(Libs.SPOTLIGHT)
 
+    //animation dialog
+    implementation(Libs.ANIMATION_DIALOG)
+
 
     //multi-module
     implementation(project(":feat"))
@@ -130,7 +133,4 @@ dependencies {
 
 androidExtensions {
     isExperimental = true
-//    configure(delegateClosureOf<AndroidExtensionsExtension> {
-//        isExperimental = true
-//    })
 }

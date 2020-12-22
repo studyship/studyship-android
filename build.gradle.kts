@@ -19,9 +19,11 @@ buildscript {
 }
 
 allprojects {
+    val jitPackUrl = "https://jitpack.io"
     repositories {
         google()
         jcenter()
+        maven(jitPackUrl)
     }
 }
 
