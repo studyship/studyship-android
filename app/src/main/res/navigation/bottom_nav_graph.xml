@@ -23,19 +23,23 @@
         android:id="@+id/profile"
         android:name="com.studyship.application.ui.fragment.MyProfileFragment"
         android:label="MyProfileFragment"
-        tools:layout="@layout/fragment_myprofile_layout" >
+        tools:layout="@layout/fragment_myprofile_layout">
         <action
             android:id="@+id/action_profile_to_userInfoActivity"
             app:destination="@id/userInfoActivity" />
     </fragment>
     <fragment
         android:id="@+id/my_study"
-        tools:layout="@layout/fragment_mystudy_layout"
         android:name="com.studyship.application.ui.fragment.MyStudyFragment"
-        android:label="MyStudyFragment" />
+        android:label="MyStudyFragment"
+        tools:layout="@layout/fragment_mystudy_layout" />
     <activity
         android:id="@+id/userInfoActivity"
         android:name="com.studyship.application.ui.activity.UserInfoActivity"
         android:label="activity_user_info"
-        tools:layout="@layout/activity_user_info" />
+        tools:layout="@layout/activity_user_info">
+        <argument
+            android:name="userID"
+            app:argType="string" />
+    </activity>
 </navigation>

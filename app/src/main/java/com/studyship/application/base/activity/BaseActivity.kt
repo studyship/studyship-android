@@ -50,7 +50,12 @@ abstract class BaseActivity<VM : ViewModel, VIEW_BIND : ViewDataBinding>(@Layout
         when (val classname = action as NavigationAction?) {
             is NavigationAction.Move -> {
                 when (classname.className) {
-                    Activity.USER_INFO -> navigate(MyProfileFragmentDirections.actionProfileToUserInfoActivity())
+                    Activity.USER_INFO -> navigate(
+                        MyProfileFragmentDirections.actionProfileToUserInfoActivity(
+                            //todo  SharedPreference 이용해서 유저 ID 보내주기.
+                            "TaeSeong"
+                        )
+                    )
                 }
             }
         }
