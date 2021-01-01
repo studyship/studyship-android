@@ -37,10 +37,11 @@ object Versions {
         const val DATA_BINDING = "3.1.2"
         const val GRADLE = "4.0.1"
         const val KTX_CORE = "1.2.0"
-        const val KTX_FRAGMENT = "1.2.2"
+        const val KTX_FRAGMENT = "1.3.0-alpha04"
         const val NAVIGATION_FRAGMENT = "2.3.0-alpha02"
         const val NAVIGATION_UI = "2.3.0-alpha02"
         const val SAVED_STATE = "2.2.0"
+        const val KTX_ACTIVITY = "1.2.0-alpha05"
     }
 
     object Squareup {
@@ -103,6 +104,8 @@ object Libs {
         const val KTX = "androidx.core:core-ktx:${Versions.AndroidX.KTX_CORE}"
 
         const val KTX_FRAGMENT = "androidx.fragment:fragment-ktx:${Versions.AndroidX.KTX_FRAGMENT}"
+
+        const val KTX_ACTIVITY = "androidx.activity:activity-ktx:${Versions.AndroidX.KTX_ACTIVITY}"
     }
 
     object Kotlin {

@@ -28,7 +28,7 @@ class PermissionImpl(private val context: Context) :
     }
 
     override val permissions: Array<out String>
-        get() = arrayOf(Context.LOCATION_SERVICE)
+        get() = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
 
 
     override val REQUEST_CODE: Int
