@@ -2,6 +2,7 @@ package com.studyship.application.ui.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.skydoves.transformationlayout.TransformationLayout
@@ -25,6 +26,9 @@ import kotlinx.android.synthetic.main.fragment_home_layout.view.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
+import tsthec.tsstudy.library.dialog.AnimatedDialog
+import tsthec.tsstudy.library.property.DialogSize
+import tsthec.tsstudy.library.property.Duration
 
 class HomeFragment :
     BaseFragment<FragmentHomeLayoutBinding, HomeFragmentViewModel>(R.layout.fragment_home_layout),
@@ -39,6 +43,19 @@ class HomeFragment :
             makeStudyRecyclerAdapter,
             R.style.iOSBottomSheetDialogTheme
         )
+    }
+
+    private val display: AnimatedDialog by lazy {
+        Log.e("widthPixels" , resources.displayMetrics.widthPixels.toFloat().toString())
+        AnimatedDialog.Builder(requireContext(), R.style.AnimatedDialogStyle)
+            .setTitle(getString(R.string.login_alert_title))
+            .setPositiveBackground(R.drawable.bg_positive_button)
+            .setNegativeBackground(R.drawable.bg_negative_button)
+            .setPositiveText(getString(R.string.login))
+            .setNegativeText(getString(R.string.cancel))
+            .setDialogSize(DialogSize.SMALL)
+            .setDuration(Duration.SLOW)
+            .build()
     }
 
     private val makeStudyRecyclerAdapter: MakeStudyRecyclerAdapter by lazy {
@@ -81,8 +98,9 @@ class HomeFragment :
     }
 
     override fun onClickItem(position: Int, translateLayout: TransformationLayout) {
-        context?.comfortableStartActivity<StudyApplyActivity>(
-            "key" to homeCategoryRecyclerAdapter.itemCount, transformationLayout = translateLayout
-        )
+//        context?.comfortableStartActivity<StudyApplyActivity>(
+//            "key" to homeCategoryRecyclerAdapter.itemCount, transformationLayout = translateLayout
+//        )
+        display.show()
     }
 }

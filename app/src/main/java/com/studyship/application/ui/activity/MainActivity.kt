@@ -1,8 +1,10 @@
 package com.studyship.application.ui.activity
 
 import android.os.Bundle
+import android.util.Log
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.skydoves.transformationlayout.onTransformationStartContainer
 import com.studyship.application.R
 import com.studyship.application.base.activity.BaseActivity
@@ -36,6 +38,10 @@ class MainActivity :
         onTransformationStartContainer()
         super.onCreate(savedInstanceState)
 
+        setUpNavHostFragment()
+    }
+
+    private fun setUpNavHostFragment() {
         navHostFragment = loadNavigation(R.id.nav_host_fragment)
         navHostFragment?.let {
             NavigationUI.setupWithNavController(bottom_sheet_menu, it.navController)
