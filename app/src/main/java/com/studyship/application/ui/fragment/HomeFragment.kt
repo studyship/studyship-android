@@ -46,7 +46,7 @@ class HomeFragment :
     }
 
     private val display: AnimatedDialog by lazy {
-        Log.e("widthPixels" , resources.displayMetrics.widthPixels.toFloat().toString())
+        Log.e("widthPixels", resources.displayMetrics.widthPixels.toFloat().toString())
         AnimatedDialog.Builder(requireContext(), R.style.AnimatedDialogStyle)
             .setTitle(getString(R.string.login_alert_title))
             .setPositiveBackground(R.drawable.bg_positive_button)
