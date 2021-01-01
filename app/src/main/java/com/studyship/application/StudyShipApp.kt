@@ -3,6 +3,7 @@ package com.studyship.application
 import android.app.Application
 import com.studyship.application.di.categoryMapper
 import com.studyship.application.di.customUiModule
+import com.studyship.application.di.permissionModule
 import com.tsdev.data.di.repositoryModule
 import com.tsdev.presentation.di.resourceModule
 import com.tsdev.presentation.di.viewModelModule
@@ -28,7 +29,8 @@ class StudyShipApp : Application() {
                     preferenceModule,
                     useCaseModule,
                     viewModelModule,
-                    resourceModule
+                    resourceModule,
+                    permissionModule
                 )
             )
         }

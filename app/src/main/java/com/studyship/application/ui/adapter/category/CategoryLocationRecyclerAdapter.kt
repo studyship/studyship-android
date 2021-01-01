@@ -6,15 +6,19 @@ import com.studyship.application.R
 import com.studyship.application.base.BaseRecyclerViewAdapter
 import com.studyship.application.base.BaseRecyclerViewHolder
 import com.studyship.application.data.source.RecyclerItemSource
+import com.studyship.application.helper.Permission
 import com.studyship.application.ui.adapter.holder.category.CategoryCurrentLocationViewHolder
 import com.studyship.application.ui.adapter.holder.category.CategoryDetailLocationLabelViewHolder
 import com.studyship.application.ui.adapter.holder.category.CategoryLocationLabelViewHolder
 import com.studyship.application.ui.adapter.holder.category.CategoryLocationListViewHolder
+import org.koin.java.KoinJavaComponent.inject
 import tsthec.tsstudy.constant.ViewType
 import tsthec.tsstudy.domain.model.DomainDetailLocation
 
-class CategoryLocationRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSource.RecyclerItem>() {
+class CategoryLocationRecyclerAdapter(private val callback: CategoryLocationListViewHolder.OnRequestCallback) : BaseRecyclerViewAdapter<RecyclerItemSource.RecyclerItem>() {
     private val categoryLocationList = mutableListOf<RecyclerItemSource.RecyclerItem>()
+
+    internal val permissionHelper by inject(Permission::class.java)
 
     override fun createBindingViewHolder(holder: BaseRecyclerViewHolder<*, *>, position: Int) {
         if (position >= 3) {
@@ -45,8 +49,11 @@ class CategoryLocationRecyclerAdapter : BaseRecyclerViewAdapter<RecyclerItemSour
             }
             ViewType.LOCATION_BUTTON -> {
                 CategoryLocationListViewHolder(
-                    LayoutInflater.from(parent.context)
-                        .inflate(R.layout.recycler_get_location_layout, parent, false)
+                    LayoutInflater.from(parent.context).inflate(
+                        R.layout.recycler_get_location_layout, parent, false
+                    ),
+                    permissionHelper,
+                    callback
                 )
             }
             ViewType.LOCATION_LABEL -> {
