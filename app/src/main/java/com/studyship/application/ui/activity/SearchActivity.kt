@@ -13,7 +13,6 @@ import com.studyship.application.ui.adapter.BottomSheetRecyclerAdapter
 import com.studyship.application.ui.adapter.SearchHistoryRecyclerAdapter
 import com.studyship.application.ui.adapter.SuggestRecyclerAdapter
 import com.studyship.application.ui.widget.CustomBottomSheetDialog
-import com.studyship.application.util.customOverridePendingTransition
 import com.tsdev.presentation.SearchKeywordViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
